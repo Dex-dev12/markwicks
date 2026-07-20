@@ -11,6 +11,16 @@ export default function App() {
   const location = useLocation()
 
   useEffect(() => {
+    let canonical = document.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical)
+    }
+    canonical.setAttribute('href', `https://markwicksservices.com.au${location.pathname}`)
+  }, [location.pathname])
+
+  useEffect(() => {
     const raf1 = requestAnimationFrame(() => {
       const raf2 = requestAnimationFrame(() => {
         window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
