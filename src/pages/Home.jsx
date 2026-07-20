@@ -1,0 +1,297 @@
+import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { ArrowUpRight, ArrowRight, Phone } from 'lucide-react'
+import { SERVICES } from '../data/services.js'
+import { CASE_STUDIES } from '../data/caseStudies.js'
+import { CountUp, TrustedByStrip } from '../components/shared.jsx'
+
+const HERO_SLIDES = [
+  {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/TORO%20Z%20Master%20Commercial%20Zero-Turn%20Riders%20mower%20at%20Construct%20Expo%20Utilaje%202010.JPG?width=1800',
+    alt: 'Commercial mower used for scheduled grounds maintenance',
+  },
+  {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Several%20people%20planting%20trees.jpg?width=1800',
+    alt: 'Grounds and garden bed maintenance work',
+  },
+  {
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Construction%20site%20excavator%20and%20truck.jpg?width=1800',
+    alt: 'Excavation and site work',
+  },
+]
+
+function Hero() {
+  const ref = useRef(null)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setActiveSlide((s) => (s + 1) % HERO_SLIDES.length), 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.hero-line-1', { y: 40, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' })
+      gsap.from('.hero-line-2', { y: 60, opacity: 0, duration: 1.2, delay: 0.5, ease: 'power3.out' })
+      gsap.from('.hero-cta, .hero-meta', { y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out' })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden">
+      <div className="absolute inset-0">
+        {HERO_SLIDES.map((slide, i) => (
+          <img
+            key={i}
+            src={slide.src}
+            alt={slide.alt}
+            className="absolute inset-0 h-full w-full object-cover brightness-[0.5] transition-opacity"
+            style={{
+              opacity: activeSlide === i ? 1 : 0,
+              transitionDuration: '1800ms',
+              transitionTimingFunction: 'ease-in-out',
+              animation: `hero-kenburns ${HERO_SLIDES.length * 9}s ease-in-out infinite alternate`,
+              animationDelay: `${i * -9}s`,
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-br from-deep/85 via-deep/45 to-deep/75" />
+      <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-deep to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+      <div className="absolute top-24 right-6 sm:right-16 hidden sm:block">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="absolute h-2.5 w-2.5 rounded-full bg-primary animate-float"
+            style={{ right: i * 34, top: i * 46, animationDelay: `${i * 0.6}s` }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 min-h-[100dvh] flex flex-col justify-end">
+        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-6">
+          Bathurst, NSW &mdash; Commercial &amp; Residential Grounds Care
+        </p>
+        <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
+          <span className="hero-line-1 block">Grounds that are always</span>
+          <span className="hero-line-2 block font-serif italic font-medium">ready for inspection.</span>
+        </h1>
+        <p className="hero-meta mt-8 max-w-xl text-white/70 text-base sm:text-lg leading-relaxed">
+          Scheduled commercial mowing and grounds maintenance for councils, TAFE campuses and property managers across the Bathurst region — with excavation, mulching and residential care alongside.
+        </p>
+        <div className="hero-meta mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+          {[
+            { end: 5, suffix: '+', label: 'Commercial Sites' },
+            { end: 3, suffix: '', label: 'Person Crew' },
+            { end: 100, suffix: '%', label: 'Scheduled' },
+          ].map((s, i) => (
+            <div key={s.label} className={`flex items-center gap-2.5 ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
+              <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 leading-tight max-w-[6rem]">{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <div className="hero-cta mt-10 flex flex-wrap gap-3">
+          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30">
+            Get a Quote <ArrowUpRight className="h-4 w-4" />
+          </Link>
+          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15">
+            <Phone className="h-4 w-4" /> Enquire About a Contract
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Intro() {
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
+        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-4">Commercial Grounds Maintenance &amp; Contract Mowing</p>
+        <div className="space-y-5 text-muted leading-relaxed text-base sm:text-lg text-left sm:text-center">
+          <p>
+            Our reputation is built on turning up when we say we will and running every site to the same standard, which is why so much of our work comes from clients renewing us contract after contract. Every schedule is built around the site — its access, its deadlines, and what the client actually needs from a visit.
+          </p>
+          <p>
+            We place a high priority on WHS standards and treat them as part of the daily routine on every site, not an afterthought. As the standards contractors are expected to meet keep evolving, we keep our own approach current alongside them.
+          </p>
+          <p>
+            Commercial grounds maintenance and contract mowing is our focus, and the sites we look after span Education, Local Government, Strata &amp; Body Corporate, Property Management and Residential.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const TESTIMONIALS = [
+  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+]
+
+function Testimonials() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.testimonial-card', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="pb-24 sm:pb-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3 text-center">What Clients Say</p>
+        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-14">Trusted to turn up and get it done.</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={i} className="testimonial-card rounded-3xl bg-surface border border-divider p-6 sm:p-8">
+              {t.placeholder && (
+                <span className="inline-block bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-4">
+                  Example
+                </span>
+              )}
+              <p className="font-serif italic text-lg text-ink leading-relaxed mb-5">&ldquo;{t.quote}&rdquo;</p>
+              <p className="text-sm font-semibold text-ink">{t.name}</p>
+              <p className="text-xs text-muted">{t.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ServicesPreview() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.svc-tile', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="bg-deep text-white py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary-light mb-3">What We Do</p>
+          <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-3xl">
+            Commercial grounds care, with the extras alongside.
+          </h2>
+        </div>
+        <Link to="/services" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15 shrink-0">
+          View All Services <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          {SERVICES.map((s) => (
+            <Link key={s.slug} to={`/services/${s.slug}`} className="svc-tile bg-deep p-8 sm:p-10 transition-colors hover:bg-white/[0.03] group">
+              <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+                <s.icon className="h-6 w-6 text-primary-light" strokeWidth={2.2} />
+              </div>
+              <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
+              <p className="text-white/60 text-sm leading-relaxed">{s.text}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary-light">
+                Learn more <ArrowRight className="h-3 w-3" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function RecentWork() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.work-tile', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  const featured = CASE_STUDIES.slice(0, 4)
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Recent Work</p>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">A taste of what we've been on site for.</h2>
+        </div>
+        <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
+          View Portfolio <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featured.map((c) => (
+            <Link key={c.slug} to="/portfolio" className="work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {c.placeholder && (
+                  <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
+                    Example
+                  </span>
+                )}
+              </div>
+              <div className="p-5">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>
+                <h3 className="font-display text-base font-semibold leading-snug">{c.title}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function StatsCta() {
+  return (
+    <section className="relative py-24 sm:py-32 overflow-hidden grid-bg">
+      <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="text-center">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Ready to put your grounds on a schedule?</h2>
+          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+            Get a Quote <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+      <TrustedByStrip />
+      <Intro />
+      <ServicesPreview />
+      <RecentWork />
+      <Testimonials />
+      <StatsCta />
+    </>
+  )
+}
