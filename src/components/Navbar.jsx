@@ -48,16 +48,14 @@ export default function Navbar() {
     setMobileServicesOpen(false)
   }, [location.pathname])
 
-  const solid = scrolled || location.pathname !== '/'
-
   return (
     <>
       <TopBar />
-      <header className={`fixed top-4 lg:top-[52px] left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl rounded-full px-4 sm:px-6 py-2.5 transition-colors ${solid ? 'glass' : ''}`}>
-        <nav className="flex items-center justify-between">
+      <header className={`fixed top-0 lg:top-9 left-0 right-0 z-50 w-full px-6 sm:px-10 lg:px-16 py-3 border-b border-divider transition-colors ${scrolled ? 'glass' : 'bg-surface'}`}>
+        <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <Link to="/" className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Markwicks Services" className="h-9 w-auto" />
-            <span className={`font-display font-bold tracking-tight text-lg transition-colors ${solid ? 'text-ink' : 'text-white'}`}>
+            <span className="font-display font-bold tracking-tight text-lg text-ink">
               Markwicks Services
             </span>
           </Link>
@@ -73,7 +71,7 @@ export default function Navbar() {
                   <NavLink
                     to={link.href}
                     className={({ isActive }) =>
-                      `lift-on-hover flex items-center gap-1 text-sm font-medium ${solid ? (isActive ? 'text-primary' : 'text-ink/80 hover:text-ink') : (isActive ? 'text-white' : 'text-white/80 hover:text-white')}`
+                      `lift-on-hover flex items-center gap-1 text-sm font-medium ${isActive ? 'text-primary' : 'text-ink/80 hover:text-ink'}`
                     }
                   >
                     {link.label} <ChevronDown className="h-3.5 w-3.5" />
@@ -100,7 +98,7 @@ export default function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={({ isActive }) =>
-                    `lift-on-hover text-sm font-medium ${solid ? (isActive ? 'text-primary' : 'text-ink/80 hover:text-ink') : (isActive ? 'text-white' : 'text-white/80 hover:text-white')}`
+                    `lift-on-hover text-sm font-medium ${isActive ? 'text-primary' : 'text-ink/80 hover:text-ink'}`
                   }
                 >
                   {link.label}
@@ -114,7 +112,7 @@ export default function Navbar() {
             </Link>
           </div>
           <button
-            className={`lg:hidden ${solid ? 'text-ink' : 'text-white'}`}
+            className="lg:hidden text-ink"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >

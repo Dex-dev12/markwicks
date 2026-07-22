@@ -8,16 +8,20 @@ import { CountUp, TrustedByStrip } from '../components/shared.jsx'
 
 const HERO_SLIDES = [
   {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/TORO%20Z%20Master%20Commercial%20Zero-Turn%20Riders%20mower%20at%20Construct%20Expo%20Utilaje%202010.JPG?width=1800',
-    alt: 'Commercial mower used for scheduled grounds maintenance',
+    src: '/images/truck-trailer.jpg',
+    alt: 'Markwicks Services truck and trailer with excavator and mower on site',
   },
   {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Several%20people%20planting%20trees.jpg?width=1800',
-    alt: 'Grounds and garden bed maintenance work',
+    src: '/images/parking-lot-mulch.jpg',
+    alt: 'Completed commercial car park mulching and garden bed work',
   },
   {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Construction%20site%20excavator%20and%20truck.jpg?width=1800',
-    alt: 'Excavation and site work',
+    src: '/images/gravel-pathway.jpg',
+    alt: 'Landscaped gravel pathway and mulch bed on a rural property',
+  },
+  {
+    src: '/images/mower-mowing.jpg',
+    alt: 'Commercial mower cutting a lush green paddock',
   },
 ]
 
@@ -85,13 +89,19 @@ function Hero() {
         </p>
         <div className="hero-meta mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[
-            { end: 5, suffix: '+', label: 'Commercial Sites' },
-            { end: 3, suffix: '', label: 'Person Crew' },
-            { end: 100, suffix: '%', label: 'Scheduled' },
+            { text: 'Family Owned and Operated' },
+            { end: 15, suffix: '+', label: 'Years in Operation' },
+            { text: 'Local Business' },
           ].map((s, i) => (
-            <div key={s.label} className={`flex items-center gap-2.5 ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
-              <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 leading-tight max-w-[6rem]">{s.label}</span>
+            <div key={s.text ?? s.label} className={`flex items-center ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
+              {s.text ? (
+                <span className="font-mono text-xs sm:text-sm uppercase tracking-[0.12em] text-white font-semibold">{s.text}</span>
+              ) : (
+                <div className="flex items-center gap-2.5">
+                  <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 leading-tight max-w-[6rem]">{s.label}</span>
+                </div>
+              )}
             </div>
           ))}
         </div>

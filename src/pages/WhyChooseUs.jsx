@@ -13,7 +13,7 @@ const TRUST_SIGNALS = [
   {
     icon: Clock,
     title: 'One Crew, One Standard',
-    quote: 'The same three-person crew across every site, so quality doesn\'t vary contract to contract.',
+    quote: 'The same family crew across every site, so quality doesn\'t vary contract to contract.',
   },
   {
     icon: Award,

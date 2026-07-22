@@ -99,7 +99,7 @@ export default function About() {
       <PageBanner
         eyebrow="About Us"
         title="A dedicated crew, built around commercial reliability."
-        subtitle="Markwicks Services is run by Cory and Claudia Markwick — a small, dedicated crew that treats every site, from a single lawn to a multi-site commercial contract, with the same standard."
+        subtitle="A family-owned and operated business built across two generations of the Markwick family — treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
         img="https://commons.wikimedia.org/wiki/Special:FilePath/TORO%20Z%20Master%20Commercial%20Zero-Turn%20Riders%20mower%20at%20Construct%20Expo%20Utilaje%202010.JPG?width=1800"
       />
 
@@ -109,10 +109,13 @@ export default function About() {
             <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Our Story</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">No job is too big or small.</h2>
             <p className="text-muted leading-relaxed mb-4">
-              Markwicks Services is a family-run crew of three — Cory, his brother, and Claudia handling the office side — servicing the Bathurst region. What started with residential mowing has grown into standing commercial grounds contracts, including scheduled maintenance across multiple TAFE NSW sites.
+              Markwick's Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
+            </p>
+            <p className="text-muted leading-relaxed mb-4">
+              What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
             </p>
             <p className="text-muted leading-relaxed">
-              Our focus now sits firmly on commercial and institutional grounds care — reliable, scheduled, and reported on — with excavation, mulching, and residential work available alongside it.
+              While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
             </p>
           </div>
           <FleetShuffler />
@@ -125,7 +128,7 @@ export default function About() {
         <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-3 lg:divide-x divide-divider gap-10 lg:gap-0">
           {[
             { end: 5, suffix: '+', label: 'Commercial sites serviced on standing contracts' },
-            { end: 3, suffix: '', label: 'Person crew, one point of contact' },
+            { end: 2, suffix: '', label: 'Generations of the Markwick family' },
             { end: 100, suffix: '%', label: 'Scheduled — no ad-hoc guesswork' },
           ].map((p) => (
             <div key={p.label} className="lg:px-10 first:pl-0">
