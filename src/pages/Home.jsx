@@ -28,6 +28,7 @@ const HERO_SLIDES = [
 function Hero() {
   const ref = useRef(null)
   const [activeSlide, setActiveSlide] = useState(0)
+  const [loadedCount, setLoadedCount] = useState(1)
 
   useEffect(() => {
     const id = setInterval(() => setActiveSlide((s) => (s + 1) % HERO_SLIDES.length), 5000)
@@ -35,10 +36,15 @@ function Hero() {
   }, [])
 
   useEffect(() => {
+    const id = setTimeout(() => setLoadedCount(HERO_SLIDES.length), 1200)
+    return () => clearTimeout(id)
+  }, [])
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.hero-line-1', { y: 40, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' })
-      gsap.from('.hero-line-2', { y: 60, opacity: 0, duration: 1.2, delay: 0.5, ease: 'power3.out' })
-      gsap.from('.hero-cta, .hero-meta', { y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out' })
+      gsap.from('.hero-line-1, .hero-line-2, .hero-cta, .hero-meta', {
+        y: 30, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out',
+      })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -46,7 +52,7 @@ function Hero() {
   return (
     <section ref={ref} className="relative min-h-[100dvh] overflow-hidden">
       <div className="absolute inset-0">
-        {HERO_SLIDES.map((slide, i) => (
+        {HERO_SLIDES.slice(0, loadedCount).map((slide, i) => (
           <img
             key={i}
             src={slide.src}

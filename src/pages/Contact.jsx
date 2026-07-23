@@ -24,7 +24,7 @@ export default function Contact() {
         eyebrow="Get In Touch"
         title="Tell us about the sites you need looked after."
         subtitle="Whether it's a one-off job or a standing multi-site contract, the first step is the same — an email or the form below."
-        img="https://commons.wikimedia.org/wiki/Special:FilePath/Grange%20Farm%20Farmyard%20-%20geograph.org.uk%20-%20244947.jpg?width=1800"
+        img="/images/farmyard.jpg"
       />
 
       <section className="py-24 sm:py-32">

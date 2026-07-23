@@ -23,7 +23,7 @@ export default function Services() {
         eyebrow="Our Services"
         title="Commercial grounds care, with the extras alongside."
         subtitle="Scheduled mowing and property maintenance for commercial and institutional sites — plus excavation, mulching and residential grounds care across the Bathurst region."
-        img="https://commons.wikimedia.org/wiki/Special:FilePath/Digger%20at%20Low%20Bank%20Farm%20-%20geograph.org.uk%20-%201053732.jpg?width=1800"
+        img="/images/digger-farm.jpg"
       />
       <section ref={ref} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">

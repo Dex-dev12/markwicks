@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
 import { Tractor, CheckCircle2 } from 'lucide-react'
 
 const TRUSTED_BY = [
@@ -42,16 +43,27 @@ export function TrustedByStrip() {
 }
 
 export function PageBanner({ eyebrow, title, subtitle, img }) {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.banner-eyebrow, .banner-title, .banner-subtitle', {
+        y: 30, opacity: 0, duration: 1, delay: 0.2, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-14 overflow-hidden">
+    <section ref={ref} className="relative pt-28 pb-12 sm:pt-32 sm:pb-14 overflow-hidden">
       <div className="absolute inset-0">
         <img src={img} alt="" className="h-full w-full object-cover brightness-[0.4]" />
       </div>
       <div className="absolute inset-0 bg-deep/75" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-3">{eyebrow}</p>
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tighter leading-[1.05] max-w-3xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-xl text-white/70 text-sm sm:text-base leading-relaxed">{subtitle}</p>}
+        <p className="banner-eyebrow font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-3">{eyebrow}</p>
+        <h1 className="banner-title font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tighter leading-[1.05] max-w-3xl">{title}</h1>
+        {subtitle && <p className="banner-subtitle mt-4 max-w-xl text-white/70 text-sm sm:text-base leading-relaxed">{subtitle}</p>}
       </div>
     </section>
   )

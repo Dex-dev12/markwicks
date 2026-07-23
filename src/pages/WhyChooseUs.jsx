@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
         eyebrow="Why Choose Us"
         title="Turns up, does the job to spec, doesn't need chasing."
         subtitle="That's the whole pitch. One dedicated crew running a fixed schedule across every site — tracked from booking to completion."
-        img="https://commons.wikimedia.org/wiki/Special:FilePath/Spraying%20Winter%20Wheat%20near%20Worlaby%20-%20geograph.org.uk%20-%201739571.jpg?width=1800"
+        img="/images/winter-wheat.jpg"
       />
 
       <section className="py-24 sm:py-32">

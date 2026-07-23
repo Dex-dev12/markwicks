@@ -23,7 +23,7 @@ export default function Portfolio() {
         eyebrow="Portfolio"
         title="Work across the Bathurst region."
         subtitle="Commercial grounds contracts, excavation and residential grounds care — real client work, with a few example slots still to fill in."
-        img="https://commons.wikimedia.org/wiki/Special:FilePath/Several%20people%20planting%20trees.jpg?width=1800"
+        img="/images/tree-planting.jpg"
       />
 
       <section ref={ref} className="py-24 sm:py-32">

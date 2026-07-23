@@ -11,7 +11,7 @@ const STORY_STEPS = [
     title: 'Get in Touch',
     text: "Tell us about your site — a single property or a multi-site contract. We'll talk you through the right schedule and the rate.",
     bullets: ['Direct contact with Cory, no call centre', 'Rates confirmed up front before work begins'],
-    img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Grange%20Farm%20Farmyard%20-%20geograph.org.uk%20-%20244947.jpg?width=800',
+    img: '/images/farmyard.jpg',
     alt: 'Property grounds in the Bathurst region',
   },
   {
@@ -19,7 +19,7 @@ const STORY_STEPS = [
     title: 'On Schedule',
     text: 'Every site runs on a fixed, recurring cycle — mowed, edged and tidied to the same standard, visit after visit.',
     bullets: ['Commercial mowers, tractor and slashers', 'One crew across every site on the contract'],
-    img: 'https://commons.wikimedia.org/wiki/Special:FilePath/TORO%20Z%20Master%20Commercial%20Zero-Turn%20Riders%20mower%20at%20Construct%20Expo%20Utilaje%202010.JPG?width=800',
+    img: '/images/mower.jpg',
     alt: 'Commercial mower on a scheduled grounds maintenance visit',
   },
   {
@@ -27,7 +27,7 @@ const STORY_STEPS = [
     title: 'Maintain',
     text: 'For standing commercial contracts and weekenders alike, an ongoing arrangement keeps every site looking the way it should.',
     bullets: ['Standing commercial contracts welcome', 'Excavation and mulching available alongside'],
-    img: 'https://commons.wikimedia.org/wiki/Special:FilePath/Digger%20at%20Low%20Bank%20Farm%20-%20geograph.org.uk%20-%201053732.jpg?width=800',
+    img: '/images/digger-farm.jpg',
     alt: 'Excavation and site work',
   },
 ]
@@ -100,7 +100,7 @@ export default function About() {
         eyebrow="About Us"
         title="A dedicated crew, built around commercial reliability."
         subtitle="A family-owned and operated business built across two generations of the Markwick family — treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
-        img="https://commons.wikimedia.org/wiki/Special:FilePath/TORO%20Z%20Master%20Commercial%20Zero-Turn%20Riders%20mower%20at%20Construct%20Expo%20Utilaje%202010.JPG?width=1800"
+        img="/images/mower.jpg"
       />
 
       <section className="py-24 sm:py-32">
