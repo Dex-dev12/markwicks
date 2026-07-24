@@ -17,9 +17,9 @@ export default {
         deep: '#0F1419',
       },
       fontFamily: {
-        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Roboto"', 'system-ui', 'sans-serif'],
         serif: ['"Cormorant Garamond"', 'serif'],
-        body: ['"Inter"', 'system-ui', 'sans-serif'],
+        body: ['"Roboto"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       borderRadius: {

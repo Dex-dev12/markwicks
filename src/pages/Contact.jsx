@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2, Mail, MapPin, Upload, X, ArrowUpRight } from 'lucide-react'
+import { CheckCircle2, Mail, MapPin, Map, Clock, Upload, X, ArrowUpRight } from 'lucide-react'
 import { PageBanner, Field } from '../components/shared.jsx'
 
 export default function Contact() {
@@ -42,8 +42,23 @@ export default function Contact() {
                 <div className="flex items-center gap-3">
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><MapPin className="h-4 w-4 text-primary" /></span>
                   <div>
-                    <p className="text-xs text-muted">Area Served</p>
-                    <p className="font-medium">Bathurst, NSW</p>
+                    <p className="text-xs text-muted">Address</p>
+                    <p className="font-medium">4 Jarrah Court, Kelso NSW 2795</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Map className="h-4 w-4 text-primary" /></span>
+                  <div>
+                    <p className="text-xs text-muted">Areas Served</p>
+                    <p className="font-medium">Bathurst &amp; Central West NSW</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Clock className="h-4 w-4 text-primary" /></span>
+                  <div>
+                    <p className="text-xs text-muted">Hours</p>
+                    <p className="font-medium">Weekdays: 7am - 4pm</p>
+                    <p className="font-medium">Sat: By appointment &middot; Sun: Closed</p>
                   </div>
                 </div>
               </div>

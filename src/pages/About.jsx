@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { PageBanner, FleetShuffler, CountUp } from '../components/shared.jsx'
+import { PageBanner } from '../components/shared.jsx'
 
 const STORY_STEPS = [
   {
@@ -11,24 +11,24 @@ const STORY_STEPS = [
     title: 'Get in Touch',
     text: "Tell us about your site — a single property or a multi-site contract. We'll talk you through the right schedule and the rate.",
     bullets: ['Direct contact with Cory, no call centre', 'Rates confirmed up front before work begins'],
-    img: '/images/farmyard.jpg',
-    alt: 'Property grounds in the Bathurst region',
+    img: '/images/mulch-bed-mountain.jpg',
+    alt: 'Garden bed landscaping on a rural property with mountain views',
   },
   {
     num: '02',
     title: 'On Schedule',
     text: 'Every site runs on a fixed, recurring cycle — mowed, edged and tidied to the same standard, visit after visit.',
     bullets: ['Commercial mowers, tractor and slashers', 'One crew across every site on the contract'],
-    img: '/images/mower.jpg',
-    alt: 'Commercial mower on a scheduled grounds maintenance visit',
+    img: '/images/mower-mowing.jpg',
+    alt: 'Commercial mower cutting a lush green paddock',
   },
   {
     num: '03',
     title: 'Maintain',
     text: 'For standing commercial contracts and weekenders alike, an ongoing arrangement keeps every site looking the way it should.',
     bullets: ['Standing commercial contracts welcome', 'Excavation and mulching available alongside'],
-    img: '/images/digger-farm.jpg',
-    alt: 'Excavation and site work',
+    img: '/images/bobcat-action.jpg',
+    alt: 'Markwicks Services operating a Bobcat excavator on site',
   },
 ]
 
@@ -100,14 +100,13 @@ export default function About() {
         eyebrow="About Us"
         title="A dedicated crew, built around commercial reliability."
         subtitle="A family-owned and operated business built across two generations of the Markwick family — treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
-        img="/images/mower.jpg"
+        img="/images/retaining-wall-crew.jpg"
       />
 
       <section className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Our Story</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">No job is too big or small.</h2>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Our Story</h2>
             <p className="text-muted leading-relaxed mb-4">
               Markwick's Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
             </p>
@@ -118,28 +117,9 @@ export default function About() {
               While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
             </p>
           </div>
-          <FleetShuffler />
-        </div>
-      </section>
-
-      <section className="relative py-24 sm:py-32 overflow-hidden grid-bg">
-        <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-3 lg:divide-x divide-divider gap-10 lg:gap-0">
-          {[
-            { end: 5, suffix: '+', label: 'Commercial sites serviced on standing contracts' },
-            { end: 2, suffix: '', label: 'Generations of the Markwick family' },
-            { end: 100, suffix: '%', label: 'Scheduled — no ad-hoc guesswork' },
-          ].map((p) => (
-            <div key={p.label} className="lg:px-10 first:pl-0">
-              <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-muted mb-3">Track Record</p>
-              <p className="font-display text-5xl sm:text-6xl font-bold gradient-text">
-                <CountUp end={p.end} suffix={p.suffix} />
-              </p>
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-primary to-transparent mt-4 mb-4" style={{ animation: 'pillar-sweep 3s ease-in-out infinite' }} />
-              <p className="text-sm sm:text-base text-muted leading-relaxed">{p.label}</p>
-            </div>
-          ))}
+          <div className="rounded-3xl overflow-hidden border border-divider">
+            <img src="/images/truck-trailer.jpg" alt="Markwicks Services truck and trailer with excavator and mower on site" className="h-full w-full object-cover" />
+          </div>
         </div>
       </section>
 

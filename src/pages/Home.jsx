@@ -12,8 +12,8 @@ const HERO_SLIDES = [
     alt: 'Markwicks Services truck and trailer with excavator and mower on site',
   },
   {
-    src: '/images/parking-lot-mulch.jpg',
-    alt: 'Completed commercial car park mulching and garden bed work',
+    src: '/images/bobcat-action.jpg',
+    alt: 'Markwicks Services operating a Bobcat excavator on site',
   },
   {
     src: '/images/gravel-pathway.jpg',
@@ -27,6 +27,7 @@ const HERO_SLIDES = [
 
 function Hero() {
   const ref = useRef(null)
+  const bgRef = useRef(null)
   const [activeSlide, setActiveSlide] = useState(0)
   const [loadedCount, setLoadedCount] = useState(1)
 
@@ -45,13 +46,18 @@ function Hero() {
       gsap.from('.hero-line-1, .hero-line-2, .hero-cta, .hero-meta', {
         y: 30, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out',
       })
+      gsap.to(bgRef.current, {
+        yPercent: 10,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
+      })
     }, ref)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden">
-      <div className="absolute inset-0">
+    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden bg-deep">
+      <div ref={bgRef} className="absolute inset-x-0 -top-[15%] -bottom-[15%]">
         {HERO_SLIDES.slice(0, loadedCount).map((slide, i) => (
           <img
             key={i}
@@ -125,20 +131,48 @@ function Hero() {
 }
 
 function Intro() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.intro-photos', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.intro-text', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="py-20 sm:py-28">
-      <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 text-center">
-        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-4">Commercial Grounds Maintenance &amp; Contract Mowing</p>
-        <div className="space-y-5 text-muted leading-relaxed text-base sm:text-lg text-left sm:text-center">
-          <p>
-            Our reputation is built on turning up when we say we will and running every site to the same standard, which is why so much of our work comes from clients renewing us contract after contract. Every schedule is built around the site — its access, its deadlines, and what the client actually needs from a visit.
-          </p>
-          <p>
-            We place a high priority on WHS standards and treat them as part of the daily routine on every site, not an afterthought. As the standards contractors are expected to meet keep evolving, we keep our own approach current alongside them.
-          </p>
-          <p>
-            Commercial grounds maintenance and contract mowing is our focus, and the sites we look after span Education, Local Government, Strata &amp; Body Corporate, Property Management and Residential.
-          </p>
+    <section ref={ref} className="py-20 sm:py-28">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="intro-photos order-2 lg:order-1 grid grid-cols-2 gap-4">
+          <div className="col-span-2 rounded-3xl overflow-hidden border border-divider aspect-[16/10]">
+            <img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" className="h-full w-full object-cover" />
+          </div>
+          <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
+            <img src="/images/parking-lot-mulch.jpg" alt="Completed commercial car park mulching and garden bed work" className="h-full w-full object-cover" />
+          </div>
+          <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
+            <img src="/images/mulch-bed-mountain.jpg" alt="Garden bed landscaping on a rural property with mountain views" className="h-full w-full object-cover" />
+          </div>
+        </div>
+        <div className="intro-text order-1 lg:order-2">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Make a difference with us!</h2>
+          <div className="space-y-5 text-muted leading-relaxed text-base sm:text-lg">
+            <p>
+              Our reputation is built on turning up when we say we will and running every site to the same standard, which is why so much of our work comes from clients renewing us contract after contract. Every schedule is built around the site — its access, its deadlines, and what the client actually needs from a visit.
+            </p>
+            <p>
+              We place a high priority on WHS standards and treat them as part of the daily routine on every site, not an afterthought. As the standards contractors are expected to meet keep evolving, we keep our own approach current alongside them.
+            </p>
+            <p>
+              Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation — servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -205,7 +239,7 @@ function ServicesPreview() {
         <div>
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary-light mb-3">What We Do</p>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-3xl">
-            Commercial grounds care, with the extras alongside.
+            Commercial and Residential work across Bathurst &amp; the Central West.
           </h2>
         </div>
         <Link to="/services" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15 shrink-0">
@@ -251,7 +285,7 @@ function RecentWork() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Recent Work</p>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">A taste of what we've been on site for.</h2>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">See what we have been on site for.</h2>
         </div>
         <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
           View Portfolio <ArrowUpRight className="h-4 w-4" />
@@ -261,8 +295,8 @@ function RecentWork() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featured.map((c) => (
             <Link key={c.slug} to="/portfolio" className="work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="relative aspect-[4/3] overflow-hidden bg-background">
+                {c.img && <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
                 {c.placeholder && (
                   <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
                     Example
@@ -282,12 +316,23 @@ function RecentWork() {
 }
 
 function StatsCta() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.cta-content', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 30, opacity: 0, duration: 0.8, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden grid-bg">
+    <section ref={ref} className="relative py-24 sm:py-32 overflow-hidden grid-bg">
       <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
       <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="text-center">
+        <div className="cta-content text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Ready to put your grounds on a schedule?</h2>
           <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
             Get a Quote <ArrowUpRight className="h-4 w-4" />

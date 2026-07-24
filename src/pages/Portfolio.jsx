@@ -31,8 +31,8 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {CASE_STUDIES.map((c) => (
               <div key={c.slug} className="case-tile rounded-3xl overflow-hidden border border-divider bg-surface flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={c.img} alt={c.alt} className="h-full w-full object-cover" />
+                <div className="relative aspect-[4/3] overflow-hidden bg-background">
+                  {c.img && <img src={c.img} alt={c.alt} className="h-full w-full object-cover" />}
                   {c.placeholder && (
                     <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
                       Example

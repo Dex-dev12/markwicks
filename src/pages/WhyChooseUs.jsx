@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
         eyebrow="Why Choose Us"
         title="Turns up, does the job to spec, doesn't need chasing."
         subtitle="That's the whole pitch. One dedicated crew running a fixed schedule across every site — tracked from booking to completion."
-        img="/images/winter-wheat.jpg"
+        img="/images/estate-street-crew.jpg"
       />
 
       <section className="py-24 sm:py-32">

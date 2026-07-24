@@ -55,7 +55,7 @@ export function PageBanner({ eyebrow, title, subtitle, img }) {
   }, [])
 
   return (
-    <section ref={ref} className="relative pt-28 pb-12 sm:pt-32 sm:pb-14 overflow-hidden">
+    <section ref={ref} className="relative pt-28 pb-12 sm:pt-32 sm:pb-14 overflow-hidden bg-deep">
       <div className="absolute inset-0">
         <img src={img} alt="" className="h-full w-full object-cover brightness-[0.4]" />
       </div>

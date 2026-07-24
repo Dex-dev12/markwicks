@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-deep text-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16">
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-9 gap-10">
           <div className="lg:col-span-2 flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <img src="/logo.png" alt="Markwicks Services" className="h-10 w-auto" />
@@ -38,13 +38,27 @@ export default function Footer() {
               <li><Link to="/terms" className="lift-on-hover">Terms</Link></li>
             </ul>
           </div>
-          <div>
+          <div className="lg:col-span-2">
             <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Contact</h5>
             <ul className="space-y-2.5 text-sm text-white/70">
               <li>[Phone number pending]</li>
-              <li><a href="mailto:info@markwicksservices.com.au" className="lift-on-hover">info@markwicksservices.com.au</a></li>
-              <li>Bathurst, NSW</li>
+              <li><a href="mailto:info@markwicksservices.com.au" className="lift-on-hover whitespace-nowrap">info@markwicksservices.com.au</a></li>
+              <li>4 Jarrah Court, Kelso NSW 2795</li>
             </ul>
+          </div>
+          <div>
+            <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Hours</h5>
+            <ul className="space-y-2.5 text-sm text-white/70">
+              <li>Weekdays: 7am - 4pm</li>
+              <li>Saturday: By appointment</li>
+              <li>Sunday: Closed</li>
+            </ul>
+          </div>
+          <div className="lg:col-span-2">
+            <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Areas Served</h5>
+            <p className="text-sm text-white/70 leading-relaxed">
+              Bathurst, Orange, Lithgow, Oberon, O&apos;Connell, Blayney, Portland, Wallerawang &amp; the Central West NSW region.
+            </p>
           </div>
         </div>
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">

@@ -9,9 +9,11 @@ export default function Services() {
   const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.svc-tile', {
-        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+      gsap.utils.toArray('.svc-row').forEach((row) => {
+        gsap.from(row, {
+          scrollTrigger: { trigger: row, start: 'top 80%', once: true },
+          y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
+        })
       })
     }, ref)
     return () => ctx.revert()
@@ -20,28 +22,34 @@ export default function Services() {
   return (
     <>
       <PageBanner
-        eyebrow="Our Services"
-        title="Commercial grounds care, with the extras alongside."
-        subtitle="Scheduled mowing and property maintenance for commercial and institutional sites — plus excavation, mulching and residential grounds care across the Bathurst region."
-        img="/images/digger-farm.jpg"
+        eyebrow="What We Do"
+        title="Our Services"
+        subtitle="We provide residential services, commercial grounds maintenance, landscaping, rural & acreage services, weed management, and earthworks & excavation across Bathurst and the Central West."
+        img="/images/truck-trailer.jpg"
       />
-      <section ref={ref} className="py-24 sm:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-divider rounded-3xl overflow-hidden border border-divider">
-            {SERVICES.map((s) => (
-              <Link key={s.slug} to={`/services/${s.slug}`} className="svc-tile bg-surface p-8 sm:p-10 transition-colors hover:bg-background group">
-                <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
-                  <s.icon className="h-6 w-6 text-primary" strokeWidth={2.2} />
+      <section ref={ref}>
+        {SERVICES.map((s, i) => {
+          const imageFirst = i % 2 === 0
+          return (
+            <div key={s.slug} className={`svc-row ${i % 2 === 0 ? 'bg-background' : 'bg-surface'}`}>
+              <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className={`rounded-3xl overflow-hidden border border-divider ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <img src={s.img} alt={s.alt} className="h-full w-full object-cover aspect-[4/3]" />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{s.text}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary">
-                  Learn more <ArrowRight className="h-3 w-3" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
+                <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
+                  <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+                    <s.icon className="h-6 w-6 text-primary" strokeWidth={2.2} />
+                  </div>
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-3">{s.title}</h2>
+                  <p className="text-muted leading-relaxed mb-6">{s.text}</p>
+                  <Link to={`/services/${s.slug}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-primary lift-on-hover">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </section>
     </>
   )
