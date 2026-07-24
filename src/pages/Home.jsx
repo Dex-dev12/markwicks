@@ -90,11 +90,11 @@ function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 min-h-[100dvh] flex flex-col justify-end">
         <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-6">
-          Bathurst, NSW &mdash; Commercial &amp; Residential Grounds Care
+          Bathurst &amp; the Central West NSW
         </p>
-        <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
-          <span className="hero-line-1 block">No job is too big</span>
-          <span className="hero-line-2 block font-serif italic font-medium">or too small.</span>
+        <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
+          <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
+          <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential &amp; Rural Clients.</span>
         </h1>
         <p className="hero-meta mt-8 max-w-xl text-white/70 text-base sm:text-lg leading-relaxed">
           From a single residential lawn to multi-site commercial contracts — grounds maintenance, landscaping, rural and acreage work, weed management and earthworks across Bathurst &amp; the Central West.
