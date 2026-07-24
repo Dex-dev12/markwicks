@@ -32,7 +32,7 @@ export default function ServiceDetail() {
               ))}
             </ul>
             <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 mt-10">
-              Get a Quote <ArrowUpRight className="h-4 w-4" />
+              Get in Touch <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="lg:col-span-5">

@@ -55,7 +55,7 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Have a job in mind?</h2>
           <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-            Get a Quote <ArrowUpRight className="h-4 w-4" />
+            Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
       </section>

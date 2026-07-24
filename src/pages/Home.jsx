@@ -107,7 +107,7 @@ function Hero() {
           ].map((s, i) => (
             <div key={s.text ?? s.label} className={`flex items-center ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
               {s.text ? (
-                <span className="font-mono text-xs sm:text-sm uppercase tracking-[0.12em] text-white font-semibold">{s.text}</span>
+                <span className="font-mono text-xs sm:text-sm tracking-[0.12em] text-white">{s.text}</span>
               ) : (
                 <div className="flex items-center gap-2.5">
                   <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
@@ -119,10 +119,10 @@ function Hero() {
         </div>
         <div className="hero-cta mt-10 flex flex-wrap gap-3">
           <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30">
-            Get a Quote <ArrowUpRight className="h-4 w-4" />
+            Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
           <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15">
-            <Phone className="h-4 w-4" /> Enquire About a Contract
+            <Phone className="h-4 w-4" /> Call Now
           </Link>
         </div>
       </div>
@@ -335,7 +335,7 @@ function StatsCta() {
         <div className="cta-content text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Ready to put your grounds on a schedule?</h2>
           <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-            Get a Quote <ArrowUpRight className="h-4 w-4" />
+            Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
