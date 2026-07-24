@@ -93,11 +93,11 @@ function Hero() {
           Bathurst, NSW &mdash; Commercial &amp; Residential Grounds Care
         </p>
         <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
-          <span className="hero-line-1 block">Grounds that are always</span>
-          <span className="hero-line-2 block font-serif italic font-medium">ready for inspection.</span>
+          <span className="hero-line-1 block">No job is too big</span>
+          <span className="hero-line-2 block font-serif italic font-medium">or too small.</span>
         </h1>
         <p className="hero-meta mt-8 max-w-xl text-white/70 text-base sm:text-lg leading-relaxed">
-          Scheduled commercial mowing and grounds maintenance for councils, TAFE campuses and property managers across the Bathurst region — with excavation, mulching and residential care alongside.
+          From a single residential lawn to multi-site commercial contracts — grounds maintenance, landscaping, rural and acreage work, weed management and earthworks across Bathurst &amp; the Central West.
         </p>
         <div className="hero-meta mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[

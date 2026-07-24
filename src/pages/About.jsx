@@ -108,7 +108,7 @@ export default function About() {
           <div>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Our Story</h2>
             <p className="text-muted leading-relaxed mb-4">
-              Markwick's Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
+              Markwicks Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
             </p>
             <p className="text-muted leading-relaxed mb-4">
               What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
