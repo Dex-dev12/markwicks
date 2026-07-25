@@ -56,7 +56,7 @@ function Hero() {
   }, [])
 
   return (
-    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden bg-deep">
+    <section ref={ref} className="relative min-h-[88dvh] overflow-hidden bg-deep">
       <div ref={bgRef} className="absolute inset-x-0 -top-[15%] -bottom-[15%]">
         {HERO_SLIDES.slice(0, loadedCount).map((slide, i) => (
           <img
@@ -88,18 +88,15 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 min-h-[100dvh] flex flex-col justify-end">
-        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 min-h-[88dvh] flex flex-col justify-center">
+        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-6">
           Bathurst &amp; the Central West NSW
         </p>
         <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
           <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
           <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential &amp; Rural Clients.</span>
         </h1>
-        <p className="hero-meta mt-8 max-w-xl text-white/70 text-base sm:text-lg leading-relaxed">
-          From a single residential lawn to multi-site commercial contracts — grounds maintenance, landscaping, rural and acreage work, weed management and earthworks across Bathurst &amp; the Central West.
-        </p>
-        <div className="hero-meta mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <div className="hero-meta mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[
             { text: 'Family Owned and Operated' },
             { end: 15, suffix: '+', label: 'Years in Operation' },
@@ -189,9 +186,13 @@ function Testimonials() {
   const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from('.testi-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
       gsap.from('.testimonial-card', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out',
+        y: 40, opacity: 0, duration: 0.8, delay: 0.15, stagger: 0.15, ease: 'power3.out',
       })
     }, ref)
     return () => ctx.revert()
@@ -200,8 +201,10 @@ function Testimonials() {
   return (
     <section ref={ref} className="pb-24 sm:pb-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3 text-center">What Clients Say</p>
-        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-14">Trusted to turn up and get it done.</h2>
+        <div className="testi-heading">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3 text-center">What Clients Say</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-14">Trusted to turn up and get it done.</h2>
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {TESTIMONIALS.map((t, i) => (
             <div key={i} className="testimonial-card rounded-3xl bg-surface border border-divider p-6 sm:p-8">
@@ -225,9 +228,17 @@ function ServicesPreview() {
   const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from('.svc-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.svc-cta', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
       gsap.from('.svc-tile', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
       })
     }, ref)
     return () => ctx.revert()
@@ -236,28 +247,36 @@ function ServicesPreview() {
   return (
     <section ref={ref} className="bg-deep text-white py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
-        <div>
+        <div className="svc-heading">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary-light mb-3">What We Do</p>
           <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-3xl">
             Commercial and Residential work across Bathurst &amp; the Central West.
           </h2>
         </div>
-        <Link to="/services" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15 shrink-0">
+        <Link to="/services" className="svc-cta magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15 shrink-0">
           View All Services <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
           {SERVICES.map((s) => (
-            <Link key={s.slug} to={`/services/${s.slug}`} className="svc-tile bg-deep p-8 sm:p-10 transition-colors hover:bg-white/[0.03] group">
-              <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
-                <s.icon className="h-6 w-6 text-primary-light" strokeWidth={2.2} />
+            <Link key={s.slug} to={`/services/${s.slug}`} className="svc-tile relative overflow-hidden bg-deep p-8 sm:p-10 min-h-[300px] flex flex-col justify-end group">
+              <img
+                src={s.img}
+                alt={s.alt}
+                className="absolute inset-0 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-50"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/85 to-deep/40" />
+              <div className="relative z-10">
+                <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
+                  <s.icon className="h-6 w-6 text-primary-light" strokeWidth={2.2} />
+                </div>
+                <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{s.text}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary-light">
+                  Learn more <ArrowRight className="h-3 w-3" />
+                </span>
               </div>
-              <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
-              <p className="text-white/60 text-sm leading-relaxed">{s.text}</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary-light">
-                Learn more <ArrowRight className="h-3 w-3" />
-              </span>
             </Link>
           ))}
         </div>
@@ -270,9 +289,17 @@ function RecentWork() {
   const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from('.work-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.work-cta', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
       gsap.from('.work-tile', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
       })
     }, ref)
     return () => ctx.revert()
@@ -283,11 +310,11 @@ function RecentWork() {
   return (
     <section ref={ref} className="py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
-        <div>
+        <div className="work-heading">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Recent Work</p>
           <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">See what we have been on site for.</h2>
         </div>
-        <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
+        <Link to="/portfolio" className="work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
           View Portfolio <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>

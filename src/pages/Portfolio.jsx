@@ -5,6 +5,30 @@ import { ArrowUpRight } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 
+function PortfolioClosingCta() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.portfolio-cta-content', {
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="pb-24 sm:pb-32 text-center">
+      <div className="portfolio-cta-content max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Have a job in mind?</h2>
+        <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+          Get in Touch <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 export default function Portfolio() {
   const ref = useRef(null)
   useEffect(() => {
@@ -51,14 +75,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="pb-24 sm:pb-32 text-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Have a job in mind?</h2>
-          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-            Get in Touch <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <PortfolioClosingCta />
     </>
   )
 }

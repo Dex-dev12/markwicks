@@ -37,6 +37,10 @@ function StoryProtocol() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from('.protocol-heading', {
+        scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
       const cards = gsap.utils.toArray('.protocol-card')
       cards.slice(0, -1).forEach((card) => {
         gsap.to(card, {
@@ -50,7 +54,7 @@ function StoryProtocol() {
 
   return (
     <section ref={containerRef} className="relative py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-16">
+      <div className="protocol-heading max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-16">
         <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">How We Work</p>
         <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-3xl">
           Get in touch, get scheduled, stay maintained.
@@ -88,6 +92,69 @@ function StoryProtocol() {
   )
 }
 
+function OurStory() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.story-text', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.story-photo', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="story-text">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Our Story</h2>
+          <p className="text-muted leading-relaxed mb-4">
+            Markwicks Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
+          </p>
+          <p className="text-muted leading-relaxed">
+            While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
+          </p>
+        </div>
+        <div className="story-photo rounded-3xl overflow-hidden border border-divider">
+          <img src="/images/truck-trailer.jpg" alt="Markwicks Services truck and trailer with excavator and mower on site" className="h-full w-full object-cover" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AboutClosingCta() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.about-cta-content', {
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="pb-24 sm:pb-32 text-center">
+      <div className="about-cta-content max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Want to know why clients stick around?</h2>
+        <Link to="/why-choose-us" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+          See Why Choose Us <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 export default function About() {
   useEffect(() => {
     const id = setTimeout(() => ScrollTrigger.refresh(), 200)
@@ -103,36 +170,11 @@ export default function About() {
         img="/images/retaining-wall-crew.jpg"
       />
 
-      <section className="py-24 sm:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Our Story</h2>
-            <p className="text-muted leading-relaxed mb-4">
-              Markwicks Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
-            </p>
-            <p className="text-muted leading-relaxed mb-4">
-              What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
-            </p>
-            <p className="text-muted leading-relaxed">
-              While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
-            </p>
-          </div>
-          <div className="rounded-3xl overflow-hidden border border-divider">
-            <img src="/images/truck-trailer.jpg" alt="Markwicks Services truck and trailer with excavator and mower on site" className="h-full w-full object-cover" />
-          </div>
-        </div>
-      </section>
+      <OurStory />
 
       <StoryProtocol />
 
-      <section className="pb-24 sm:pb-32 text-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Want to know why clients stick around?</h2>
-          <Link to="/why-choose-us" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-            See Why Choose Us <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <AboutClosingCta />
     </>
   )
 }

@@ -1,10 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
 import { CheckCircle2, Mail, MapPin, Map, Clock, Upload, X, ArrowUpRight } from 'lucide-react'
 import { PageBanner, Field } from '../components/shared.jsx'
 
 export default function Contact() {
   const [status, setStatus] = useState('idle')
   const [files, setFiles] = useState([])
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.contact-info', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.contact-form', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -27,10 +43,10 @@ export default function Contact() {
         img="/images/farmyard.jpg"
       />
 
-      <section className="py-24 sm:py-32">
+      <section ref={ref} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
+            <div className="contact-info lg:col-span-5">
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Mail className="h-4 w-4 text-primary" /></span>
@@ -65,7 +81,7 @@ export default function Contact() {
               <p className="text-xs text-muted mt-8 leading-relaxed">Your details are used only to prepare your quote and schedule the job — never sold or shared.</p>
             </div>
 
-            <div className="lg:col-span-7 bg-surface rounded-3xl border border-divider p-6 sm:p-10">
+            <div className="contact-form lg:col-span-7 bg-surface rounded-3xl border border-divider p-6 sm:p-10">
               {status === 'sent' ? (
                 <div className="flex flex-col items-center justify-center text-center h-full py-16">
                   <CheckCircle2 className="h-12 w-12 text-primary mb-4" />

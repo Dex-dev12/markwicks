@@ -27,7 +27,8 @@ function TrustSignals() {
   useEffect(() => {
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        gsap.from('.trust-badge', { y: 16, opacity: 0, duration: 0.4, stagger: 0.08, ease: 'power2.out' })
+        gsap.from('.trust-heading', { x: -40, opacity: 0, duration: 0.9, ease: 'power3.out' })
+        gsap.from('.trust-badge', { y: 16, opacity: 0, duration: 0.4, delay: 0.2, stagger: 0.08, ease: 'power2.out' })
         obs.disconnect()
       }
     }, { threshold: 0.15 })
@@ -38,7 +39,7 @@ function TrustSignals() {
   return (
     <section ref={ref} className="py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="trust-heading text-center max-w-2xl mx-auto mb-14">
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Built For Commercial Ground</p>
           <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter">A contractor commercial clients can put on a schedule and forget about.</h2>
           <p className="mt-4 text-muted">Councils, TAFE campuses, strata and property managers need the same thing from a contractor: someone who turns up, does the job to spec, and doesn't need chasing.</p>
@@ -61,6 +62,66 @@ function TrustSignals() {
   )
 }
 
+function ScheduleCards() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.sched-card-1', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.sched-card-2', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-6">
+        <div className="sched-card-1 rounded-3xl bg-surface border border-divider p-6 sm:p-8">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-2">Every Site</p>
+          <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4">Scheduled, not ad-hoc</h3>
+          <SiteProgress />
+          <p className="mt-5 text-sm sm:text-base text-muted leading-relaxed">Multi-site contracts run on a fixed cycle, tracked from scheduling through to completion and reporting.</p>
+        </div>
+        <div className="sched-card-2 rounded-3xl bg-surface border border-divider p-6 sm:p-8">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-2">Scheduling</p>
+          <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4">Get a site visit on the calendar</h3>
+          <SiteVisitScheduler />
+          <p className="mt-5 text-sm sm:text-base text-muted leading-relaxed">Tell us about your sites and we'll lock in a walkthrough — the same straightforward process for one site or twenty.</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function WhyChooseUsClosingCta() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.wcu-cta-content', {
+        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="pb-24 sm:pb-32 text-center">
+      <div className="wcu-cta-content max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">See the work before you call.</h2>
+        <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+          View Portfolio <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 export default function WhyChooseUs() {
   return (
     <>
@@ -71,33 +132,11 @@ export default function WhyChooseUs() {
         img="/images/estate-street-crew.jpg"
       />
 
-      <section className="py-24 sm:py-32">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-6">
-          <div className="rounded-3xl bg-surface border border-divider p-6 sm:p-8">
-            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-2">Every Site</p>
-            <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4">Scheduled, not ad-hoc</h3>
-            <SiteProgress />
-            <p className="mt-5 text-sm sm:text-base text-muted leading-relaxed">Multi-site contracts run on a fixed cycle, tracked from scheduling through to completion and reporting.</p>
-          </div>
-          <div className="rounded-3xl bg-surface border border-divider p-6 sm:p-8">
-            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-2">Scheduling</p>
-            <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight mb-4">Get a site visit on the calendar</h3>
-            <SiteVisitScheduler />
-            <p className="mt-5 text-sm sm:text-base text-muted leading-relaxed">Tell us about your sites and we'll lock in a walkthrough — the same straightforward process for one site or twenty.</p>
-          </div>
-        </div>
-      </section>
+      <ScheduleCards />
 
       <TrustSignals />
 
-      <section className="pb-24 sm:pb-32 text-center">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">See the work before you call.</h2>
-          <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-            View Portfolio <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      <WhyChooseUsClosingCta />
     </>
   )
 }
