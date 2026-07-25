@@ -92,7 +92,7 @@ function Hero() {
         <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-6">
           Bathurst &amp; the Central West NSW
         </p>
-        <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
+        <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
           <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
           <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential &amp; Rural Clients.</span>
         </h1>

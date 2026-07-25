@@ -4,7 +4,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-anchor: none; }
-  body { @apply bg-background text-ink font-body; overflow-x: hidden; overflow-anchor: none; }
+  body { @apply bg-background text-ink font-body font-light; overflow-x: hidden; overflow-anchor: none; }
   ::selection { background-color: #C8102E; color: #FFFFFF; }
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: #F9F9F9; }
@@ -15,6 +15,9 @@
 @layer components {
   .font-display.font-bold, .font-display.font-semibold {
     font-weight: 300;
+  }
+  .font-heavy.font-heavy {
+    font-weight: 700;
   }
 
   .noise-overlay {

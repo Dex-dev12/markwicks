@@ -55,7 +55,7 @@ export default function Navbar() {
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <Link to="/" className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Markwicks Services" className="h-9 w-auto" />
-            <span className="font-display font-bold tracking-tight text-lg text-ink">
+            <span className="font-display font-bold font-heavy tracking-tight text-lg text-ink">
               Markwicks Services
             </span>
           </Link>
@@ -124,7 +124,7 @@ export default function Navbar() {
       {open && (
         <div className="fixed inset-0 z-[60] glass-dark backdrop-blur-2xl flex flex-col overflow-y-auto">
           <div className="flex items-center justify-between px-6 py-5">
-            <span className="font-display font-bold text-lg text-white">Markwicks Services</span>
+            <span className="font-display font-bold font-heavy text-lg text-white">Markwicks Services</span>
             <button className="text-white" onClick={() => setOpen(false)} aria-label="Close menu">
               <X className="h-6 w-6" />
             </button>
