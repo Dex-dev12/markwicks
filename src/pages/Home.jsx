@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { ArrowUpRight, ArrowRight, Phone } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, Phone, ShieldCheck, Users2, MapPin } from 'lucide-react'
 import { SERVICES } from '../data/services.js'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import { CountUp, TrustedByStrip } from '../components/shared.jsx'
@@ -143,6 +143,12 @@ function Intro() {
     return () => ctx.revert()
   }, [])
 
+  const points = [
+    { icon: ShieldCheck, title: 'WHS as standard', text: 'Safety is part of the daily routine on every site, not an afterthought.' },
+    { icon: Users2, title: 'Contract after contract', text: 'So much of our work comes from clients renewing us, site after site.' },
+    { icon: MapPin, title: 'Local, on schedule', text: 'We turn up when we say we will, and run every site to the same standard.' },
+  ]
+
   return (
     <section ref={ref} className="py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -158,17 +164,23 @@ function Intro() {
           </div>
         </div>
         <div className="intro-text order-1 lg:order-2">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary mb-3">Who We Are</p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Make a difference with us!</h2>
-          <div className="space-y-5 text-muted leading-relaxed text-base sm:text-lg">
-            <p>
-              Our reputation is built on turning up when we say we will and running every site to the same standard, which is why so much of our work comes from clients renewing us contract after contract. Every schedule is built around the site — its access, its deadlines, and what the client actually needs from a visit.
-            </p>
-            <p>
-              We place a high priority on WHS standards and treat them as part of the daily routine on every site, not an afterthought. As the standards contractors are expected to meet keep evolving, we keep our own approach current alongside them.
-            </p>
-            <p>
-              Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation — servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
-            </p>
+          <p className="text-muted leading-relaxed text-base sm:text-lg mb-9">
+            Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation — servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
+          </p>
+          <div className="space-y-6">
+            {points.map((p) => (
+              <div key={p.title} className="flex gap-4">
+                <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <p.icon className="h-5 w-5 text-primary" strokeWidth={2.2} />
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-ink mb-0.5">{p.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{p.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
