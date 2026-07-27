@@ -71,7 +71,7 @@ export default function Navbar() {
                   <NavLink
                     to={link.href}
                     className={({ isActive }) =>
-                      `lift-on-hover flex items-center gap-1 text-sm font-medium ${isActive ? 'text-primary' : 'text-ink/80 hover:text-ink'}`
+                      `nav-underline relative pb-1 flex items-center gap-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${isActive ? 'text-primary after:w-full' : 'text-ink/80 hover:text-ink after:w-0 hover:after:w-full'}`
                     }
                   >
                     {link.label} <ChevronDown className="h-3.5 w-3.5" />
@@ -98,7 +98,7 @@ export default function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={({ isActive }) =>
-                    `lift-on-hover text-sm font-medium ${isActive ? 'text-primary' : 'text-ink/80 hover:text-ink'}`
+                    `nav-underline relative pb-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${isActive ? 'text-primary after:w-full' : 'text-ink/80 hover:text-ink after:w-0 hover:after:w-full'}`
                   }
                 >
                   {link.label}

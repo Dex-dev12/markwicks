@@ -1,11 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { CheckCircle2, Mail, MapPin, Map, Clock, Upload, X, ArrowUpRight } from 'lucide-react'
-import { PageBanner, Field } from '../components/shared.jsx'
+import { Mail, MapPin, Map, Clock } from 'lucide-react'
+import { PageBanner } from '../components/shared.jsx'
 
 export default function Contact() {
-  const [status, setStatus] = useState('idle')
-  const [files, setFiles] = useState([])
   const ref = useRef(null)
 
   useEffect(() => {
@@ -22,17 +20,13 @@ export default function Contact() {
     return () => ctx.revert()
   }, [])
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    setStatus('sending')
-    setTimeout(() => setStatus('sent'), 1200)
-  }
-
-  const onDrop = (e) => {
-    e.preventDefault()
-    const list = [...e.dataTransfer.files].filter((f) => f.type.startsWith('image/')).slice(0, 5 - files.length)
-    setFiles((prev) => [...prev, ...list])
-  }
+  useEffect(() => {
+    if (document.querySelector('script[src="https://links.versflows.com/js/form_embed.js"]')) return
+    const script = document.createElement('script')
+    script.src = 'https://links.versflows.com/js/form_embed.js'
+    script.async = true
+    document.body.appendChild(script)
+  }, [])
 
   return (
     <>
@@ -45,8 +39,8 @@ export default function Contact() {
 
       <section ref={ref} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid lg:grid-cols-12 gap-12">
-            <div className="contact-info lg:col-span-5">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            <div className="contact-info lg:col-span-4">
               <div className="space-y-5">
                 <div className="flex items-center gap-3">
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Mail className="h-4 w-4 text-primary" /></span>
@@ -81,56 +75,25 @@ export default function Contact() {
               <p className="text-xs text-muted mt-8 leading-relaxed">Your details are used only to prepare your quote and schedule the job — never sold or shared.</p>
             </div>
 
-            <div className="contact-form lg:col-span-7 bg-surface rounded-3xl border border-divider p-6 sm:p-10">
-              {status === 'sent' ? (
-                <div className="flex flex-col items-center justify-center text-center h-full py-16">
-                  <CheckCircle2 className="h-12 w-12 text-primary mb-4" />
-                  <h3 className="font-display text-2xl font-bold mb-2">Thanks — we'll be in touch.</h3>
-                  <p className="text-muted">Your enquiry has been received. We'll be in touch within one business day.</p>
-                </div>
-              ) : (
-                <form onSubmit={onSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="Name" id="name" placeholder="Your full name" />
-                    <Field label="Email" id="email" type="email" placeholder="you@example.com" />
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="Phone" id="phone" type="tel" placeholder="04xx xxx xxx" />
-                    <Field label="Site / Property Address" id="address" placeholder="Suburb or property name" />
-                  </div>
-                  <Field label="Message" id="message" textarea rows={5} placeholder="Tell us about the job — single site, multi-site contract, residential or commercial." />
-
-                  <div
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={onDrop}
-                    className="rounded-xl border-2 border-dashed border-divider p-6 text-center cursor-pointer hover:border-primary/40 transition"
-                  >
-                    <Upload className="h-5 w-5 text-muted mx-auto mb-2" />
-                    <p className="text-sm text-muted">Drop site photos here (up to 5 images)</p>
-                    {files.length > 0 && (
-                      <ul className="mt-3 flex flex-wrap gap-2 justify-center">
-                        {files.map((f, i) => (
-                          <li key={i} className="text-xs bg-background border border-divider rounded-full px-3 py-1 flex items-center gap-1.5">
-                            {f.name}
-                            <button type="button" onClick={() => setFiles((prev) => prev.filter((_, idx) => idx !== i))} className="text-muted hover:text-ink">
-                              <X className="h-3 w-3" />
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={status === 'sending'}
-                    className="magnetic-btn w-full inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30 disabled:opacity-70"
-                  >
-                    {status === 'sending' ? 'Sending…' : 'Send Enquiry'}
-                    {status !== 'sending' && <ArrowUpRight className="h-4 w-4" />}
-                  </button>
-                </form>
-              )}
+            <div className="contact-form lg:col-span-8 bg-surface rounded-3xl p-6 sm:p-8 overflow-hidden">
+              <iframe
+                src="https://links.versflows.com/widget/form/IJZrHCNaYa7AJc0wWtoH"
+                scrolling="no"
+                style={{ width: '100%', height: '100%', minHeight: '400px', border: 'none', borderRadius: '8px', overflow: 'hidden' }}
+                id="inline-IJZrHCNaYa7AJc0wWtoH"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Markwicks Services Form"
+                data-height="undefined"
+                data-layout-iframe-id="inline-IJZrHCNaYa7AJc0wWtoH"
+                data-form-id="IJZrHCNaYa7AJc0wWtoH"
+                title="Markwicks Services Form"
+              />
             </div>
           </div>
         </div>
