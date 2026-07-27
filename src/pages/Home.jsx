@@ -12,16 +12,12 @@ const HERO_SLIDES = [
     alt: 'Markwicks Services truck and trailer with excavator and mower on site',
   },
   {
-    src: '/images/bobcat-action.jpg',
-    alt: 'Markwicks Services operating a Bobcat excavator on site',
+    src: '/images/mulch-bed-paddock.jpg',
+    alt: 'Freshly mulched garden beds on a rural property',
   },
   {
     src: '/images/gravel-pathway.jpg',
     alt: 'Landscaped gravel pathway and mulch bed on a rural property',
-  },
-  {
-    src: '/images/mower-mowing.jpg',
-    alt: 'Commercial mower cutting a lush green paddock',
   },
 ]
 
