@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
-import { ArrowUpRight, ArrowRight, Phone, ShieldCheck, Users2, MapPin } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, ShieldCheck, Users2, MapPin } from 'lucide-react'
 import { SERVICES } from '../data/services.js'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import { CountUp, TrustedByStrip } from '../components/shared.jsx'
@@ -43,7 +43,14 @@ function Hero() {
         y: 30, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out',
       })
       gsap.to(bgRef.current, {
-        yPercent: 10,
+        yPercent: 28,
+        scale: 1.12,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
+      })
+      gsap.to('.hero-content', {
+        yPercent: -18,
+        opacity: 0.4,
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
       })
@@ -52,7 +59,7 @@ function Hero() {
   }, [])
 
   return (
-    <section ref={ref} className="relative min-h-[88dvh] overflow-hidden bg-deep">
+    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden bg-deep">
       <div ref={bgRef} className="absolute inset-x-0 -top-[15%] -bottom-[15%]">
         {HERO_SLIDES.slice(0, loadedCount).map((slide, i) => (
           <img
@@ -70,33 +77,25 @@ function Hero() {
           />
         ))}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-deep/85 via-deep/45 to-deep/75" />
+      <div className="absolute inset-0 bg-deep/60" />
       <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-deep to-transparent" />
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
-      <div className="absolute top-24 right-6 sm:right-16 hidden sm:block">
-        {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="absolute h-2.5 w-2.5 rounded-full bg-primary animate-float"
-            style={{ right: i * 34, top: i * 46, animationDelay: `${i * 0.6}s` }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-20 min-h-[88dvh] flex flex-col justify-center">
-        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-6">
-          Bathurst &amp; the Central West NSW
+      <div className="hero-content relative z-10 max-w-[1280px] mx-auto px-6 sm:px-12 lg:px-20 pt-44 pb-24 min-h-[100dvh] flex flex-col justify-center">
+        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-7">
+          Kelso, NSW &mdash; Serving Bathurst and the Central West
         </p>
-        <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[0.95] max-w-5xl">
+        <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[1.12] max-w-5xl">
           <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
           <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential &amp; Rural Clients.</span>
         </h1>
-        <div className="hero-meta mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <p className="hero-meta mt-7 max-w-lg text-white/70 text-base sm:text-lg leading-relaxed">
+          Licensed, scheduled grounds maintenance for councils, schools, strata and commercial sites across the Bathurst region.
+        </p>
+        <div className="hero-meta mt-16 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[
             { text: 'Family Owned and Operated' },
             { end: 15, suffix: '+', label: 'Years in Operation' },
-            { text: 'Local Business' },
+            { text: 'Fully Insured' },
           ].map((s, i) => (
             <div key={s.text ?? s.label} className={`flex items-center ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
               {s.text ? (
@@ -110,12 +109,12 @@ function Hero() {
             </div>
           ))}
         </div>
-        <div className="hero-cta mt-10 flex flex-wrap gap-3">
-          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30">
+        <div className="hero-cta mt-12 flex flex-wrap gap-4">
+          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold shadow-lg shadow-primary/30 transition-colors">
             Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
-          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15">
-            <Phone className="h-4 w-4" /> Call Now
+          <Link to="/portfolio" className="magnetic-btn inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white px-8 py-4 rounded-lg font-semibold border-2 border-white/70 transition-colors">
+            View Portfolio
           </Link>
         </div>
       </div>
@@ -147,7 +146,7 @@ function Intro() {
 
   return (
     <section ref={ref} className="py-20 sm:py-28">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="intro-photos order-2 lg:order-1 grid grid-cols-2 gap-4">
           <div className="col-span-2 rounded-3xl overflow-hidden border border-divider aspect-[16/10]">
             <img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" className="h-full w-full object-cover" />
@@ -160,20 +159,20 @@ function Intro() {
           </div>
         </div>
         <div className="intro-text order-1 lg:order-2">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary mb-3">Who We Are</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Make a difference with us!</h2>
-          <p className="text-muted leading-relaxed text-base sm:text-lg mb-9">
+          <p className="font-mono text-sm uppercase tracking-[0.18em] text-primary mb-4">Who We Are</p>
+          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter mb-7">Make a difference with us!</h2>
+          <p className="text-muted leading-relaxed text-lg sm:text-xl mb-10">
             Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation — servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
           </p>
-          <div className="space-y-6">
+          <div className="space-y-7">
             {points.map((p) => (
-              <div key={p.title} className="flex gap-4">
-                <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <p.icon className="h-5 w-5 text-primary" strokeWidth={2.2} />
+              <div key={p.title} className="flex gap-5">
+                <div className="h-12 w-12 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <p.icon className="h-6 w-6 text-primary" strokeWidth={2.2} />
                 </div>
                 <div>
-                  <h3 className="font-display font-semibold text-ink mb-0.5">{p.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{p.text}</p>
+                  <h3 className="font-display font-semibold text-lg text-ink mb-1">{p.title}</h3>
+                  <p className="text-base text-muted leading-relaxed">{p.text}</p>
                 </div>
               </div>
             ))}
@@ -201,6 +200,11 @@ function Testimonials() {
       gsap.from('.testimonial-card', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 40, opacity: 0, duration: 0.8, delay: 0.15, stagger: 0.15, ease: 'power3.out',
+      })
+      gsap.to('.testi-heading', {
+        yPercent: -20,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
       })
     }, ref)
     return () => ctx.revert()
@@ -247,6 +251,11 @@ function ServicesPreview() {
       gsap.from('.svc-tile', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
+      })
+      gsap.to('.svc-heading', {
+        yPercent: -20,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
       })
     }, ref)
     return () => ctx.revert()
@@ -309,6 +318,11 @@ function RecentWork() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
       })
+      gsap.to('.work-heading', {
+        yPercent: -20,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
+      })
     }, ref)
     return () => ctx.revert()
   }, [])
@@ -357,6 +371,11 @@ function StatsCta() {
       gsap.from('.cta-content', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.8, ease: 'power3.out',
+      })
+      gsap.to('.cta-content', {
+        yPercent: -15,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
       })
     }, ref)
     return () => ctx.revert()

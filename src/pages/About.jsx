@@ -2,91 +2,106 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ShieldCheck, BadgeCheck, Award, Truck } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
+import { CASE_STUDIES } from '../data/caseStudies.js'
 
-const STORY_STEPS = [
+const STORY_PHOTOS = [
+  { src: '/images/story-fleet.jpg', alt: 'Markwicks Services truck, ute and trailer fleet parked together on a suburban street' },
+  { src: '/images/story-bobcat-auger.jpg', alt: 'Markwicks Services crew member operating a Bobcat with auger attachment beside a tree' },
+  { src: '/images/story-truck-steps.jpg', alt: 'Markwicks Services branded truck at a rural property during a garden steps installation' },
+  { src: '/images/story-pergola-crew.jpg', alt: 'Markwicks Services crew member building a pergola roof' },
+]
+
+const WHY_PHOTOS = [
+  { src: '/images/bobcat-action.jpg', alt: 'Markwicks Services operating a Bobcat excavator on site' },
+  { src: '/images/campus-parking-mulch.jpg', alt: 'Freshly mulched garden beds at an institutional car park' },
+  { src: '/images/estate-street-crew.jpg', alt: 'Markwicks Services crew and branded truck on a residential estate street' },
+  { src: '/images/excavator-truck.jpg', alt: 'Excavation and earthworks in progress' },
+]
+
+const WHY_HIGHLIGHTS = [
   {
-    num: '01',
-    title: 'Get in Touch',
-    text: "Tell us about your site — a single property or a multi-site contract. We'll talk you through the right schedule and the rate.",
-    bullets: ['Direct contact with Cory, no call centre', 'Rates confirmed up front before work begins'],
-    img: '/images/mulch-bed-mountain.jpg',
-    alt: 'Garden bed landscaping on a rural property with mountain views',
+    icon: ShieldCheck,
+    title: 'Fully Insured',
+    text: 'Public liability and workers compensation cover, sighted before we set foot on any site.',
   },
   {
-    num: '02',
-    title: 'On Schedule',
-    text: 'Every site runs on a fixed, recurring cycle — mowed, edged and tidied to the same standard, visit after visit.',
-    bullets: ['Commercial mowers, tractor and slashers', 'One crew across every site on the contract'],
-    img: '/images/mower-mowing.jpg',
-    alt: 'Commercial mower cutting a lush green paddock',
+    icon: BadgeCheck,
+    title: 'Licensed & Qualified',
+    text: 'Relevant trade licensing and site safety qualifications held across the crew.',
   },
   {
-    num: '03',
-    title: 'Maintain',
-    text: 'For standing commercial contracts and weekenders alike, an ongoing arrangement keeps every site looking the way it should.',
-    bullets: ['Standing commercial contracts welcome', 'Excavation and mulching available alongside'],
-    img: '/images/bobcat-action.jpg',
-    alt: 'Markwicks Services operating a Bobcat excavator on site',
+    icon: Award,
+    title: '15+ Years Local',
+    text: 'Two generations of the Markwick family working the Bathurst region — not a fly-in contractor.',
+  },
+  {
+    icon: Truck,
+    title: 'Commercial Equipment',
+    text: 'Our own mowers, tractors, slashers, excavators and trucks — no waiting on hired machinery.',
   },
 ]
 
-function StoryProtocol() {
-  const containerRef = useRef(null)
-
+function WhyChooseUsSection() {
+  const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.protocol-heading', {
-        scrollTrigger: { trigger: containerRef.current, start: 'top 80%', once: true },
+      gsap.from('.why-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
       })
-      const cards = gsap.utils.toArray('.protocol-card')
-      cards.slice(0, -1).forEach((card) => {
-        gsap.to(card, {
-          scrollTrigger: { trigger: card, start: 'top top+=100', end: '+=500', scrub: 1 },
-          scale: 0.92, filter: 'blur(6px) saturate(0.7)', opacity: 0.5, ease: 'none',
-        })
+      gsap.from('.why-photo', {
+        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
       })
-    }, containerRef)
+      gsap.from('.why-card', {
+        scrollTrigger: { trigger: ref.current, start: 'top 70%', once: true },
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, delay: 0.1, ease: 'power3.out',
+      })
+    }, ref)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={containerRef} className="relative py-24 sm:py-32">
-      <div className="protocol-heading max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-16">
-        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">How We Work</p>
-        <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-3xl">
-          Get in touch, get scheduled, stay maintained.
-        </h2>
-        <p className="mt-4 text-muted max-w-xl">The same straightforward process whether it's one site or a standing multi-site contract.</p>
-      </div>
+    <section ref={ref} className="py-24 sm:py-32 bg-surface border-y border-divider">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="why-heading max-w-2xl mb-14">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary mb-3">Why Choose Us</p>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-4">
+            Built for councils, schools and commercial contracts.
+          </h2>
+          <p className="text-muted leading-relaxed mb-4">
+            Commercial and government buyers need proof, not promises, before they hand over a site. Here's what we bring to the table before a contract is even signed.
+          </p>
+          <p className="text-muted leading-relaxed">
+            Every site runs under a proper WHS management system with a registered ABN behind it, so councils, schools and property managers are dealing with a compliant, accountable business — not a casual operator. It's the same crew and the same standard whether it's a single lawn or a standing multi-site contract.
+          </p>
+        </div>
 
-      <div className="relative">
-        {STORY_STEPS.map((step) => (
-          <div
-            key={step.num}
-            className="protocol-card sticky top-24 bg-surface border border-divider rounded-3xl mx-auto max-w-7xl mb-8"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-0 overflow-hidden rounded-3xl">
-              <div className="md:col-span-3 p-8 sm:p-12 flex flex-col justify-center">
-                <span className="font-mono text-sm text-primary mb-3">{step.num}</span>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4">{step.title}</h3>
-                <p className="text-muted leading-relaxed mb-5">{step.text}</p>
-                <ul className="space-y-2">
-                  {step.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm text-muted">
-                      <ArrowRight className="h-3.5 w-3.5 text-primary shrink-0" /> {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="md:col-span-2 min-h-[220px] md:min-h-0">
-                <img src={step.img} alt={step.alt} className="h-full w-full object-cover" />
-              </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          {WHY_PHOTOS.map((p) => (
+            <div key={p.src} className="why-photo rounded-2xl overflow-hidden border border-divider aspect-square">
+              <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {WHY_HIGHLIGHTS.map((h) => (
+            <div key={h.title} className="why-card rounded-3xl border border-divider bg-background p-6">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <h.icon className="h-5 w-5 text-primary" strokeWidth={2.2} />
+              </div>
+              <h3 className="font-display font-semibold text-ink mb-1.5">{h.title}</h3>
+              <p className="text-sm text-muted leading-relaxed">{h.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-center text-sm text-muted max-w-2xl mx-auto">
+          Trusted by schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders across the Central West.
+        </p>
       </div>
     </section>
   )
@@ -102,7 +117,7 @@ function OurStory() {
       })
       gsap.from('.story-photo', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+        x: 40, opacity: 0, duration: 0.7, stagger: 0.08, delay: 0.15, ease: 'power3.out',
       })
     }, ref)
     return () => ctx.revert()
@@ -110,9 +125,9 @@ function OurStory() {
 
   return (
     <section ref={ref} className="py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-16 items-start">
         <div className="story-text">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-6">Our Story</h2>
+          <h2 className="relative inline-block w-fit font-display text-3xl sm:text-4xl font-bold tracking-tighter pb-2 mb-6 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-primary">Our Story</h2>
           <p className="text-muted leading-relaxed mb-4">
             Markwicks Services is a family-owned and operated business based in Bathurst, NSW, originally starting as a father-and-son team with Clay and Cory Markwick working together. As the business grew, Cory's brothers became involved, bringing additional skills and experience to the team, with Cory's wife, Claudia, later taking on the administration, accounts, client communication, scheduling and day to day business operations.
           </p>
@@ -123,33 +138,65 @@ function OurStory() {
             While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
           </p>
         </div>
-        <div className="story-photo rounded-3xl overflow-hidden border border-divider">
-          <img src="/images/truck-trailer.jpg" alt="Markwicks Services truck and trailer with excavator and mower on site" className="h-full w-full object-cover" />
+        <div className="grid grid-cols-2 gap-4">
+          {STORY_PHOTOS.map((p) => (
+            <div key={p.src} className="story-photo rounded-2xl overflow-hidden border border-divider aspect-square">
+              <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+            </div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-function AboutClosingCta() {
+function AboutPortfolioPreview() {
   const ref = useRef(null)
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.about-cta-content', {
-        scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
+      gsap.from('.about-work-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.about-work-cta', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.about-work-tile', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
       })
     }, ref)
     return () => ctx.revert()
   }, [])
 
+  const featured = CASE_STUDIES.slice(0, 4)
+
   return (
-    <section ref={ref} className="pb-24 sm:pb-32 text-center">
-      <div className="about-cta-content max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Want to know why clients stick around?</h2>
-        <Link to="/why-choose-us" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
-          See Why Choose Us <ArrowUpRight className="h-4 w-4" />
+    <section ref={ref} className="py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14 flex flex-wrap items-end justify-between gap-6">
+        <div className="about-work-heading">
+          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Our Work</p>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">See the kind of work we've been doing.</h2>
+        </div>
+        <Link to="/portfolio" className="about-work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
+          View Portfolio <ArrowUpRight className="h-4 w-4" />
         </Link>
+      </div>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featured.map((c) => (
+            <Link key={c.slug} to="/portfolio" className="about-work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
+              <div className="relative aspect-[4/3] overflow-hidden bg-background">
+                <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="p-5">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>
+                <h3 className="font-display text-base font-semibold leading-snug">{c.title}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -167,14 +214,14 @@ export default function About() {
         eyebrow="About Us"
         title="A dedicated crew, built around commercial reliability."
         subtitle="A family-owned and operated business built across two generations of the Markwick family — treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
-        img="/images/retaining-wall-crew.jpg"
+        img="/images/about-header.jpg"
       />
 
       <OurStory />
 
-      <StoryProtocol />
+      <WhyChooseUsSection />
 
-      <AboutClosingCta />
+      <AboutPortfolioPreview />
     </>
   )
 }

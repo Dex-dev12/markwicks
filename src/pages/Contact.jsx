@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { Mail, MapPin, Map, Clock } from 'lucide-react'
+import { Mail, Phone, MapPin, Map, Clock } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 
 export default function Contact() {
@@ -34,7 +34,7 @@ export default function Contact() {
         eyebrow="Get In Touch"
         title="Tell us about the sites you need looked after."
         subtitle="Whether it's a one-off job or a standing multi-site contract, the first step is the same — an email or the form below."
-        img="/images/farmyard.jpg"
+        img="/images/contact-header.jpg"
       />
 
       <section ref={ref} className="py-24 sm:py-32">
@@ -47,6 +47,13 @@ export default function Contact() {
                   <div>
                     <p className="text-xs text-muted">Email</p>
                     <a href="mailto:info@markwicksservices.com.au" className="font-medium lift-on-hover">info@markwicksservices.com.au</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Phone className="h-4 w-4 text-primary" /></span>
+                  <div>
+                    <p className="text-xs text-muted">Phone</p>
+                    <a href="tel:0263314527" className="font-medium lift-on-hover">02 6331 4527</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

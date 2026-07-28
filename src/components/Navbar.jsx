@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, UserRound, X } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, X } from 'lucide-react'
 import { SERVICES } from '../data/services.js'
 
 function TopBar() {
   return (
-    <div className="hidden lg:flex fixed top-0 inset-x-0 z-50 h-9 bg-deep text-white/70 text-xs items-center justify-between px-6 sm:px-10 lg:px-16">
+    <div className="hidden lg:flex fixed top-0 inset-x-0 z-50 h-8 bg-deep text-white/70 text-xs items-center justify-between px-6 sm:px-12 lg:px-20">
       <div className="flex items-center gap-6">
-        <span className="inline-flex items-center gap-1.5">
-          <Phone className="h-3 w-3" /> [Phone number pending]
-        </span>
+        <a href="tel:0263314527" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+          <Phone className="h-3 w-3" /> 02 6331 4527
+        </a>
         <a href="mailto:info@markwicksservices.com.au" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
           <Mail className="h-3 w-3" /> info@markwicksservices.com.au
         </a>
       </div>
-      <Link to="/portal" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-        <UserRound className="h-3 w-3" /> Client Portal
-      </Link>
     </div>
   )
 }
@@ -24,9 +21,9 @@ function TopBar() {
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Why Choose Us', href: '/why-choose-us' },
   { label: 'Services', href: '/services', dropdown: true },
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -37,7 +34,7 @@ export default function Navbar() {
   const location = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    const onScroll = () => setScrolled(window.scrollY > 90)
     window.addEventListener('scroll', onScroll)
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
@@ -51,15 +48,19 @@ export default function Navbar() {
   return (
     <>
       <TopBar />
-      <header className={`fixed top-0 lg:top-9 left-0 right-0 z-50 w-full px-6 sm:px-10 lg:px-16 py-3 border-b border-divider transition-colors ${scrolled ? 'glass' : 'bg-surface'}`}>
-        <nav className="flex items-center justify-between max-w-7xl mx-auto">
+      <header
+        className={`fixed top-0 lg:top-8 left-0 right-0 z-50 w-full px-6 sm:px-12 lg:px-20 transition-all duration-300 ${
+          scrolled ? 'py-3 bg-surface/95 backdrop-blur-md shadow-sm border-b border-divider' : 'py-6 bg-transparent border-b border-transparent'
+        }`}
+      >
+        <nav className="flex items-center justify-between max-w-[1280px] mx-auto">
           <Link to="/" className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Markwicks Services" className="h-9 w-auto" />
-            <span className="font-display font-bold font-heavy tracking-tight text-lg text-ink">
+            <span className={`font-display font-bold font-heavy tracking-tight text-lg transition-colors ${scrolled ? 'text-ink' : 'text-white'}`}>
               Markwicks Services
             </span>
           </Link>
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-10">
             {NAV_LINKS.map((link) =>
               link.dropdown ? (
                 <div
@@ -71,7 +72,9 @@ export default function Navbar() {
                   <NavLink
                     to={link.href}
                     className={({ isActive }) =>
-                      `nav-underline relative pb-1 flex items-center gap-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${isActive ? 'text-primary after:w-full' : 'text-ink/80 hover:text-ink after:w-0 hover:after:w-full'}`
+                      `nav-underline relative pb-1 flex items-center gap-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${
+                        isActive ? 'text-primary after:w-full' : `after:w-0 hover:after:w-full ${scrolled ? 'text-ink/80 hover:text-ink' : 'text-white/85 hover:text-white'}`
+                      }`
                     }
                   >
                     {link.label} <ChevronDown className="h-3.5 w-3.5" />
@@ -98,7 +101,9 @@ export default function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={({ isActive }) =>
-                    `nav-underline relative pb-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${isActive ? 'text-primary after:w-full' : 'text-ink/80 hover:text-ink after:w-0 hover:after:w-full'}`
+                    `nav-underline relative pb-1 text-sm font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-300 ${
+                      isActive ? 'text-primary after:w-full' : `after:w-0 hover:after:w-full ${scrolled ? 'text-ink/80 hover:text-ink' : 'text-white/85 hover:text-white'}`
+                    }`
                   }
                 >
                   {link.label}
@@ -107,12 +112,12 @@ export default function Navbar() {
             )}
           </div>
           <div className="hidden lg:block">
-            <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-primary/30">
+            <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-lg shadow-primary/30">
               Get in Touch <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
           <button
-            className="lg:hidden text-ink"
+            className={`lg:hidden transition-colors ${scrolled ? 'text-ink' : 'text-white'}`}
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -157,7 +162,7 @@ export default function Navbar() {
             )}
             <Link
               to="/contact"
-              className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold mt-4"
+              className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold mt-4"
             >
               Get in Touch <ArrowUpRight className="h-4 w-4" />
             </Link>

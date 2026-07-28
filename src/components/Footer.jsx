@@ -31,7 +31,6 @@ export default function Footer() {
             <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Company</h5>
             <ul className="space-y-2.5 text-sm text-white/70">
               <li><Link to="/about" className="lift-on-hover">About Us</Link></li>
-              <li><Link to="/why-choose-us" className="lift-on-hover">Why Choose Us</Link></li>
               <li><Link to="/portfolio" className="lift-on-hover">Portfolio</Link></li>
               <li><Link to="/contact" className="lift-on-hover">Contact</Link></li>
               <li><Link to="/privacy" className="lift-on-hover">Privacy</Link></li>
@@ -41,7 +40,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Contact</h5>
             <ul className="space-y-2.5 text-sm text-white/70">
-              <li>[Phone number pending]</li>
+              <li>02 6331 4527</li>
               <li><a href="mailto:info@markwicksservices.com.au" className="lift-on-hover whitespace-nowrap">info@markwicksservices.com.au</a></li>
               <li>4 Jarrah Court, Kelso NSW 2795</li>
               <li className="pt-1.5">Weekdays: 7am - 4pm</li>

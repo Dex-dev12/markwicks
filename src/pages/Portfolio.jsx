@@ -46,8 +46,8 @@ export default function Portfolio() {
       <PageBanner
         eyebrow="Portfolio"
         title="Work across the Bathurst region."
-        subtitle="Commercial grounds contracts, excavation and residential grounds care — real client work, with a few example slots still to fill in."
-        img="/images/tree-planting.jpg"
+        subtitle="Commercial grounds contracts, excavation and residential grounds care — real work across the Bathurst region."
+        img="/images/portfolio-header.jpg"
       />
 
       <section ref={ref} className="py-24 sm:py-32">

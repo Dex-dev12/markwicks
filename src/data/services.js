@@ -8,8 +8,13 @@ export const SERVICES = [
     text: 'Lawn mowing, garden maintenance and property upkeep for homes and weekenders across the Bathurst region.',
     body: "We still look after home and weekender properties across Bathurst and the Central West — mowing, garden maintenance, hedge trimming and the general upkeep that keeps a property presentable. Our focus has shifted toward commercial and institutional contracts, so residential work sits alongside that as a smaller part of what we do, not something we've phased out.",
     bullets: ['Lawn Mowing', 'Garden Maintenance', 'Hedge Trimming', 'Weed Control', 'Brush Cutting', 'Pressure Washing', 'Green Waste Removal', 'Property Maintenance'],
-    img: '/images/farmyard.jpg',
-    alt: 'Residential lawn mowing and garden maintenance',
+    img: '/images/residential-lawn-care.jpg',
+    alt: 'Neatly mowed residential front lawn',
+    gallery: [
+      { src: '/images/residential-lawn-care.jpg', alt: 'Neatly mowed residential front lawn' },
+      { src: '/images/residential-garden-bed-edging.jpg', alt: 'Crew member edging a residential front garden bed' },
+      { src: '/images/contact-header.jpg', alt: 'Established residential front yard with garden bed and lawn' },
+    ],
   },
   {
     slug: 'commercial-grounds-maintenance',
@@ -20,6 +25,11 @@ export const SERVICES = [
     bullets: ['Schools', 'TAFE NSW', 'Aged Care', 'Strata', 'Industrial Sites', 'Commercial Properties', 'Scheduled Maintenance Programs'],
     img: '/images/parking-lot-mulch.jpg',
     alt: 'Completed commercial car park mulching and garden bed work',
+    gallery: [
+      { src: '/images/parking-lot-mulch.jpg', alt: 'Completed commercial car park mulching and garden bed work' },
+      { src: '/images/commercial-mower-carpark.jpg', alt: 'Ride-on mower working a commercial car park garden bed' },
+      { src: '/images/commercial-carpark-garden-bed.jpg', alt: 'Freshly mulched garden bed at a commercial car park' },
+    ],
   },
   {
     slug: 'landscaping',
@@ -30,6 +40,11 @@ export const SERVICES = [
     bullets: ['Landscape Renovations', 'Front Yard Transformations', 'Garden Beds', 'Decorative Gravel', 'Edging', 'Turf Preparation', 'Site Preparation', 'Retaining Walls', 'Property Makeovers'],
     img: '/images/gravel-pathway.jpg',
     alt: 'Landscaped gravel pathway and garden bed on a rural property',
+    gallery: [
+      { src: '/images/gravel-pathway.jpg', alt: 'Landscaped gravel pathway and garden bed on a rural property' },
+      { src: '/images/landscaping-retaining-wall-build.jpg', alt: 'Timber retaining wall under construction in a backyard' },
+      { src: '/images/landscaping-mulch-edging.jpg', alt: 'Freshly edged mulch garden bed along a rural property fence line' },
+    ],
   },
   {
     slug: 'rural-acreage-services',
@@ -40,6 +55,11 @@ export const SERVICES = [
     bullets: ['Acreage Mowing', 'Slashing', 'Weed Management', 'Property Clearing', 'Grounds Maintenance', 'Tractor Work', 'Earthworks', 'Fire Hazard Reduction', 'Rural Property Maintenance'],
     img: '/images/mower-mowing.jpg',
     alt: 'Commercial mower cutting a large rural paddock',
+    gallery: [
+      { src: '/images/mower-mowing.jpg', alt: 'Commercial mower cutting a large rural paddock' },
+      { src: '/images/rural-truck-paddock.jpg', alt: 'Markwicks Services truck and trailer parked in a rural paddock' },
+      { src: '/images/rural-paddock-slashing.jpg', alt: 'Slashed dry paddock on a rural Central West property' },
+    ],
   },
   {
     slug: 'weed-management',
@@ -48,8 +68,11 @@ export const SERVICES = [
     text: 'Weed control and herbicide application for rural, commercial and noxious weed management needs.',
     body: "Weed control runs alongside most of our maintenance contracts, and we also take it on as a standalone job — herbicide applications, noxious weed management, and weed control across rural properties and commercial sites.",
     bullets: ['Weed Control', 'Noxious Weed Management', 'Herbicide Applications', 'Rural Weed Management', 'Commercial Weed Management'],
-    img: '/images/winter-wheat.jpg',
-    alt: 'Tractor applying herbicide spray across a paddock',
+    img: '/images/weed-management.jpg',
+    alt: 'Flail mower attachment clearing overgrown grass and weeds on a residential property',
+    gallery: [
+      { src: '/images/weed-management.jpg', alt: 'Flail mower attachment clearing overgrown grass and weeds on a residential property' },
+    ],
   },
   {
     slug: 'earthworks-excavation',
@@ -60,6 +83,11 @@ export const SERVICES = [
     bullets: ['Excavation', 'Bobcat Work', 'Site Preparation', 'Trenching', 'Levelling', 'Property Clearing', 'Landscape Excavation', 'Rural Projects', 'Small and Large Earthworks'],
     img: '/images/bobcat-action.jpg',
     alt: 'Markwicks Services operating a Bobcat excavator on site',
+    gallery: [
+      { src: '/images/bobcat-action.jpg', alt: 'Markwicks Services operating a Bobcat excavator on site' },
+      { src: '/images/earthworks-bobcat-auger-residential.jpg', alt: 'Bobcat with auger attachment drilling beside a residential home' },
+      { src: '/images/earthworks-rural-excavation-pit.jpg', alt: 'Excavation pit and truck at a rural property earthworks site' },
+    ],
   },
 ]
 
