@@ -34,7 +34,7 @@ export default function Services() {
             <div key={s.slug} className={`svc-row ${i % 2 === 0 ? 'bg-background' : 'bg-surface'}`}>
               <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <div className={`rounded-3xl overflow-hidden border border-divider ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
-                  <img src={s.img} alt={s.alt} className="h-full w-full object-cover aspect-[4/3]" />
+                  <img src={s.img} alt={s.alt} loading="lazy" decoding="async" className="h-full w-full object-cover aspect-[4/3]" />
                 </div>
                 <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
                   <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">

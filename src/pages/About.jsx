@@ -82,7 +82,7 @@ function WhyChooseUsSection() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {WHY_PHOTOS.map((p) => (
             <div key={p.src} className="why-photo rounded-2xl overflow-hidden border border-divider aspect-square">
-              <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
@@ -141,7 +141,7 @@ function OurStory() {
         <div className="grid grid-cols-2 gap-4">
           {STORY_PHOTOS.map((p) => (
             <div key={p.src} className="story-photo rounded-2xl overflow-hidden border border-divider aspect-square">
-              <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
             </div>
           ))}
         </div>
@@ -179,7 +179,7 @@ function AboutPortfolioPreview() {
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Our Work</p>
           <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">See the kind of work we've been doing.</h2>
         </div>
-        <Link to="/portfolio" className="about-work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
+        <Link to="/portfolio" className="about-work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30 shrink-0">
           View Portfolio <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
@@ -188,7 +188,7 @@ function AboutPortfolioPreview() {
           {featured.map((c) => (
             <Link key={c.slug} to="/portfolio" className="about-work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
               <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="p-5">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>

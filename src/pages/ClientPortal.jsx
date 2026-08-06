@@ -11,7 +11,7 @@ export default function ClientPortal() {
       <p className="text-muted leading-relaxed max-w-xl mx-auto mb-8">
         Our client portal for scheduling, reports and invoices is on the way. In the meantime, get in touch directly and we'll take care of it.
       </p>
-      <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30">
+      <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30">
         Contact Us <ArrowUpRight className="h-4 w-4" />
       </Link>
     </div>

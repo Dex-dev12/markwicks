@@ -49,11 +49,11 @@ export default function Navbar() {
     <>
       <TopBar />
       <header
-        className={`fixed top-0 lg:top-8 left-0 right-0 z-50 w-full px-6 sm:px-12 lg:px-20 transition-all duration-300 ${
-          scrolled ? 'py-3 bg-surface/95 backdrop-blur-md shadow-sm border-b border-divider' : 'py-6 bg-transparent border-b border-transparent'
+        className={`fixed top-4 lg:top-[52px] left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl rounded-full px-4 sm:px-6 py-2.5 transition-colors duration-300 ${
+          scrolled ? 'bg-surface/95 backdrop-blur-md shadow-sm border border-divider' : 'border border-transparent'
         }`}
       >
-        <nav className="flex items-center justify-between max-w-[1280px] mx-auto">
+        <nav className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <img src="/logo.png" alt="Markwicks Services" className="h-9 w-auto" />
             <span className={`font-display font-bold font-heavy tracking-tight text-lg transition-colors ${scrolled ? 'text-ink' : 'text-white'}`}>

@@ -57,7 +57,7 @@ export default function ServiceDetail() {
                 </li>
               ))}
             </ul>
-            <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 mt-10">
+            <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30 mt-10">
               Get in Touch <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -65,17 +65,17 @@ export default function ServiceDetail() {
             {service.gallery.length > 1 ? (
               <div className={`grid gap-4 ${service.gallery.length === 3 ? 'grid-cols-2' : 'grid-cols-2'}`}>
                 <div className={`rounded-3xl overflow-hidden border border-divider ${service.gallery.length === 3 ? 'col-span-2' : ''} aspect-[4/3]`}>
-                  <img src={service.gallery[0].src} alt={service.gallery[0].alt} className="h-full w-full object-cover" />
+                  <img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </div>
                 {service.gallery.slice(1).map((p) => (
                   <div key={p.src} className="rounded-2xl overflow-hidden border border-divider aspect-square">
-                    <img src={p.src} alt={p.alt} className="h-full w-full object-cover" />
+                    <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                   </div>
                 ))}
               </div>
             ) : (
               <div className="rounded-3xl overflow-hidden border border-divider aspect-[4/3]">
-                <img src={service.gallery[0].src} alt={service.gallery[0].alt} className="h-full w-full object-cover" />
+                <img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
               </div>
             )}
           </div>

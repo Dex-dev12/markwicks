@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid lg:grid-cols-8 gap-10">
           <div className="lg:col-span-3 flex flex-col gap-3">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Markwicks Services" className="h-10 w-auto" />
+              <img src="/logo.png" alt="Markwicks Services" loading="lazy" className="h-10 w-auto" />
               <span className="font-display font-bold font-heavy text-2xl">Markwicks Services</span>
             </div>
             <p className="font-serif italic text-white/70 text-lg max-w-xs">Make a difference with us.</p>
@@ -43,9 +43,6 @@ export default function Footer() {
               <li>02 6331 4527</li>
               <li><a href="mailto:info@markwicksservices.com.au" className="lift-on-hover whitespace-nowrap">info@markwicksservices.com.au</a></li>
               <li>4 Jarrah Court, Kelso NSW 2795</li>
-              <li className="pt-1.5">Weekdays: 7am - 4pm</li>
-              <li>Saturday: By appointment</li>
-              <li>Sunday: Closed</li>
             </ul>
           </div>
           <div>

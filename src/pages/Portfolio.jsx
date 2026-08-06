@@ -11,7 +11,7 @@ function PortfolioClosingCta() {
     const ctx = gsap.context(() => {
       gsap.from('.portfolio-cta-content', {
         scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
-        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+        y: 24, opacity: 0, duration: 1, ease: 'power2.out',
       })
     }, ref)
     return () => ctx.revert()
@@ -21,7 +21,7 @@ function PortfolioClosingCta() {
     <section ref={ref} className="pb-24 sm:pb-32 text-center">
       <div className="portfolio-cta-content max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Have a job in mind?</h2>
-        <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+        <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-lg font-semibold shadow-lg shadow-primary/30">
           Get in Touch <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function Portfolio() {
             {CASE_STUDIES.map((c) => (
               <div key={c.slug} className="case-tile rounded-3xl overflow-hidden border border-divider bg-surface flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                  {c.img && <img src={c.img} alt={c.alt} className="h-full w-full object-cover" />}
+                  {c.img && <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />}
                   {c.placeholder && (
                     <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
                       Example

@@ -25,6 +25,8 @@ export function TrustedByStrip() {
                 key={`${c.name}-${i}`}
                 src={c.logo}
                 alt={c.name}
+                loading="lazy"
+                decoding="async"
                 className="h-6 sm:h-7 w-auto object-contain shrink-0 opacity-70"
               />
             ) : (

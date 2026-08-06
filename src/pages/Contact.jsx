@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { Mail, Phone, MapPin, Map, Clock } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 
 export default function Contact() {
   const ref = useRef(null)
+  const [formLoaded, setFormLoaded] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,11 +83,24 @@ export default function Contact() {
               <p className="text-xs text-muted mt-8 leading-relaxed">Your details are used only to prepare your quote and schedule the job — never sold or shared.</p>
             </div>
 
-            <div className="contact-form lg:col-span-8 bg-surface rounded-3xl p-6 sm:p-8 overflow-hidden">
+            <div className="contact-form lg:col-span-8 bg-surface rounded-3xl p-6 sm:p-8 overflow-hidden relative" style={{ minHeight: '400px' }}>
+              {!formLoaded && (
+                <div className="absolute inset-6 sm:inset-8 animate-pulse" aria-hidden="true">
+                  <div className="h-4 w-1/3 bg-divider rounded mb-6" />
+                  <div className="space-y-4">
+                    <div className="h-11 bg-divider rounded-lg" />
+                    <div className="h-11 bg-divider rounded-lg" />
+                    <div className="h-11 bg-divider rounded-lg" />
+                    <div className="h-28 bg-divider rounded-lg" />
+                    <div className="h-11 w-1/3 bg-divider rounded-lg" />
+                  </div>
+                </div>
+              )}
               <iframe
                 src="https://links.versflows.com/widget/form/IJZrHCNaYa7AJc0wWtoH"
                 scrolling="no"
-                style={{ width: '100%', height: '100%', minHeight: '400px', border: 'none', borderRadius: '8px', overflow: 'hidden' }}
+                onLoad={() => setFormLoaded(true)}
+                style={{ width: '100%', height: '100%', minHeight: '400px', border: 'none', borderRadius: '8px', overflow: 'hidden', opacity: formLoaded ? 1 : 0, transition: 'opacity 400ms ease' }}
                 id="inline-IJZrHCNaYa7AJc0wWtoH"
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"

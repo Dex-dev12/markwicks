@@ -39,8 +39,11 @@ function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.hero-line-1, .hero-line-2, .hero-cta, .hero-meta', {
-        y: 30, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out',
+      gsap.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.8, delay: 0.1, ease: 'power3.out' })
+      gsap.from('.hero-line-1', { y: 40, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' })
+      gsap.from('.hero-line-2', { y: 60, opacity: 0, duration: 1.2, delay: 0.5, ease: 'power3.out' })
+      gsap.from('.hero-meta, .hero-cta', {
+        y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out',
       })
       gsap.to(bgRef.current, {
         yPercent: 28,
@@ -81,8 +84,8 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-deep to-transparent" />
 
       <div className="hero-content relative z-10 max-w-[1280px] mx-auto px-6 sm:px-12 lg:px-20 pt-44 pb-24 min-h-[100dvh] flex flex-col justify-center">
-        <p className="hero-meta font-mono text-xs uppercase tracking-[0.25em] text-primary-light mb-7">
-          Kelso, NSW &mdash; Serving Bathurst and the Central West
+        <p className="hero-eyebrow font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-7">
+          Bathurst, NSW &mdash; Commercial &amp; Residential Grounds Care
         </p>
         <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[1.12] max-w-5xl">
           <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
@@ -93,19 +96,15 @@ function Hero() {
         </p>
         <div className="hero-meta mt-16 flex flex-wrap items-center gap-x-8 gap-y-3">
           {[
-            { text: 'Family Owned and Operated' },
+            { end: 5, suffix: '+', label: 'Commercial Sites' },
             { end: 15, suffix: '+', label: 'Years in Operation' },
-            { text: 'Fully Insured' },
+            { end: 100, suffix: '%', label: 'Insured' },
           ].map((s, i) => (
-            <div key={s.text ?? s.label} className={`flex items-center ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
-              {s.text ? (
-                <span className="font-mono text-xs sm:text-sm tracking-[0.12em] text-white">{s.text}</span>
-              ) : (
-                <div className="flex items-center gap-2.5">
-                  <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 leading-tight max-w-[6rem]">{s.label}</span>
-                </div>
-              )}
+            <div key={s.label} className={`flex items-center ${i > 0 ? 'border-l border-white/20 pl-8' : ''}`}>
+              <div className="flex items-center gap-2.5">
+                <span className="font-display text-xl sm:text-2xl font-bold text-white"><CountUp end={s.end} suffix={s.suffix} /></span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/50 leading-tight max-w-[6rem]">{s.label}</span>
+              </div>
             </div>
           ))}
         </div>
@@ -149,13 +148,13 @@ function Intro() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="intro-photos order-2 lg:order-1 grid grid-cols-2 gap-4">
           <div className="col-span-2 rounded-3xl overflow-hidden border border-divider aspect-[16/10]">
-            <img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" className="h-full w-full object-cover" />
+            <img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </div>
           <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
-            <img src="/images/parking-lot-mulch.jpg" alt="Completed commercial car park mulching and garden bed work" className="h-full w-full object-cover" />
+            <img src="/images/parking-lot-mulch.jpg" alt="Completed commercial car park mulching and garden bed work" loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </div>
           <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
-            <img src="/images/mulch-bed-mountain.jpg" alt="Garden bed landscaping on a rural property with mountain views" className="h-full w-full object-cover" />
+            <img src="/images/mulch-bed-mountain.jpg" alt="Garden bed landscaping on a rural property with mountain views" loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </div>
         </div>
         <div className="intro-text order-1 lg:order-2">
@@ -195,11 +194,11 @@ function Testimonials() {
     const ctx = gsap.context(() => {
       gsap.from('.testi-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+        y: 24, opacity: 0, duration: 1, ease: 'power2.out',
       })
       gsap.from('.testimonial-card', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 40, opacity: 0, duration: 0.8, delay: 0.15, stagger: 0.15, ease: 'power3.out',
+        y: 40, opacity: 0, scale: 0.97, duration: 0.8, delay: 0.15, stagger: 0.15, ease: 'power3.out',
       })
       gsap.to('.testi-heading', {
         yPercent: -20,
@@ -270,7 +269,7 @@ function ServicesPreview() {
             Commercial and Residential work across Bathurst &amp; the Central West.
           </h2>
         </div>
-        <Link to="/services" className="svc-cta magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-full font-semibold border border-white/15 shrink-0">
+        <Link to="/services" className="svc-cta magnetic-btn inline-flex items-center gap-2 glass-dark text-white px-6 py-3 rounded-lg font-semibold border border-white/15 shrink-0">
           View All Services <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
@@ -281,6 +280,8 @@ function ServicesPreview() {
               <img
                 src={s.img}
                 alt={s.alt}
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-50"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/85 to-deep/40" />
@@ -314,9 +315,13 @@ function RecentWork() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
       })
-      gsap.from('.work-tile', {
-        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
+      gsap.from('.work-featured', {
+        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
+        x: -30, opacity: 0, duration: 0.8, delay: 0.1, ease: 'power3.out',
+      })
+      gsap.from('.work-list-item', {
+        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
+        y: 20, opacity: 0, duration: 0.6, delay: 0.2, stagger: 0.08, ease: 'power3.out',
       })
       gsap.to('.work-heading', {
         yPercent: -20,
@@ -327,7 +332,8 @@ function RecentWork() {
     return () => ctx.revert()
   }, [])
 
-  const featured = CASE_STUDIES.slice(0, 4)
+  const featured = CASE_STUDIES.find((c) => c.slug === 'tafe-nsw-multi-site') ?? CASE_STUDIES[0]
+  const rest = CASE_STUDIES.filter((c) => c.slug !== featured.slug).slice(0, 3)
 
   return (
     <section ref={ref} className="py-24 sm:py-32">
@@ -336,28 +342,37 @@ function RecentWork() {
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Recent Work</p>
           <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tighter max-w-2xl">See what we have been on site for.</h2>
         </div>
-        <Link to="/portfolio" className="work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-primary/30 shrink-0">
+        <Link to="/portfolio" className="work-cta magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30 shrink-0">
           View Portfolio <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featured.map((c) => (
-            <Link key={c.slug} to="/portfolio" className="work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
-              <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                {c.img && <img src={c.img} alt={c.alt} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
-                {c.placeholder && (
-                  <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
-                    Example
-                  </span>
-                )}
-              </div>
-              <div className="p-5">
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>
-                <h3 className="font-display text-base font-semibold leading-snug">{c.title}</h3>
-              </div>
-            </Link>
-          ))}
+        <div className="grid lg:grid-cols-5 gap-6">
+          <Link to="/portfolio" className="work-featured group relative overflow-hidden rounded-3xl border border-divider bg-surface lg:col-span-3">
+            <div className="relative aspect-[16/11] overflow-hidden bg-background">
+              <img src={featured.img} alt={featured.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            <div className="p-6 sm:p-7">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1.5">{featured.category}</p>
+              <h3 className="font-display text-xl font-semibold leading-snug mb-1.5">{featured.title}</h3>
+              <p className="text-sm text-muted">{featured.client}</p>
+            </div>
+          </Link>
+
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            {rest.map((c) => (
+              <Link key={c.slug} to="/portfolio" className="work-list-item group flex items-center gap-4 rounded-2xl border border-divider bg-surface p-3 hover:bg-background transition-colors">
+                <div className="relative h-20 w-24 shrink-0 rounded-xl overflow-hidden bg-background">
+                  {c.img && <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>
+                  <h3 className="font-display text-sm font-semibold leading-snug truncate">{c.title}</h3>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted shrink-0 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -382,13 +397,11 @@ function StatsCta() {
   }, [])
 
   return (
-    <section ref={ref} className="relative py-24 sm:py-32 overflow-hidden grid-bg">
-      <div className="absolute -top-20 -left-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-      <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+    <section ref={ref} className="pb-24 sm:pb-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="cta-content text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-5">Ready to put your grounds on a schedule?</h2>
-          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/30">
+          <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-lg font-semibold shadow-lg shadow-primary/30">
             Get in Touch <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
