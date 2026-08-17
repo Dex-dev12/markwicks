@@ -54,7 +54,7 @@ export default function Contact() {
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Phone className="h-4 w-4 text-primary" /></span>
                   <div>
                     <p className="text-xs text-muted">Phone</p>
-                    <a href="tel:0263314527" className="font-medium lift-on-hover">02 6331 4527</a>
+                    <a href="tel:0485003060" className="font-medium lift-on-hover">0485 003 060</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

@@ -7,8 +7,8 @@ function TopBar() {
   return (
     <div className="hidden lg:flex fixed top-0 inset-x-0 z-50 h-8 bg-deep text-white/70 text-xs items-center justify-between px-6 sm:px-12 lg:px-20">
       <div className="flex items-center gap-6">
-        <a href="tel:0263314527" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-          <Phone className="h-3 w-3" /> 02 6331 4527
+        <a href="tel:0485003060" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+          <Phone className="h-3 w-3" /> 0485 003 060
         </a>
         <a href="mailto:info@markwicksservices.com.au" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
           <Mail className="h-3 w-3" /> info@markwicksservices.com.au
