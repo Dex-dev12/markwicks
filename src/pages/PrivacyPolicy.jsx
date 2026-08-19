@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
         <h2 className="font-display text-xl font-semibold text-ink mt-8">How we use it</h2>
         <p>We use this information solely to respond to your enquiry, prepare a quote, and schedule work. We do not sell or share your details with third parties.</p>
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Contact</h2>
-        <p>Questions about this policy can be directed to <a href="mailto:info@markwicksservices.com.au" className="text-primary lift-on-hover">info@markwicksservices.com.au</a>.</p>
+        <p>Questions about this policy can be directed to <a href="mailto:contact@markwicksservices.com.au" className="text-primary lift-on-hover">contact@markwicksservices.com.au</a>.</p>
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ export default function Terms() {
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Scheduling</h2>
         <p>We aim to complete every job on the agreed date. Weather and ground conditions may occasionally require rescheduling — we'll always contact you in advance.</p>
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Contact</h2>
-        <p>Questions about a quote or an active job can be directed to <a href="mailto:info@markwicksservices.com.au" className="text-primary lift-on-hover">info@markwicksservices.com.au</a>.</p>
+        <p>Questions about a quote or an active job can be directed to <a href="mailto:contact@markwicksservices.com.au" className="text-primary lift-on-hover">contact@markwicksservices.com.au</a>.</p>
       </div>
     </div>
   )

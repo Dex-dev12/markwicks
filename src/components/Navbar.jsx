@@ -10,8 +10,8 @@ function TopBar() {
         <a href="tel:0485003060" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
           <Phone className="h-3 w-3" /> 0485 003 060
         </a>
-        <a href="mailto:info@markwicksservices.com.au" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
-          <Mail className="h-3 w-3" /> info@markwicksservices.com.au
+        <a href="mailto:contact@markwicksservices.com.au" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+          <Mail className="h-3 w-3" /> contact@markwicksservices.com.au
         </a>
       </div>
     </div>
