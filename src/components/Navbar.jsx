@@ -22,8 +22,8 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services', dropdown: true },
+  { label: 'Equipment', href: '/equipment' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
