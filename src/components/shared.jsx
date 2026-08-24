@@ -22,12 +22,14 @@ export const TRUSTED_BY = [
   { name: 'Catholic Diocese of Bathurst', logo: '/logos/catholic-diocese-bathurst.png', scale: 1.25 },
   { name: 'Kelso Public School', logo: '/logos/kelso-public-school.png' },
   { name: 'KKCS', logo: '/logos/kkcs.png', scale: 1.3 },
+  { name: "St Barnabas' Chapel", logo: '/logos/st-barnabas-chapel.png', aboutOnly: true },
 ]
 
 const TRUSTED_BY_BASE_REM = 2.5
 
 export function TrustedByStrip() {
-  const track = [...TRUSTED_BY, ...TRUSTED_BY]
+  const homepageLogos = TRUSTED_BY.filter((c) => !c.aboutOnly)
+  const track = [...homepageLogos, ...homepageLogos]
   return (
     <section className="border-y border-divider bg-surface py-8 overflow-hidden">
       <div className="mb-4 px-6 sm:px-10 lg:px-16 flex justify-center">
