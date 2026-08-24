@@ -7,7 +7,7 @@ export default function Terms() {
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Quotes &amp; pricing</h2>
         <p>Pricing depends on site access, ground conditions, and job scope, and will be confirmed before work begins.</p>
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Scheduling</h2>
-        <p>We aim to complete every job on the agreed date. Weather and ground conditions may occasionally require rescheduling — we'll always contact you in advance.</p>
+        <p>We aim to complete every job on the agreed date. Weather and ground conditions may occasionally require rescheduling. We'll always contact you in advance.</p>
         <h2 className="font-display text-xl font-semibold text-ink mt-8">Contact</h2>
         <p>Questions about a quote or an active job can be directed to <a href="mailto:contact@markwicksservices.com.au" className="text-primary lift-on-hover">contact@markwicksservices.com.au</a>.</p>
       </div>

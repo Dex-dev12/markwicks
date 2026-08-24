@@ -85,7 +85,7 @@ function Hero() {
 
       <div className="hero-content relative z-10 max-w-[1280px] mx-auto px-6 sm:px-12 lg:px-20 pt-44 pb-24 min-h-[100dvh] flex flex-col justify-center">
         <p className="hero-eyebrow font-mono text-xs uppercase tracking-[0.25em] text-white/70 mb-7">
-          Bathurst, NSW &mdash; Commercial &amp; Residential Grounds Care
+          Bathurst, NSW &middot; Commercial &amp; Residential Grounds Care
         </p>
         <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[1.12] max-w-5xl">
           <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
@@ -161,7 +161,7 @@ function Intro() {
           <p className="font-mono text-sm uppercase tracking-[0.18em] text-primary mb-4">Who We Are</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter mb-7">Make a difference with us!</h2>
           <p className="text-muted leading-relaxed text-lg sm:text-xl mb-10">
-            Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation — servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
+            Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation: servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
           </p>
           <div className="space-y-7">
             {points.map((p) => (
@@ -183,9 +183,9 @@ function Intro() {
 }
 
 const TESTIMONIALS = [
-  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
-  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
-  { quote: 'Awaiting client testimonial — swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
 ]
 
 function Testimonials() {

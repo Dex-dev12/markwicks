@@ -34,7 +34,7 @@ export default function Contact() {
       <PageBanner
         eyebrow="Get In Touch"
         title="Tell us about the sites you need looked after."
-        subtitle="Whether it's a one-off job or a standing multi-site contract, the first step is the same — an email or the form below."
+        subtitle="Whether it's a one-off job or a standing multi-site contract, the first step is the same: an email or the form below."
         img="/images/contact-header.jpg"
       />
 
@@ -54,7 +54,7 @@ export default function Contact() {
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Phone className="h-4 w-4 text-primary" /></span>
                   <div>
                     <p className="text-xs text-muted">Phone</p>
-                    <a href="tel:0485003060" className="font-medium lift-on-hover">0485 003 060</a>
+                    <a href="tel:0432165468" className="font-medium lift-on-hover">0432 165 468</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-              <p className="text-xs text-muted mt-8 leading-relaxed">Your details are used only to prepare your quote and schedule the job — never sold or shared.</p>
+              <p className="text-xs text-muted mt-8 leading-relaxed">Your details are used only to prepare your quote and schedule the job, never sold or shared.</p>
             </div>
 
             <div className="contact-form lg:col-span-8 bg-surface rounded-3xl p-6 sm:p-8 overflow-hidden relative" style={{ minHeight: '400px' }}>

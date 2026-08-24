@@ -2,20 +2,38 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { Tractor, CheckCircle2 } from 'lucide-react'
 
-const TRUSTED_BY = [
-  { name: 'TAFE NSW', logo: '/logos/tafe-nsw.png', placeholder: false },
-  { name: '[Council Name]', placeholder: true },
-  { name: '[Strata Body]', placeholder: true },
-  { name: '[Property Group]', placeholder: true },
-  { name: '[School / Campus]', placeholder: true },
+export const TRUSTED_BY = [
+  { name: 'TAFE NSW', logo: '/logos/tafe-nsw.png', scale: 0.78 },
+  { name: 'Catholic Healthcare', logo: '/logos/catholic-healthcare.png' },
+  { name: 'Dawsons Bathurst', logo: '/logos/dawsons-bathurst.png', scale: 1.3 },
+  { name: 'Kelso Electrical', logo: '/logos/kelso-electrical.png' },
+  { name: 'Bathurst Private Hospital', logo: '/logos/bathurst-private-hospital.png' },
+  { name: 'The Distributors Bathurst', logo: '/logos/the-distributors-bathurst.png' },
+  { name: 'Accumen', logo: '/logos/accumen.png' },
+  { name: 'McDowells', logo: '/logos/mcdowells.png' },
+  { name: 'Bathurst Quarries', logo: '/logos/bathurst-quarries.png' },
+  { name: 'Omega Logistics', logo: '/logos/omega-logistics.png', scale: 1.3 },
+  { name: 'Regional Strata NSW', logo: '/logos/regional-strata-nsw.png' },
+  { name: 'Mutton Falls', logo: '/logos/mutton-falls.png', scale: 1.7 },
+  { name: 'IntRec', logo: '/logos/intrec.png' },
+  { name: "O'Connell Hotel", logo: '/logos/oconnell-hotel.png' },
+  { name: "O'Connell Public School", logo: '/logos/oconnell-public-school.png' },
+  { name: 'Kirana Property', logo: '/logos/kirana-property.png' },
+  { name: 'Catholic Diocese of Bathurst', logo: '/logos/catholic-diocese-bathurst.png', scale: 1.25 },
+  { name: 'Kelso Public School', logo: '/logos/kelso-public-school.png' },
+  { name: 'KKCS', logo: '/logos/kkcs.png', scale: 1.3 },
 ]
+
+const TRUSTED_BY_BASE_REM = 2.5
 
 export function TrustedByStrip() {
   const track = [...TRUSTED_BY, ...TRUSTED_BY]
   return (
-    <section className="border-y border-divider bg-surface py-6 overflow-hidden">
-      <div className="mb-3 px-6 sm:px-10 lg:px-16">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted text-center">Trusted By</p>
+    <section className="border-y border-divider bg-surface py-8 overflow-hidden">
+      <div className="mb-4 px-6 sm:px-10 lg:px-16 flex justify-center">
+        <p className="relative inline-block pb-1.5 font-display text-base sm:text-lg font-bold font-heavy uppercase tracking-[0.12em] text-ink text-center after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-full after:bg-primary">
+          Trusted By
+        </p>
       </div>
       <div className="marquee-mask">
         <div className="marquee-track flex items-center gap-16 w-max">
@@ -27,7 +45,8 @@ export function TrustedByStrip() {
                 alt={c.name}
                 loading="lazy"
                 decoding="async"
-                className="h-6 sm:h-7 w-auto object-contain shrink-0 opacity-70"
+                style={{ height: `${TRUSTED_BY_BASE_REM * (c.scale || 1)}rem` }}
+                className="w-auto object-contain shrink-0 opacity-80"
               />
             ) : (
               <span

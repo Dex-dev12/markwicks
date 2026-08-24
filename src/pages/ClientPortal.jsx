@@ -7,7 +7,7 @@ export default function ClientPortal() {
       <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
         <UserRound className="h-6 w-6 text-primary" />
       </div>
-      <h1 className="font-display text-4xl font-bold tracking-tight mb-4">Client Portal — Coming Soon</h1>
+      <h1 className="font-display text-4xl font-bold tracking-tight mb-4">Client Portal: Coming Soon</h1>
       <p className="text-muted leading-relaxed max-w-xl mx-auto mb-8">
         Our client portal for scheduling, reports and invoices is on the way. In the meantime, get in touch directly and we'll take care of it.
       </p>

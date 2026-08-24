@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight, ShieldCheck, BadgeCheck, Award, Truck } from 'lucide-react'
-import { PageBanner } from '../components/shared.jsx'
+import { PageBanner, TRUSTED_BY } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 
 const STORY_PHOTOS = [
@@ -34,12 +34,12 @@ const WHY_HIGHLIGHTS = [
   {
     icon: Award,
     title: '15+ Years Local',
-    text: 'Two generations of the Markwick family working the Bathurst region — not a fly-in contractor.',
+    text: 'Two generations of the Markwick family working the Bathurst region, not a fly-in contractor.',
   },
   {
     icon: Truck,
     title: 'Commercial Equipment',
-    text: 'Our own mowers, tractors, slashers, excavators and trucks — no waiting on hired machinery.',
+    text: 'Our own mowers, tractors, slashers, excavators and trucks, no waiting on hired machinery.',
   },
 ]
 
@@ -67,15 +67,12 @@ function WhyChooseUsSection() {
     <section ref={ref} className="py-24 sm:py-32 bg-surface border-y border-divider">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="why-heading max-w-2xl mb-14">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary mb-3">Why Choose Us</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-4">
-            Built for councils, schools and commercial contracts.
-          </h2>
+          <h2 className="relative inline-block w-fit font-display text-3xl sm:text-4xl font-bold tracking-tighter pb-2 mb-6 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-primary">Why Choose Us</h2>
           <p className="text-muted leading-relaxed mb-4">
             Commercial and government buyers need proof, not promises, before they hand over a site. Here's what we bring to the table before a contract is even signed.
           </p>
           <p className="text-muted leading-relaxed">
-            Every site runs under a proper WHS management system with a registered ABN behind it, so councils, schools and property managers are dealing with a compliant, accountable business — not a casual operator. It's the same crew and the same standard whether it's a single lawn or a standing multi-site contract.
+            Every site runs under a proper WHS management system with a registered ABN behind it, so councils, schools and property managers are dealing with a compliant, accountable business, not a casual operator. It's the same crew and the same standard whether it's a single lawn or a standing multi-site contract.
           </p>
         </div>
 
@@ -102,6 +99,54 @@ function WhyChooseUsSection() {
         <p className="text-center text-sm text-muted max-w-2xl mx-auto">
           Trusted by schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders across the Central West.
         </p>
+      </div>
+    </section>
+  )
+}
+
+function OurClientsSection() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.clients-heading', {
+        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
+        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+      })
+      gsap.from('.client-card', {
+        scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
+        y: 24, opacity: 0, duration: 0.6, stagger: 0.04, ease: 'power3.out',
+      })
+    }, ref)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section ref={ref} className="py-24 sm:py-32 border-b border-divider">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="clients-heading max-w-2xl mb-14">
+          <h2 className="relative inline-block w-fit font-display text-3xl sm:text-4xl font-bold tracking-tighter pb-2 mb-6 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-primary">Our Clients</h2>
+          <p className="text-muted leading-relaxed">
+            View a full list of our clients and who we have worked with across different industries. Strata bodies, retirement communities, electrical contractors, private hospitals: we've worked across a huge range of industries, and your business could be next.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          {TRUSTED_BY.map((c) => (
+            <div
+              key={c.name}
+              className="client-card rounded-2xl border border-divider bg-surface flex flex-col items-center justify-center gap-4 py-8 px-4"
+            >
+              <img
+                src={c.logo}
+                alt={c.name}
+                loading="lazy"
+                decoding="async"
+                className="h-11 w-auto max-w-[80%] object-contain"
+              />
+              <p className="text-xs sm:text-sm font-medium text-ink text-center leading-snug">{c.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -135,7 +180,7 @@ function OurStory() {
             What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
           </p>
           <p className="text-muted leading-relaxed">
-            While the business continues to grow, our focus remains the same — quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
+            While the business continues to grow, our focus remains the same: quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -213,13 +258,15 @@ export default function About() {
       <PageBanner
         eyebrow="About Us"
         title="A dedicated crew, built around commercial reliability."
-        subtitle="A family-owned and operated business built across two generations of the Markwick family — treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
+        subtitle="A family-owned and operated business built across two generations of the Markwick family, treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
         img="/images/about-header.jpg"
       />
 
       <OurStory />
 
       <WhyChooseUsSection />
+
+      <OurClientsSection />
 
       <AboutPortfolioPreview />
     </>

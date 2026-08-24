@@ -21,7 +21,7 @@ const EQUIPMENT = [
   },
   {
     title: 'Bobcat Excavators',
-    lead: 'Bobcat E50 Excavator and Bobcat E20 Excavator — the E20 ideal for smaller jobs and tighter-access areas.',
+    lead: 'Bobcat E50 Excavator and Bobcat E20 Excavator, the E20 ideal for smaller jobs and tighter-access areas.',
     bulletsLabel: 'Attachments include:',
     bullets: [
       'Flail mowers',
@@ -152,7 +152,7 @@ function EquipmentCTA() {
           Our own equipment, on your site when you need it.
         </h2>
         <p className="text-white/70 max-w-xl mx-auto mb-8 leading-relaxed">
-          No waiting on hired machinery — the fleet above is ours, maintained and ready, so jobs stay on schedule.
+          No waiting on hired machinery. The fleet above is ours, maintained and ready, so jobs stay on schedule.
         </p>
         <Link to="/contact" className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold shadow-lg shadow-primary/30">
           Get in Touch <ArrowUpRight className="h-4 w-4" />
@@ -168,7 +168,7 @@ export default function Equipment() {
       <PageBanner
         eyebrow="Our Fleet"
         title="The equipment behind every job we take on."
-        subtitle="From skid steers and excavators to commercial mowers and spray rigs — our own fleet, maintained and ready, so we're never waiting on hired machinery."
+        subtitle="From skid steers and excavators to commercial mowers and spray rigs, our own fleet, maintained and ready, so we're never waiting on hired machinery."
         img="/images/bobcat-action.jpg"
       />
 
