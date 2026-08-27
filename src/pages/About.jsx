@@ -34,12 +34,12 @@ const WHY_HIGHLIGHTS = [
   {
     icon: Award,
     title: '15+ Years Local',
-    text: 'Two generations of the Markwick family working the Bathurst region, not a fly-in contractor.',
+    text: 'Two generations of the Markwick family working the Bathurst region',
   },
   {
     icon: Truck,
     title: 'Commercial Equipment',
-    text: 'Our own mowers, tractors, slashers, excavators and trucks, no waiting on hired machinery.',
+    text: 'Our owned and operated mowers, tractors, slashers, excavators and trucks',
   },
 ]
 
@@ -72,7 +72,7 @@ function WhyChooseUsSection() {
             Commercial and government buyers need proof, not promises, before they hand over a site. Here's what we bring to the table before a contract is even signed.
           </p>
           <p className="text-muted leading-relaxed">
-            Every site runs under a proper WHS management system with a registered ABN behind it, so councils, schools and property managers are dealing with a compliant, accountable business, not a casual operator. It's the same crew and the same standard whether it's a single lawn or a standing multi-site contract.
+            Every site runs under a strict WHS management system with complete insurance. So our clients deal with a compliant, accountable business, not a casual operator. It's the same crew and the same standard whether it's a single lawn or a standing multi site contract.
           </p>
         </div>
 
@@ -126,7 +126,7 @@ function OurClientsSection() {
         <div className="clients-heading max-w-2xl mb-14">
           <h2 className="relative inline-block w-fit font-display text-3xl sm:text-4xl font-bold tracking-tighter pb-2 mb-6 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-primary">Our Clients</h2>
           <p className="text-muted leading-relaxed">
-            View a full list of our clients and who we have worked with across different industries. Strata bodies, retirement communities, electrical contractors, private hospitals: we've worked across a huge range of industries, and your business could be next.
+            View a full list of our clients and who we have worked with. We have worked with clients across a huge range of industries whether it's strata bodies, retirement communities, private hospitals. Your business could be next.
           </p>
         </div>
 
@@ -257,8 +257,8 @@ export default function About() {
     <>
       <PageBanner
         eyebrow="About Us"
-        title="A dedicated crew, built around commercial reliability."
-        subtitle="A family-owned and operated business built across two generations of the Markwick family, treating every site, from a single lawn to a multi-site commercial contract, with the same standard."
+        title="A dedicated hardworking crew"
+        subtitle="A family owned and operated business built across two generations of the Markwick family, treating every site, from a single lawn to a multi site commercial contract, with the same standard."
         img="/images/about-header.jpg"
       />
 

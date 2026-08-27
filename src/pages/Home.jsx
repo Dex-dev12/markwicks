@@ -88,8 +88,8 @@ function Hero() {
           Bathurst, NSW &middot; Commercial &amp; Residential Grounds Care
         </p>
         <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[1.12] max-w-5xl">
-          <span className="hero-line-1 block">Grounds Maintenance and Property Solutions</span>
-          <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential &amp; Rural Clients.</span>
+          <span className="hero-line-1 block">Grounds Maintenance and Landscaping</span>
+          <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential & Rural Clients.</span>
         </h1>
         <p className="hero-meta mt-7 max-w-lg text-white/70 text-base sm:text-lg leading-relaxed">
           Licensed, scheduled grounds maintenance for councils, schools, strata and commercial sites across the Bathurst region.
@@ -161,7 +161,7 @@ function Intro() {
           <p className="font-mono text-sm uppercase tracking-[0.18em] text-primary mb-4">Who We Are</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter mb-7">Make a difference with us!</h2>
           <p className="text-muted leading-relaxed text-lg sm:text-xl mb-10">
-            Our work spans residential and commercial grounds maintenance, landscaping and property makeovers, rural and acreage services, weed management, and earthworks and excavation: servicing schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders alike.
+            We handle the full spectrum of landscaping and grounds work from commercial maintenance and property makeovers to rural and acreage services, weed management, and earthworks and excavation. We service schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, and rural landholders across the Central West.
           </p>
           <div className="space-y-7">
             {points.map((p) => (
@@ -183,7 +183,10 @@ function Intro() {
 }
 
 const TESTIMONIALS = [
-  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
+  {
+    quote: "We have used Markwicks for a number of years as our go-to team for all our landscaping and garden maintenance needs. Their work has ranged from designing and installing garden features and retaining walls to the regular upkeep of our large country garden. We also rely on them to maintain our commercial premises. The boys are consistently reliable, trustworthy and hardworking. Their pricing is fair, and the work is always completed to a high standard. We are very happy to highly recommend Markwicks.",
+    name: 'Mary-Rose Townsend',
+  },
   { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
   { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
 ]
@@ -224,9 +227,9 @@ function Testimonials() {
                   Example
                 </span>
               )}
-              <p className="font-serif italic text-lg text-ink leading-relaxed mb-5">&ldquo;{t.quote}&rdquo;</p>
-              <p className="text-sm font-semibold text-ink">{t.name}</p>
-              <p className="text-xs text-muted">{t.role}</p>
+              {t.name && <p className="text-sm font-semibold text-ink mb-1">{t.name}</p>}
+              {t.role && <p className="text-xs text-muted mb-4">{t.role}</p>}
+              <p className="font-serif italic text-lg text-ink leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
             </div>
           ))}
         </div>

@@ -46,7 +46,7 @@ export default function Portfolio() {
       <PageBanner
         eyebrow="Portfolio"
         title="Work across the Bathurst region."
-        subtitle="Commercial grounds contracts, excavation and residential grounds care: real work across the Bathurst region."
+        subtitle="Commercial grounds contracts, excavation and residential grounds care. Take a look at what we have done across the Bathurst region."
         img="/images/portfolio-header.jpg"
       />
 

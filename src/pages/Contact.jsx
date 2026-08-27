@@ -34,7 +34,7 @@ export default function Contact() {
       <PageBanner
         eyebrow="Get In Touch"
         title="Tell us about the sites you need looked after."
-        subtitle="Whether it's a one-off job or a standing multi-site contract, the first step is the same: an email or the form below."
+        subtitle="Whether it's a one off job or a standing multi site contract, the first step is the same. An email or the form below."
         img="/images/contact-header.jpg"
       />
 

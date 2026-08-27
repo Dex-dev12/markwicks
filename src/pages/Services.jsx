@@ -24,7 +24,7 @@ export default function Services() {
       <PageBanner
         eyebrow="What We Do"
         title="Our Services"
-        subtitle="We provide residential services, commercial grounds maintenance, landscaping, rural & acreage services, weed management, and earthworks & excavation across Bathurst and the Central West."
+        subtitle="We provide a full spectrum of landscaping and grounds keeping services. Ranging from residential services, to commercial grounds maintenance, rural & acreage services, weed management, and earthworks & excavation across Bathurst and the Central West."
         img="/images/services-header.jpg"
       />
       <section ref={ref}>

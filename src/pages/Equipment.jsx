@@ -167,7 +167,7 @@ export default function Equipment() {
     <>
       <PageBanner
         eyebrow="Our Fleet"
-        title="The equipment behind every job we take on."
+        title="The equipment behind every job we take on"
         subtitle="From skid steers and excavators to commercial mowers and spray rigs, our own fleet, maintained and ready, so we're never waiting on hired machinery."
         img="/images/bobcat-action.jpg"
       />
