@@ -126,7 +126,7 @@ function OurClientsSection() {
         <div className="clients-heading max-w-2xl mb-14">
           <h2 className="relative inline-block w-fit font-display text-3xl sm:text-4xl font-bold tracking-tighter pb-2 mb-6 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-primary">Our Clients</h2>
           <p className="text-muted leading-relaxed">
-            View a full list of our clients and who we have worked with. We have worked with clients across a huge range of industries whether it's strata bodies, retirement communities, private hospitals. Your business could be next.
+            View a full list of our clients and who we have worked with. Whether it's strata bodies, retirement communities, private hospitals we have worked with clients across a huge range of industries. Your business could be next.
           </p>
         </div>
 
