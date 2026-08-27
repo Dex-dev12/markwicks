@@ -61,6 +61,9 @@
   .marquee-track {
     animation: marquee-scroll 28s linear infinite;
   }
+}
+
+@media (hover: hover) and (pointer: fine) {
   .marquee-track:hover {
     animation-play-state: paused;
   }
