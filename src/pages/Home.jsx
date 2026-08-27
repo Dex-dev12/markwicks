@@ -88,7 +88,7 @@ function Hero() {
           Bathurst, NSW &middot; Commercial &amp; Residential Grounds Care
         </p>
         <h1 className="font-display font-heavy text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tighter leading-[1.12] max-w-5xl">
-          <span className="hero-line-1 block">Grounds Maintenance and Landscaping</span>
+          <span className="hero-line-1 block">Landscaping and Grounds Maintenance</span>
           <span className="hero-line-2 block font-serif italic font-medium">for Commercial, Residential & Rural Clients.</span>
         </h1>
         <p className="hero-meta mt-7 max-w-lg text-white/70 text-base sm:text-lg leading-relaxed">
