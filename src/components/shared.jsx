@@ -27,9 +27,58 @@ export const TRUSTED_BY = [
 
 const TRUSTED_BY_BASE_REM = 2.5
 
+function AutoScrollTicker({ logos }) {
+  const scrollerRef = useRef(null)
+  const track = [...logos, ...logos]
+
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
+    let raf
+    let pos = 0 // float accumulator — el.scrollLeft rounds to whole pixels,
+                // so reading it back and adding a sub-pixel speed each frame
+                // rounds the increment away and the scroll never advances
+    const speed = window.innerWidth < 640 ? 1.6 : 2.0 // px per frame
+
+    const step = () => {
+      // Recomputed every frame, so it can never drift out of sync with the
+      // actual rendered width (e.g. once lazy-loaded logo images settle) —
+      // that drift is what made the old CSS keyframe version visibly jump
+      // or reset after a loop or two.
+      const halfWidth = el.scrollWidth / 2
+      pos += speed
+      if (pos >= halfWidth) pos -= halfWidth
+      el.scrollLeft = pos
+      raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+
+    return () => {
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  return (
+    <div ref={scrollerRef} className="overflow-x-auto scrollbar-hide marquee-mask">
+      <div className="flex items-center gap-10 sm:gap-16 px-8 sm:px-0 w-max">
+        {track.map((c, i) => (
+          <img
+            key={`${c.name}-${i}`}
+            src={c.logo}
+            alt={c.name}
+            loading="lazy"
+            decoding="async"
+            style={{ height: `${TRUSTED_BY_BASE_REM * (c.scale || 1)}rem` }}
+            className="w-auto object-contain shrink-0 opacity-80"
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function TrustedByStrip() {
   const homepageLogos = TRUSTED_BY.filter((c) => !c.aboutOnly)
-  const track = [...homepageLogos, ...homepageLogos]
   return (
     <section className="border-y border-divider bg-surface py-8 overflow-hidden">
       <div className="mb-4 px-6 sm:px-10 lg:px-16 flex justify-center">
@@ -37,30 +86,7 @@ export function TrustedByStrip() {
           Trusted By
         </p>
       </div>
-      <div className="marquee-mask">
-        <div className="marquee-track flex items-center gap-16 w-max">
-          {track.map((c, i) =>
-            c.logo ? (
-              <img
-                key={`${c.name}-${i}`}
-                src={c.logo}
-                alt={c.name}
-                loading="lazy"
-                decoding="async"
-                style={{ height: `${TRUSTED_BY_BASE_REM * (c.scale || 1)}rem` }}
-                className="w-auto object-contain shrink-0 opacity-80"
-              />
-            ) : (
-              <span
-                key={`${c.name}-${i}`}
-                className={`font-display text-xl sm:text-2xl font-bold tracking-tight whitespace-nowrap ${c.placeholder ? 'text-muted/40' : 'text-ink/70'}`}
-              >
-                {c.name}
-              </span>
-            )
-          )}
-        </div>
-      </div>
+      <AutoScrollTicker logos={homepageLogos} />
     </section>
   )
 }
