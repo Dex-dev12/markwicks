@@ -58,13 +58,20 @@ export default function App() {
       </main>
       <Footer />
       {prewarm && location.pathname !== '/contact' && (
-        <iframe
-          src="https://links.versflows.com/widget/form/IJZrHCNaYa7AJc0wWtoH?notrack=true"
-          title=""
+        // GHL's form_embed.js stays loaded after a visit to /contact and resizes any
+        // iframe pointing at the form, inline styles included. The wrapper keeps that
+        // out of the document flow and clips it, whatever the script does to the iframe.
+        <div
           aria-hidden="true"
-          tabIndex={-1}
-          style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, border: 0, pointerEvents: 'none' }}
-        />
+          style={{ position: 'fixed', top: 0, left: 0, width: 0, height: 0, overflow: 'hidden', pointerEvents: 'none' }}
+        >
+          <iframe
+            src="https://links.versflows.com/widget/form/IJZrHCNaYa7AJc0wWtoH?notrack=true"
+            title=""
+            tabIndex={-1}
+            style={{ width: '800px', height: '600px', border: 0 }}
+          />
+        </div>
       )}
     </div>
   )
