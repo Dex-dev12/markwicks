@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -9,6 +9,18 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const location = useLocation()
+  const [prewarm, setPrewarm] = useState(false)
+
+  useEffect(() => {
+    if (prewarm) return
+    const start = () => setPrewarm(true)
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(start, { timeout: 4000 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const id = setTimeout(start, 2500)
+    return () => clearTimeout(id)
+  }, [prewarm])
 
   useEffect(() => {
     let canonical = document.querySelector('link[rel="canonical"]')
@@ -45,6 +57,15 @@ export default function App() {
         <Outlet />
       </main>
       <Footer />
+      {prewarm && location.pathname !== '/contact' && (
+        <iframe
+          src="https://links.versflows.com/widget/form/IJZrHCNaYa7AJc0wWtoH?notrack=true"
+          title=""
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{ position: 'absolute', left: '-9999px', top: 0, width: '1px', height: '1px', opacity: 0, border: 0, pointerEvents: 'none' }}
+        />
+      )}
     </div>
   )
 }
