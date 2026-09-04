@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowRight, ShieldCheck, Users2, MapPin } from 'lucide-re
 import { SERVICES } from '../data/services.js'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import { CountUp, TrustedByStrip } from '../components/shared.jsx'
+import Img from '../components/Img.jsx'
 
 const HERO_SLIDES = [
   {
@@ -65,10 +66,11 @@ function Hero() {
     <section ref={ref} className="relative min-h-[100dvh] overflow-hidden bg-deep">
       <div ref={bgRef} className="absolute inset-x-0 -top-[15%] -bottom-[15%]">
         {HERO_SLIDES.slice(0, loadedCount).map((slide, i) => (
-          <img
+          <Img
             key={i}
             src={slide.src}
             alt={slide.alt}
+            sizes="100vw"
             // The first slide is the LCP element. Without these the browser
             // cannot discover it until the JS bundle has parsed and mounted.
             fetchPriority={i === 0 ? 'high' : 'low'}
