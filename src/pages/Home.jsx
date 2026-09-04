@@ -69,6 +69,11 @@ function Hero() {
             key={i}
             src={slide.src}
             alt={slide.alt}
+            // The first slide is the LCP element. Without these the browser
+            // cannot discover it until the JS bundle has parsed and mounted.
+            fetchPriority={i === 0 ? 'high' : 'low'}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding={i === 0 ? 'sync' : 'async'}
             className="absolute inset-0 h-full w-full object-cover brightness-[0.5] transition-opacity"
             style={{
               opacity: activeSlide === i ? 1 : 0,
@@ -187,8 +192,6 @@ const TESTIMONIALS = [
     quote: "We have used Markwicks for a number of years as our go-to team for all our landscaping and garden maintenance needs. Their work has ranged from designing and installing garden features and retaining walls to the regular upkeep of our large country garden. We also rely on them to maintain our commercial premises. The boys are consistently reliable, trustworthy and hardworking. Their pricing is fair, and the work is always completed to a high standard. We are very happy to highly recommend Markwicks.",
     name: 'Mary-Rose Townsend',
   },
-  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
-  { quote: 'Awaiting client testimonial. Swap in a real quote once confirmed.', name: '[Client name]', role: '[Organisation]', placeholder: true },
 ]
 
 function Testimonials() {
@@ -219,14 +222,17 @@ function Testimonials() {
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3 text-center">What Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-14">Trusted to turn up and get it done.</h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div
+          className={
+            TESTIMONIALS.length === 1
+              ? 'max-w-3xl mx-auto'
+              : TESTIMONIALS.length === 2
+                ? 'grid grid-cols-1 lg:grid-cols-2 gap-6'
+                : 'grid grid-cols-1 lg:grid-cols-3 gap-6'
+          }
+        >
           {TESTIMONIALS.map((t, i) => (
             <div key={i} className="testimonial-card rounded-3xl bg-surface border border-divider p-6 sm:p-8">
-              {t.placeholder && (
-                <span className="inline-block bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-4">
-                  Example
-                </span>
-              )}
               {t.name && <p className="text-sm font-semibold text-ink mb-1">{t.name}</p>}
               {t.role && <p className="text-xs text-muted mb-4">{t.role}</p>}
               <p className="font-serif italic text-lg text-ink leading-relaxed">&ldquo;{t.quote}&rdquo;</p>

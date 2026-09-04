@@ -50,6 +50,19 @@ function headFor({ title, description, canonical, ogImage }) {
   ].join('\n    ')
 }
 
+// JSON-LD goes in the served HTML rather than being injected by React, so it
+// does not depend on Google's rendering budget. </script> is escaped because a
+// literal one inside a script block would terminate it early.
+function jsonLd(blocks) {
+  if (!blocks || !blocks.length) return ''
+  return blocks
+    .map(
+      (b) =>
+        `<script type="application/ld+json">${JSON.stringify(b).replace(/<\//g, '<\\/')}</script>`
+    )
+    .join('\n    ')
+}
+
 async function main() {
   const template = await readFile(path.join(DIST, 'index.html'), 'utf-8')
   const { render } = await import(SSR_ENTRY)
@@ -57,7 +70,7 @@ async function main() {
   let failures = 0
   for (const route of ROUTES) {
     try {
-      const { html, seo } = render(route)
+      const { html, seo, schema } = render(route)
 
       if (html.trim().length < 500) {
         console.error(`  x ${route} produced only ${html.trim().length} chars - check the route exists`)
@@ -69,7 +82,7 @@ async function main() {
         // Drop the build-time title/description; the per-route ones replace them.
         .replace(/<title>[\s\S]*?<\/title>\s*/i, '')
         .replace(/<meta\s+name="description"[^>]*>\s*/i, '')
-        .replace('</head>', `  ${headFor(seo)}\n  </head>`)
+        .replace('</head>', `  ${headFor(seo)}\n  ${jsonLd(schema)}\n  </head>`)
         .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
 
       const outDir = route === '/' ? DIST : path.join(DIST, route)

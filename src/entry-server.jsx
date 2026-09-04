@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import AppRoutes from './routes.jsx'
 import { getSeo } from './data/seo.js'
+import { schemaFor } from './data/schema.js'
 
 export function render(url) {
   const html = renderToString(
@@ -11,5 +12,5 @@ export function render(url) {
       <AppRoutes />
     </StaticRouter>
   )
-  return { html, seo: getSeo(url) }
+  return { html, seo: getSeo(url), schema: schemaFor(url) }
 }
