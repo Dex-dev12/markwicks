@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
+import { getSeo } from './data/seo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,13 +24,39 @@ export default function App() {
   }, [prewarm])
 
   useEffect(() => {
-    let canonical = document.querySelector('link[rel="canonical"]')
-    if (!canonical) {
-      canonical = document.createElement('link')
-      canonical.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonical)
+    const { title, description, canonical, ogImage } = getSeo(location.pathname)
+
+    document.title = title
+
+    const setMeta = (selector, attr, value) => {
+      let el = document.head.querySelector(selector)
+      if (!el) {
+        el = document.createElement('meta')
+        const [key, val] = attr
+        el.setAttribute(key, val)
+        document.head.appendChild(el)
+      }
+      el.setAttribute('content', value)
     }
-    canonical.setAttribute('href', `https://markwicksservices.com.au${location.pathname}`)
+
+    setMeta('meta[name="description"]', ['name', 'description'], description)
+    setMeta('meta[property="og:title"]', ['property', 'og:title'], title)
+    setMeta('meta[property="og:description"]', ['property', 'og:description'], description)
+    setMeta('meta[property="og:url"]', ['property', 'og:url'], canonical)
+    setMeta('meta[property="og:type"]', ['property', 'og:type'], 'website')
+    setMeta('meta[property="og:image"]', ['property', 'og:image'], ogImage)
+    setMeta('meta[name="twitter:card"]', ['name', 'twitter:card'], 'summary_large_image')
+    setMeta('meta[name="twitter:title"]', ['name', 'twitter:title'], title)
+    setMeta('meta[name="twitter:description"]', ['name', 'twitter:description'], description)
+    setMeta('meta[name="twitter:image"]', ['name', 'twitter:image'], ogImage)
+
+    let link = document.head.querySelector('link[rel="canonical"]')
+    if (!link) {
+      link = document.createElement('link')
+      link.setAttribute('rel', 'canonical')
+      document.head.appendChild(link)
+    }
+    link.setAttribute('href', canonical)
   }, [location.pathname])
 
   useEffect(() => {
