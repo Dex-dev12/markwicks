@@ -6,7 +6,11 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { getSeo } from './data/seo.js'
 
-gsap.registerPlugin(ScrollTrigger)
+// ScrollTrigger touches window on registration, which does not exist during
+// the Node render pass.
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default function App() {
   const location = useLocation()
