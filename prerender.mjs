@@ -11,9 +11,32 @@ import { createServer } from 'node:http'
 import { readFile, writeFile, mkdir, stat } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import puppeteer from 'puppeteer'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+// Vercel's build image lacks the shared libraries a stock Chromium needs
+// (libnspr4.so and friends), and there is no root access to install them.
+// @sparticuz/chromium ships a build with those bundled. Locally, plain
+// puppeteer with its own download is simpler and faster.
+async function launchBrowser() {
+  const onVercel = Boolean(process.env.VERCEL || process.env.CI)
+  if (onVercel) {
+    const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
+      import('@sparticuz/chromium'),
+      import('puppeteer-core'),
+    ])
+    return puppeteerCore.launch({
+      args: [...chromium.args, '--no-sandbox', '--disable-dev-shm-usage'],
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    })
+  }
+  const { default: puppeteer } = await import('puppeteer')
+  return puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-dev-shm-usage'],
+  })
+}
 const DIST = path.join(__dirname, 'dist')
 const PORT = Number(process.env.PRERENDER_PORT || 4173)
 
@@ -66,10 +89,7 @@ async function startServer() {
 
 async function main() {
   const server = await startServer()
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-dev-shm-usage'],
-  })
+  const browser = await launchBrowser()
 
   let failures = 0
   try {
