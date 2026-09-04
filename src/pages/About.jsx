@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight, ShieldCheck, BadgeCheck, Award, Truck } from 'lucide-react'
 import { PageBanner, TRUSTED_BY } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
+import Img from '../components/Img.jsx'
 
 const STORY_PHOTOS = [
   { src: '/images/story-fleet.jpg', alt: 'Markwicks Services truck, ute and trailer fleet parked together on a suburban street' },
@@ -79,7 +80,7 @@ function WhyChooseUsSection() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
           {WHY_PHOTOS.map((p) => (
             <div key={p.src} className="why-photo rounded-2xl overflow-hidden border border-divider aspect-square">
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+              <Img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
           ))}
         </div>
@@ -136,13 +137,11 @@ function OurClientsSection() {
               key={c.name}
               className="client-card rounded-2xl border border-divider bg-surface flex flex-col items-center justify-center gap-4 py-8 px-4"
             >
-              <img
-                src={c.logo}
+              <Img src={c.logo}
                 alt={c.name}
                 loading="lazy"
                 decoding="async"
-                className="h-11 w-auto max-w-[80%] object-contain"
-              />
+                className="h-11 w-auto max-w-[80%] object-contain" sizes="(min-width: 1024px) 50vw, 100vw" />
               <p className="text-xs sm:text-sm font-medium text-ink text-center leading-snug">{c.name}</p>
             </div>
           ))}
@@ -186,7 +185,7 @@ function OurStory() {
         <div className="grid grid-cols-2 gap-4">
           {STORY_PHOTOS.map((p) => (
             <div key={p.src} className="story-photo rounded-2xl overflow-hidden border border-divider aspect-square">
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+              <Img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
           ))}
         </div>
@@ -233,7 +232,7 @@ function AboutPortfolioPreview() {
           {featured.map((c) => (
             <Link key={c.slug} to="/portfolio" className="about-work-tile rounded-3xl overflow-hidden border border-divider bg-surface group">
               <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width: 1024px) 50vw, 100vw" />
               </div>
               <div className="p-5">
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>

@@ -155,13 +155,13 @@ function Intro() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div className="intro-photos order-2 lg:order-1 grid grid-cols-2 gap-4">
           <div className="col-span-2 rounded-3xl overflow-hidden border border-divider aspect-[16/10]">
-            <img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <Img src="/images/estate-garden-bed.jpg" alt="Completed front yard landscaping and garden bed makeover" loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
           <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
-            <img src="/images/parking-lot-mulch.jpg" alt="Completed commercial car park mulching and garden bed work" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <Img src="/images/parking-lot-mulch.jpg" alt="Completed commercial car park mulching and garden bed work" loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
           <div className="rounded-3xl overflow-hidden border border-divider aspect-square">
-            <img src="/images/mulch-bed-mountain.jpg" alt="Garden bed landscaping on a rural property with mountain views" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <Img src="/images/mulch-bed-mountain.jpg" alt="Garden bed landscaping on a rural property with mountain views" loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
         </div>
         <div className="intro-text order-1 lg:order-2">
@@ -288,13 +288,11 @@ function ServicesPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
           {SERVICES.map((s) => (
             <Link key={s.slug} to={`/services/${s.slug}`} className="svc-tile relative overflow-hidden bg-deep p-8 sm:p-10 min-h-[300px] flex flex-col justify-end group">
-              <img
-                src={s.img}
+              <Img src={s.img}
                 alt={s.alt}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-50"
-              />
+                className="absolute inset-0 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-50" sizes="(min-width: 1024px) 50vw, 100vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-deep via-deep/85 to-deep/40" />
               <div className="relative z-10">
                 <div className="h-11 w-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 transition-transform group-hover:scale-110">
@@ -361,7 +359,7 @@ function RecentWork() {
         <div className="grid lg:grid-cols-5 gap-6">
           <Link to="/portfolio" className="work-featured group relative overflow-hidden rounded-3xl border border-divider bg-surface lg:col-span-3">
             <div className="relative aspect-[16/11] overflow-hidden bg-background">
-              <img src={featured.img} alt={featured.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <Img src={featured.img} alt={featured.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width: 1024px) 50vw, 100vw" />
             </div>
             <div className="p-6 sm:p-7">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1.5">{featured.category}</p>
@@ -374,7 +372,7 @@ function RecentWork() {
             {rest.map((c) => (
               <Link key={c.slug} to="/portfolio" className="work-list-item group flex items-center gap-4 rounded-2xl border border-divider bg-surface p-3 hover:bg-background transition-colors">
                 <div className="relative h-20 w-24 shrink-0 rounded-xl overflow-hidden bg-background">
-                  {c.img && <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
+                  {c.img && <Img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" sizes="(min-width: 1024px) 50vw, 100vw" />}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1">{c.category}</p>

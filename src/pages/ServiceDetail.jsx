@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { SERVICES, getServiceBySlug } from '../data/services.js'
+import Img from '../components/Img.jsx'
 
 export default function ServiceDetail() {
   const { slug } = useParams()
@@ -65,17 +66,17 @@ export default function ServiceDetail() {
             {service.gallery.length > 1 ? (
               <div className={`grid gap-4 ${service.gallery.length === 3 ? 'grid-cols-2' : 'grid-cols-2'}`}>
                 <div className={`rounded-3xl overflow-hidden border border-divider ${service.gallery.length === 3 ? 'col-span-2' : ''} aspect-[4/3]`}>
-                  <img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                  <Img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
                 </div>
                 {service.gallery.slice(1).map((p) => (
                   <div key={p.src} className="rounded-2xl overflow-hidden border border-divider aspect-square">
-                    <img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                    <Img src={p.src} alt={p.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
                   </div>
                 ))}
               </div>
             ) : (
               <div className="rounded-3xl overflow-hidden border border-divider aspect-[4/3]">
-                <img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                <Img src={service.gallery[0].src} alt={service.gallery[0].alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
               </div>
             )}
           </div>

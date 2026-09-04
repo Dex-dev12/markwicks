@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
+import Img from '../components/Img.jsx'
 
 const EQUIPMENT = [
   {
@@ -125,7 +126,7 @@ function EquipmentRow({ item, index }) {
         </div>
         <div className={`equip-photo ${reverse ? 'lg:order-1' : ''}`}>
           <div className="rounded-3xl overflow-hidden border border-divider aspect-[4/3]">
-            <img src={item.img} alt={item.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <Img src={item.img} alt={item.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
           </div>
         </div>
       </div>

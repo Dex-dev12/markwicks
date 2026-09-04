@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
+import Img from '../components/Img.jsx'
 
 function PortfolioClosingCta() {
   const ref = useRef(null)
@@ -56,7 +57,7 @@ export default function Portfolio() {
             {CASE_STUDIES.map((c) => (
               <div key={c.slug} className="case-tile rounded-3xl overflow-hidden border border-divider bg-surface flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                  {c.img && <img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />}
+                  {c.img && <Img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />}
                   {c.placeholder && (
                     <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
                       Example

@@ -23,6 +23,32 @@ export const SERVICES = [
     text: 'Scheduled grounds maintenance for schools, TAFE NSW, aged care, strata and industrial sites across the Bathurst region.',
     body: "Our core business. We run standing grounds-maintenance contracts across schools, TAFE NSW campuses, aged care facilities, strata complexes, industrial sites and commercial properties, on a fixed recurring schedule, so the site always looks the way it's supposed to without anyone having to chase us.",
     bullets: ['Schools', 'TAFE NSW', 'Aged Care', 'Strata', 'Industrial Sites', 'Commercial Properties', 'Scheduled Maintenance Programs'],
+    intro: "Grounds maintenance on a commercial or institutional site is a scheduling problem as much as a landscaping one. The lawns, garden beds and hard surfaces need to look consistently presentable without anyone on site having to think about it, and the work has to happen around the people using the place: students between classes, residents in aged care, staff and deliveries on an industrial site. That is the part we are set up for.",
+    sections: [
+      {
+        heading: 'How a standing contract works',
+        body: "Most of our commercial work runs on a fixed recurring schedule agreed up front, rather than ad-hoc callouts. We agree the scope and frequency for each site, then the same crew works to that cycle through the year, adjusting for growth rates through spring and summer and tapering back over winter. The point of a standing schedule is that the site never drifts into looking neglected, and nobody at your end has to chase us to book the next visit.",
+      },
+      {
+        heading: 'Working around occupied sites',
+        body: "Schools, TAFE campuses, aged care facilities and hospitals all have periods where noisy equipment is a problem and areas that need to stay clear. We plan visits around those constraints rather than turning up and working through them. On education sites that usually means the bulk of the noisy work happens outside teaching hours or during breaks; on aged care and health sites it means keeping access paths clear and being conscious of residents and visitors moving through.",
+      },
+      {
+        heading: 'What a site typically includes',
+        body: "The exact scope varies, but a standing grounds contract usually covers mowing and edging to a set standard, garden bed maintenance and weeding, mulching on an agreed cycle, hedge and shrub trimming, and keeping car parks, footpaths and entries clear of clippings and debris. Larger sites often add seasonal work such as pruning, turf renovation or mulch top-ups scheduled into the annual cycle rather than quoted each time.",
+      },
+      {
+        heading: 'Who we work with around Bathurst',
+        body: "Our commercial work sits across schools, TAFE NSW campuses, aged care facilities, strata complexes, industrial sites and commercial properties through Bathurst, Kelso and the surrounding Central West. That mix matters: an institutional site is judged by whether it looks cared for every day of the term, not by how it looks the week after a one-off tidy up.",
+      },
+    ],
+    faqs: [
+      { q: 'Do you work to a fixed schedule or on call?', a: 'Standing contracts run to a fixed recurring schedule agreed at the start, with the frequency adjusted across the seasons as growth rates change. Ad-hoc work can be arranged, but the recurring schedule is what keeps a site consistently presentable.' },
+      { q: 'Can you work around school hours and occupied buildings?', a: 'Yes. On education, aged care and health sites we plan the noisy work around teaching hours, quiet periods and access requirements rather than working straight through them.' },
+      { q: 'What areas around Bathurst do you cover?', a: 'Bathurst and Kelso primarily, extending across the Central West including Orange, Lithgow, Oberon, Blayney, Portland and Wallerawang depending on the site and schedule.' },
+      { q: 'Do you handle one-off work as well as contracts?', a: 'Yes, though standing grounds contracts are the core of what we do. One-off projects such as landscaping, mulching or excavation are handled separately and can be scheduled alongside an existing contract.' },
+      { q: 'How do we get a quote for a commercial site?', a: 'Get in touch and we will arrange a site visit to look at the areas involved, the standard you need and how often it should be maintained, then put together a schedule and price against that scope.' },
+    ],
     img: '/images/parking-lot-mulch.jpg',
     alt: 'Completed commercial car park mulching and garden bed work',
     gallery: [
