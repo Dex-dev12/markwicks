@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node prerender.mjs",
+    "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "build:nossg": "vite build"
+    "prerender": "node prerender.mjs",
+    "build:ssg": "vite build && node prerender.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",
