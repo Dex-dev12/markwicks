@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
 import { Tractor, CheckCircle2 } from 'lucide-react'
+import { useGsapEffect } from '../lib/animations.js'
 
 export const TRUSTED_BY = [
   { name: 'TAFE NSW', logo: '/logos/tafe-nsw.png', scale: 0.78 },
@@ -94,14 +94,11 @@ export function TrustedByStrip() {
 export function PageBanner({ eyebrow, title, subtitle, img }) {
   const ref = useRef(null)
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.banner-eyebrow, .banner-title, .banner-subtitle', {
         y: 30, opacity: 0, duration: 1, delay: 0.2, ease: 'power3.out',
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="relative pt-28 pb-12 sm:pt-32 sm:pb-14 overflow-hidden bg-deep">

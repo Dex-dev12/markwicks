@@ -1,23 +1,20 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap } from 'gsap'
 import { ArrowRight } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { SERVICES } from '../data/services.js'
+import { useGsapEffect } from '../lib/animations.js'
 
 export default function Services() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.utils.toArray('.svc-row').forEach((row) => {
         gsap.from(row, {
           scrollTrigger: { trigger: row, start: 'top 80%', once: true },
           y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
         })
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <>

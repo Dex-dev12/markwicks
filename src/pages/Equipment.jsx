@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap } from 'gsap'
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import Img from '../components/Img.jsx'
+import { useGsapEffect } from '../lib/animations.js'
 
 const EQUIPMENT = [
   {
@@ -87,8 +87,7 @@ function EquipmentRow({ item, index }) {
   const ref = useRef(null)
   const reverse = index % 2 === 1
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.equip-text', {
         scrollTrigger: { trigger: ref.current, start: 'top 82%', once: true },
         x: reverse ? 40 : -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -97,9 +96,7 @@ function EquipmentRow({ item, index }) {
         scrollTrigger: { trigger: ref.current, start: 'top 82%', once: true },
         x: reverse ? -40 : 40, opacity: 0, duration: 0.9, delay: 0.1, ease: 'power3.out',
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [reverse])
+  }, [reverse], ref)
 
   const num = String(index + 1).padStart(2, '0')
 
@@ -136,15 +133,12 @@ function EquipmentRow({ item, index }) {
 
 function EquipmentCTA() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.equip-cta-content', {
         scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
         y: 30, opacity: 0, duration: 0.9, ease: 'power3.out',
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="py-24 sm:py-28">

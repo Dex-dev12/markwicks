@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
 import { Mail, Phone, MapPin, Map, Clock } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
+import { useGsapEffect } from '../lib/animations.js'
 
 export default function Contact() {
   const ref = useRef(null)
   const [formLoaded, setFormLoaded] = useState(false)
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.contact-info', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -17,9 +16,7 @@ export default function Contact() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   useEffect(() => {
     if (document.querySelector('script[src="https://links.versflows.com/js/form_embed.js"]')) return

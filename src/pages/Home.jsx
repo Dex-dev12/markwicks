@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap } from 'gsap'
 import { ArrowUpRight, ArrowRight, ShieldCheck, Users2, MapPin } from 'lucide-react'
 import { SERVICES } from '../data/services.js'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import { CountUp, TrustedByStrip } from '../components/shared.jsx'
 import Img from '../components/Img.jsx'
+import { useGsapEffect } from '../lib/animations.js'
 
 const HERO_SLIDES = [
   {
@@ -38,8 +38,7 @@ function Hero() {
     return () => clearTimeout(id)
   }, [])
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.8, delay: 0.1, ease: 'power3.out' })
       gsap.from('.hero-meta, .hero-cta', {
         y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out',
@@ -56,9 +55,7 @@ function Hero() {
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="relative min-h-[100dvh] overflow-hidden bg-deep">
@@ -128,8 +125,7 @@ function Hero() {
 
 function Intro() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.intro-photos', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -138,9 +134,7 @@ function Intro() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   const points = [
     { icon: ShieldCheck, title: 'WHS as standard', text: 'Safety is part of the daily routine on every site, not an afterthought.' },
@@ -196,8 +190,7 @@ const TESTIMONIALS = [
 
 function Testimonials() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.testi-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 24, opacity: 0, duration: 1, ease: 'power2.out',
@@ -211,9 +204,7 @@ function Testimonials() {
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="pb-24 sm:pb-32">
@@ -246,8 +237,7 @@ function Testimonials() {
 
 function ServicesPreview() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.svc-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -265,9 +255,7 @@ function ServicesPreview() {
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="bg-deep text-white py-24 sm:py-32">
@@ -312,8 +300,7 @@ function ServicesPreview() {
 
 function RecentWork() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.work-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -335,9 +322,7 @@ function RecentWork() {
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'center top', scrub: 0.6 },
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   const featured = CASE_STUDIES.find((c) => c.slug === 'tafe-nsw-multi-site') ?? CASE_STUDIES[0]
   const rest = CASE_STUDIES.filter((c) => c.slug !== featured.slug).slice(0, 3)
@@ -388,8 +373,7 @@ function RecentWork() {
 
 function StatsCta() {
   const ref = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGsapEffect(({ gsap, ScrollTrigger }) => {
       gsap.from('.cta-content', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.8, ease: 'power3.out',
@@ -399,9 +383,7 @@ function StatsCta() {
         ease: 'none',
         scrollTrigger: { trigger: ref.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
       })
-    }, ref)
-    return () => ctx.revert()
-  }, [])
+  }, [], ref)
 
   return (
     <section ref={ref} className="pb-24 sm:pb-32">

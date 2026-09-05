@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { gsap } from 'gsap'
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { SERVICES, getServiceBySlug } from '../data/services.js'
 import Img from '../components/Img.jsx'
+import { useGsapEffect } from '../lib/animations.js'
 
 export default function ServiceDetail() {
   const { slug } = useParams()
@@ -15,29 +15,25 @@ export default function ServiceDetail() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [slug])
-
-  useEffect(() => {
+  useGsapEffect(({ gsap }) => {
     if (!service) return
-    const ctx = gsap.context(() => {
-      gsap.from('.svc-detail-text', {
-        scrollTrigger: { trigger: bodyRef.current, start: 'top 80%', once: true },
-        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
-      })
-      gsap.from('.svc-detail-photo', {
-        scrollTrigger: { trigger: bodyRef.current, start: 'top 80%', once: true },
-        x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
-      })
-      gsap.from('.svc-others-heading', {
-        scrollTrigger: { trigger: othersRef.current, start: 'top 80%', once: true },
-        x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
-      })
-      gsap.from('.svc-other-tile', {
-        scrollTrigger: { trigger: othersRef.current, start: 'top 80%', once: true },
-        y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.08, ease: 'power3.out',
-      })
+    gsap.from('.svc-detail-text', {
+      scrollTrigger: { trigger: bodyRef.current, start: 'top 80%', once: true },
+      x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
     })
-    return () => ctx.revert()
-  }, [slug, service])
+    gsap.from('.svc-detail-photo', {
+      scrollTrigger: { trigger: bodyRef.current, start: 'top 80%', once: true },
+      x: 40, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power3.out',
+    })
+    gsap.from('.svc-others-heading', {
+      scrollTrigger: { trigger: othersRef.current, start: 'top 80%', once: true },
+      x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
+    })
+    gsap.from('.svc-other-tile', {
+      scrollTrigger: { trigger: othersRef.current, start: 'top 80%', once: true },
+      y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.08, ease: 'power3.out',
+    })
+  }, [slug, service], bodyRef)
 
   if (!service) return <Navigate to="/services" replace />
 
