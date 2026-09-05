@@ -106,15 +106,16 @@
   from { transform: translateY(28px); }
   to   { transform: translateY(0); }
 }
-@keyframes hero-line-in {
-  from { opacity: 0; transform: translateY(60px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 .hero-line-1 {
   animation: hero-line-slide 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
+/* Line 2 is the larger of the two and therefore the LCP element. It previously
+   faded from opacity 0 after a 0.35s delay, so it was not fully painted until
+   ~2.6s (first paint 1.08s + 0.35s delay + 1.2s duration), which matched the
+   measured LCP of 2,588ms almost exactly. Transform-only keeps the staggered
+   entrance while leaving the text opaque from the first frame. */
 .hero-line-2 {
-  animation: hero-line-in 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.35s both;
+  animation: hero-line-slide 1.05s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s both;
 }
 
 @media (prefers-reduced-motion: reduce) {
