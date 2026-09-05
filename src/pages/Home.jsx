@@ -44,20 +44,47 @@ function Hero() {
       gsap.from('.hero-meta, .hero-cta', {
         y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out',
       })
-      gsap.to(bgRef.current, {
-        yPercent: 28,
-        scale: 1.12,
-        ease: 'none',
-        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
-      })
-      gsap.to('.hero-content', {
-        yPercent: -18,
-        opacity: 0.4,
-        ease: 'none',
-        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
-      })
     }, ref)
     return () => ctx.revert()
+  }, [])
+
+  // The two hero parallax tweens are scrub-driven, so they do nothing until the
+  // page is scrolled - but creating them at mount makes GSAP write inline styles
+  // onto .hero-content, the H1's parent, which repaints the LCP element.
+  // Lighthouse attributes ~1,254ms of element render delay to that repaint.
+  // Building them on the first scroll keeps the effect identical in use and
+  // leaves the headline untouched while LCP is being measured.
+  useEffect(() => {
+    let ctx
+    let done = false
+
+    const build = () => {
+      if (done) return
+      done = true
+      ctx = gsap.context(() => {
+        gsap.to(bgRef.current, {
+          yPercent: 28,
+          scale: 1.12,
+          ease: 'none',
+          scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
+        })
+        gsap.to('.hero-content', {
+          yPercent: -18,
+          opacity: 0.4,
+          ease: 'none',
+          scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: true },
+        })
+      }, ref)
+    }
+
+    // Covers a reload that restores a scrolled position.
+    if (window.scrollY > 0) build()
+    else window.addEventListener('scroll', build, { once: true, passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', build)
+      ctx?.revert()
+    }
   }, [])
 
   return (
