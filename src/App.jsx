@@ -16,15 +16,37 @@ export default function App() {
   const location = useLocation()
   const [prewarm, setPrewarm] = useState(false)
 
+  // The GoHighLevel form is slow to appear cold, so it is warmed in the
+  // background before the visitor reaches /contact. Warming it on every page
+  // load cost every visitor a third-party script most of them never needed, so
+  // it now waits for intent: hovering, focusing or touching anything that
+  // points at /contact. That is well ahead of the click, so the form is still
+  // ready on arrival, and visitors who never head there never pay for it.
   useEffect(() => {
     if (prewarm) return
     const start = () => setPrewarm(true)
-    if ('requestIdleCallback' in window) {
-      const id = window.requestIdleCallback(start, { timeout: 4000 })
-      return () => window.cancelIdleCallback(id)
+
+    const isContactTarget = (el) =>
+      el instanceof Element && Boolean(el.closest('a[href="/contact"], a[href*="/contact"]'))
+
+    const onIntent = (e) => {
+      if (isContactTarget(e.target)) start()
     }
-    const id = setTimeout(start, 2500)
-    return () => clearTimeout(id)
+
+    document.addEventListener('pointerover', onIntent, { passive: true })
+    document.addEventListener('focusin', onIntent)
+    document.addEventListener('touchstart', onIntent, { passive: true })
+
+    // Fallback: a visitor who has stayed a while is likely to convert, so warm
+    // it anyway once the page has been idle for a good stretch.
+    const idle = setTimeout(start, 12000)
+
+    return () => {
+      document.removeEventListener('pointerover', onIntent)
+      document.removeEventListener('focusin', onIntent)
+      document.removeEventListener('touchstart', onIntent)
+      clearTimeout(idle)
+    }
   }, [prewarm])
 
   useEffect(() => {
