@@ -89,3 +89,26 @@
   .preserve-3d { transform-style: preserve-3d; }
   .clip-wave { clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%); }
 }
+
+/* Hero headline entrance.
+   This was gsap.from(..., { y, opacity: 0 }), which meant the text painted
+   from the prerendered HTML, then vanished once the bundle executed and GSAP
+   set opacity to 0, then faded back. On a throttled phone Chrome recorded LCP
+   at the end of that round trip: 2.5s of "element render delay" on the
+   headline. In CSS the same motion starts at first paint and never depends on
+   JavaScript. */
+@keyframes hero-line-in {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-line-1,
+.hero-line-2 {
+  animation: hero-line-in 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+.hero-line-1 { animation-delay: 0.3s; }
+.hero-line-2 { animation-duration: 1.2s; animation-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-1,
+  .hero-line-2 { animation: none; }
+}

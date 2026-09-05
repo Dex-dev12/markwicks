@@ -41,8 +41,6 @@ function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.8, delay: 0.1, ease: 'power3.out' })
-      gsap.from('.hero-line-1', { y: 40, opacity: 0, duration: 1, delay: 0.3, ease: 'power3.out' })
-      gsap.from('.hero-line-2', { y: 60, opacity: 0, duration: 1.2, delay: 0.5, ease: 'power3.out' })
       gsap.from('.hero-meta, .hero-cta', {
         y: 24, opacity: 0, duration: 0.8, delay: 0.8, stagger: 0.12, ease: 'power3.out',
       })
