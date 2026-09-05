@@ -3,7 +3,7 @@
 // public/images/r/ at 640 and 1024 wide; anything larger keeps the original,
 // which is smaller than a high-quality WebP at that size.
 
-const VARIANT_WIDTHS = [640, 1024]
+const VARIANT_WIDTHS = [640, 1024, 1440]
 
 function variantsFor(src) {
   const m = /^\/images\/([^/]+)\.(jpe?g|png)$/i.exec(src || '')

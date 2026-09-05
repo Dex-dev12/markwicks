@@ -15,10 +15,14 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const SRC = path.join(__dirname, '..', 'public', 'images')
 const OUT = path.join(SRC, 'r')
-// 1600px WebP came out larger than the source JPEG at usable quality, and
-// desktop already passes LCP comfortably. The original JPEG stays as the
-// large-viewport source; these two exist to cut the mobile payload.
-const WIDTHS = [640, 1024]
+// 640/1024 cover most phones; 1440 exists for high-DPR devices - an iPhone at
+// 390px CSS and 3x needs roughly 1170px, and without a candidate that large the
+// browser reaches past the WebP set for the full-size JPEG.
+// Quality drops at larger sizes: the hero sits under a brightness(0.5) overlay,
+// so the difference is not visible and 1600px WebP at q78 came out larger than
+// the source JPEG.
+const WIDTHS = [640, 1024, 1440]
+const QUALITY = { 640: 78, 1024: 74, 1440: 68 }
 
 async function main() {
   await mkdir(OUT, { recursive: true })
@@ -39,7 +43,7 @@ async function main() {
       if (meta.width && meta.width < w && w !== WIDTHS[0]) continue
       const target = Math.min(w, meta.width || w)
       const outPath = path.join(OUT, `${base}-${w}.webp`)
-      await sharp(srcPath).resize(target).webp({ quality: 78 }).toFile(outPath)
+      await sharp(srcPath).resize(target).webp({ quality: QUALITY[w] ?? 74 }).toFile(outPath)
       after += (await stat(outPath)).size
     }
   }
