@@ -1,0 +1,145 @@
+{
+  "about-header": [
+    640,
+    1024
+  ],
+  "bobcat-action": [
+    640
+  ],
+  "campus-grounds-department-education": [
+    640
+  ],
+  "campus-parking-mulch": [
+    640
+  ],
+  "commercial-carpark-garden-bed": [
+    640
+  ],
+  "commercial-mower-carpark": [
+    640
+  ],
+  "contact-header": [
+    640
+  ],
+  "digger-farm": [
+    640
+  ],
+  "earthworks-bobcat-auger-residential": [
+    640
+  ],
+  "earthworks-rural-excavation-pit": [
+    640
+  ],
+  "estate-garden-bed": [
+    640
+  ],
+  "estate-street-crew": [
+    640
+  ],
+  "excavator-truck": [
+    640,
+    1024,
+    1440
+  ],
+  "farmyard": [
+    640
+  ],
+  "gravel-pathway": [
+    640,
+    1024
+  ],
+  "landscaping-mulch-edging": [
+    640,
+    1024
+  ],
+  "landscaping-retaining-wall-build": [
+    640
+  ],
+  "mower-mowing": [
+    640,
+    1024
+  ],
+  "mower": [
+    640,
+    1024
+  ],
+  "mulch-bed-mountain": [
+    640
+  ],
+  "mulch-bed-paddock": [
+    640,
+    1024
+  ],
+  "native-garden-bed-lights": [
+    640
+  ],
+  "parking-lot-mulch": [
+    640
+  ],
+  "portfolio-header": [
+    640,
+    1024
+  ],
+  "residential-garden-bed-edging": [
+    640
+  ],
+  "residential-lawn-care": [
+    640
+  ],
+  "residential-lawn": [
+    640
+  ],
+  "retaining-wall-crew": [
+    640
+  ],
+  "rural-paddock-slashing": [
+    640,
+    1024
+  ],
+  "rural-shed-site-prep": [
+    640
+  ],
+  "rural-site-drainage": [
+    640,
+    1024
+  ],
+  "rural-truck-paddock": [
+    640
+  ],
+  "services-header": [
+    640
+  ],
+  "story-bobcat-auger": [
+    640
+  ],
+  "story-fleet": [
+    640,
+    1024
+  ],
+  "story-pergola-crew": [
+    640
+  ],
+  "story-truck-steps": [
+    640,
+    1024
+  ],
+  "tree-planting": [
+    640,
+    1024,
+    1440
+  ],
+  "truck-trailer": [
+    640,
+    1024,
+    1440
+  ],
+  "water-tank-installation": [
+    640
+  ],
+  "weed-management": [
+    640
+  ],
+  "winter-wheat": [
+    640
+  ]
+}

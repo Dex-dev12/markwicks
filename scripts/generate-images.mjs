@@ -8,7 +8,7 @@
 // Output is committed, so builds stay fast and deterministic.
 
 import sharp from 'sharp'
-import { readdir, mkdir, stat } from 'node:fs/promises'
+import { readdir, mkdir, stat, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -30,6 +30,7 @@ async function main() {
 
   let before = 0
   let after = 0
+  const manifest = {}
 
   for (const file of files) {
     const base = file.replace(/\.(jpe?g|png)$/i, '')
@@ -45,12 +46,24 @@ async function main() {
       const outPath = path.join(OUT, `${base}-${w}.webp`)
       await sharp(srcPath).resize(target).webp({ quality: QUALITY[w] ?? 74 }).toFile(outPath)
       after += (await stat(outPath)).size
+      ;(manifest[base] ??= []).push(w)
     }
   }
+
+  // Widths are skipped when the source is narrower, so the component cannot
+  // assume every width exists: advertising one that was never written makes the
+  // browser request a missing file, and the SPA rewrite answers those with
+  // index.html at 200, which decodes as a broken image rather than a 404.
+  await writeFile(
+    path.join(__dirname, '..', 'src', 'data', 'image-manifest.json'),
+    JSON.stringify(manifest, null, 2) + '\n',
+    'utf-8'
+  )
 
   const kb = (n) => `${Math.round(n / 1024)} KB`
   console.log(`  sources : ${files.length} files, ${kb(before)}`)
   console.log(`  variants: ${kb(after)} across ${WIDTHS.join('/')}px WebP`)
+  console.log(`  manifest : ${Object.keys(manifest).length} images`)
 }
 
 main().catch((e) => {
