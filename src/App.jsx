@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import { getSeo } from './data/seo.js'
-import { loadGsap } from './lib/animations.js'
 
+// ScrollTrigger touches window on registration, which does not exist during
+// the Node render pass.
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default function App() {
   const location = useLocation()
@@ -87,9 +93,7 @@ export default function App() {
       return () => cancelAnimationFrame(raf2)
     })
     const id = setTimeout(() => {
-      // Only refresh if GSAP has already been pulled in by a page's animations;
-      // never load it just to refresh.
-      loadGsap().then(({ ScrollTrigger }) => ScrollTrigger.refresh()).catch(() => {})
+      ScrollTrigger.refresh()
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     }, 200)
     return () => {

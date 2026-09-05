@@ -1,19 +1,22 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import Img from '../components/Img.jsx'
-import { useGsapEffect } from '../lib/animations.js'
 
 function PortfolioClosingCta() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.portfolio-cta-content', {
         scrollTrigger: { trigger: ref.current, start: 'top 85%', once: true },
         y: 24, opacity: 0, duration: 1, ease: 'power2.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section ref={ref} className="pb-24 sm:pb-32 text-center">
@@ -29,12 +32,15 @@ function PortfolioClosingCta() {
 
 export default function Portfolio() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.case-tile', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <>

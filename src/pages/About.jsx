@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight, ShieldCheck, BadgeCheck, Award, Truck } from 'lucide-react'
 import { PageBanner, TRUSTED_BY } from '../components/shared.jsx'
 import { CASE_STUDIES } from '../data/caseStudies.js'
 import Img from '../components/Img.jsx'
-import { useGsapEffect } from '../lib/animations.js'
 
 const STORY_PHOTOS = [
   { src: '/images/story-fleet.jpg', alt: 'Markwicks Services truck, ute and trailer fleet parked together on a suburban street' },
@@ -45,7 +46,8 @@ const WHY_HIGHLIGHTS = [
 
 function WhyChooseUsSection() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.why-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -58,7 +60,9 @@ function WhyChooseUsSection() {
         scrollTrigger: { trigger: ref.current, start: 'top 70%', once: true },
         y: 30, opacity: 0, duration: 0.7, stagger: 0.1, delay: 0.1, ease: 'power3.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section ref={ref} className="py-24 sm:py-32 bg-surface border-y border-divider">
@@ -103,7 +107,8 @@ function WhyChooseUsSection() {
 
 function OurClientsSection() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.clients-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -112,7 +117,9 @@ function OurClientsSection() {
         scrollTrigger: { trigger: ref.current, start: 'top 75%', once: true },
         y: 24, opacity: 0, duration: 0.6, stagger: 0.04, ease: 'power3.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section ref={ref} className="py-24 sm:py-32 border-b border-divider">
@@ -146,7 +153,8 @@ function OurClientsSection() {
 
 function OurStory() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.story-text', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -155,7 +163,9 @@ function OurStory() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: 40, opacity: 0, duration: 0.7, stagger: 0.08, delay: 0.15, ease: 'power3.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   return (
     <section ref={ref} className="py-24 sm:py-32">
@@ -186,7 +196,8 @@ function OurStory() {
 
 function AboutPortfolioPreview() {
   const ref = useRef(null)
-  useGsapEffect(({ gsap, ScrollTrigger }) => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
       gsap.from('.about-work-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         x: -40, opacity: 0, duration: 0.9, ease: 'power3.out',
@@ -199,7 +210,9 @@ function AboutPortfolioPreview() {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 30, opacity: 0, duration: 0.7, delay: 0.15, stagger: 0.1, ease: 'power3.out',
       })
-  }, [], ref)
+    }, ref)
+    return () => ctx.revert()
+  }, [])
 
   const featured = CASE_STUDIES.slice(0, 4)
 
