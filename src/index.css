@@ -91,22 +91,31 @@
 }
 
 /* Hero headline entrance.
-   This was gsap.from(..., { y, opacity: 0 }), which meant the text painted
-   from the prerendered HTML, then vanished once the bundle executed and GSAP
-   set opacity to 0, then faded back. On a throttled phone Chrome recorded LCP
-   at the end of that round trip: 2.5s of "element render delay" on the
-   headline. In CSS the same motion starts at first paint and never depends on
-   JavaScript. */
+   This was gsap.from(..., { y, opacity: 0 }): the text painted from the
+   prerendered HTML, vanished once the bundle executed and GSAP set opacity to
+   0, then faded back. Chrome recorded LCP at the end of that round trip.
+
+   Moving it to CSS removed the JavaScript wait but not the problem: an element
+   at opacity 0 has not painted as far as LCP is concerned, so a fade-in still
+   pushed LCP out by its delay plus duration.
+
+   Line 1 is the LCP element, so it only moves - it is fully opaque from the
+   first frame and counts as painted immediately. Line 2 is not the LCP
+   element and keeps the fade. */
+@keyframes hero-line-slide {
+  from { transform: translateY(28px); }
+  to   { transform: translateY(0); }
+}
 @keyframes hero-line-in {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(60px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-line-1,
-.hero-line-2 {
-  animation: hero-line-in 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+.hero-line-1 {
+  animation: hero-line-slide 0.9s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
-.hero-line-1 { animation-delay: 0.3s; }
-.hero-line-2 { animation-duration: 1.2s; animation-delay: 0.5s; }
+.hero-line-2 {
+  animation: hero-line-in 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.35s both;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hero-line-1,
