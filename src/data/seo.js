@@ -21,10 +21,30 @@ export const SEO = {
     description:
       'Commercial grounds maintenance, residential lawn care, landscaping, rural and acreage services, weed management and earthworks across the Bathurst region.',
   },
+  '/areas': {
+    title: 'Areas We Serve | Bathurst & Central West NSW | Markwicks',
+    description:
+      'Grounds maintenance, landscaping, acreage mowing and earthworks across Bathurst, Kelso, Orange and the wider Central West of NSW.',
+  },
   '/areas/orange': {
     title: 'Landscaping & Lawn Mowing Orange NSW | Markwicks',
     description:
       'Landscaping, lawn mowing, grounds maintenance, acreage slashing and earthworks across Orange NSW and the surrounding villages. Local crews from Bathurst.',
+  },
+  '/areas/lithgow': {
+    title: 'Landscaping & Lawn Mowing Lithgow NSW | Markwicks',
+    description:
+      'Landscaping, lawn mowing, grounds maintenance, acreage slashing and earthworks across Lithgow, Portland and Wallerawang. Local crews from Bathurst.',
+  },
+  '/areas/oberon': {
+    title: 'Landscaping & Lawn Mowing Oberon NSW | Markwicks',
+    description:
+      'Landscaping, lawn mowing, grounds maintenance, acreage slashing and earthworks across Oberon and the surrounding tablelands.',
+  },
+  '/areas/blayney': {
+    title: 'Landscaping & Lawn Mowing Blayney NSW | Markwicks',
+    description:
+      'Landscaping, lawn mowing, grounds maintenance, acreage slashing and earthworks across Blayney and the Belubula Valley.',
   },
   '/services/residential-services': {
     title: 'Residential Lawn & Garden Care Bathurst | Markwicks',

@@ -28,7 +28,11 @@ const ROUTES = [
   '/equipment',
   '/portfolio',
   '/contact',
+  '/areas',
   '/areas/orange',
+  '/areas/lithgow',
+  '/areas/oberon',
+  '/areas/blayney',
 ]
 
 const esc = (s) =>

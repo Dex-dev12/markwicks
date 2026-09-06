@@ -33,7 +33,7 @@ export default function AreaDetail() {
       <section className="py-20 sm:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="max-w-3xl space-y-12">
-            {area.sections.map((sec) => (
+            {(area.sections || []).map((sec) => (
               <div key={sec.heading}>
                 <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-4">{sec.heading}</h2>
                 <p className="text-muted leading-relaxed text-base sm:text-lg">{sec.body}</p>
@@ -53,6 +53,27 @@ export default function AreaDetail() {
           <p className="text-muted leading-relaxed mb-10 max-w-3xl">
             Every service below is available across {area.name} and the surrounding {area.region} district.
           </p>
+          {/* Each service gets a real h2 carrying service + town, with copy specific
+              to this area, then links through to the parent service page. */}
+          {area.serviceNotes?.length > 0 && (
+            <div className="max-w-3xl space-y-12 mb-16">
+              {area.serviceNotes.map((n) => {
+                const svc = SERVICES.find((s) => s.slug === n.slug)
+                return (
+                  <div key={n.slug}>
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-4">{n.heading}</h2>
+                    <p className="text-muted leading-relaxed text-base sm:text-lg mb-4">{n.body}</p>
+                    {svc && (
+                      <Link to={`/services/${svc.slug}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-primary lift-on-hover">
+                        More on {svc.title.toLowerCase()} <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((s) => (
               <Link

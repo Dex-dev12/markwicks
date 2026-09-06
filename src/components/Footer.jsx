@@ -31,6 +31,8 @@ export default function Footer() {
             <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Company</h5>
             <ul className="space-y-2.5 text-sm text-white/70">
               <li><Link to="/about" className="lift-on-hover">About Us</Link></li>
+              <li><Link to="/areas" className="lift-on-hover">Areas We Serve</Link></li>
+              <li><Link to="/areas/orange" className="lift-on-hover">Orange NSW</Link></li>
               <li><Link to="/portfolio" className="lift-on-hover">Portfolio</Link></li>
               <li><Link to="/contact" className="lift-on-hover">Contact</Link></li>
               <li><Link to="/privacy" className="lift-on-hover">Privacy</Link></li>

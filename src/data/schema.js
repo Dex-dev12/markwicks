@@ -33,6 +33,13 @@ export const BUSINESS = {
     postalCode: '2795',
     addressCountry: 'AU',
   },
+  // Geocoded from the registered address rather than approximated, so the pin
+  // lands on the actual premises. Local SEO guidance asks for 5+ decimals.
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -33.4060453,
+    longitude: 149.6099360,
+  },
   areaServed: [
     { '@type': 'City', name: 'Bathurst' },
     { '@type': 'AdministrativeArea', name: 'Central West NSW' },
@@ -124,12 +131,39 @@ export function schemaFor(pathname) {
     if (area) {
       blocks.push({
         '@context': 'https://schema.org',
+        '@type': 'HomeAndConstructionBusiness',
+        '@id': `${SITE}/areas/${area.slug}#business`,
+        name: `Markwicks Services — ${area.name}`,
+        description: area.lead,
+        url: `${SITE}/areas/${area.slug}`,
+        image: `${SITE}/logo.png`,
+        telephone: '+61432165468',
+        email: 'contact@markwicksservices.com.au',
+        // The crew and the plant are dispatched from Kelso; this page is a
+        // service area, not a second premises, so the address stays the real
+        // one and areaServed carries the town.
+        address: BUSINESS.address,
+        branchOf: { '@id': BUSINESS_ID },
+        areaServed: {
+          '@type': 'City',
+          name: area.name,
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: area.name,
+            addressRegion: 'NSW',
+            postalCode: area.postcode,
+            addressCountry: 'AU',
+          },
+        },
+      })
+      blocks.push({
+        '@context': 'https://schema.org',
         '@type': 'Service',
         '@id': `${SITE}/areas/${area.slug}#service`,
         name: `Landscaping and grounds maintenance in ${area.name}`,
         description: area.lead,
         provider: { '@id': BUSINESS_ID },
-        areaServed: { '@type': 'City', name: area.name, address: { '@type': 'PostalAddress', addressLocality: area.name, addressRegion: 'NSW', postalCode: area.postcode, addressCountry: 'AU' } },
+        areaServed: { '@type': 'City', name: area.name },
       })
       blocks.push(
         breadcrumb([
@@ -160,6 +194,7 @@ export function schemaFor(pathname) {
     '/equipment': 'Equipment',
     '/portfolio': 'Portfolio',
     '/contact': 'Contact',
+    '/areas': 'Areas We Serve',
   }
   if (NAMES[key]) {
     blocks.push(breadcrumb([{ name: 'Home', path: '/' }, { name: NAMES[key], path: key }]))

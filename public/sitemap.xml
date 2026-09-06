@@ -61,7 +61,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://markwicksservices.com.au/areas</loc>
+    <lastmod>2026-09-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://markwicksservices.com.au/areas/orange</loc>
+    <lastmod>2026-09-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://markwicksservices.com.au/areas/lithgow</loc>
+    <lastmod>2026-09-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://markwicksservices.com.au/areas/oberon</loc>
+    <lastmod>2026-09-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://markwicksservices.com.au/areas/blayney</loc>
     <lastmod>2026-09-06</lastmod>
     <priority>0.8</priority>
   </url>
