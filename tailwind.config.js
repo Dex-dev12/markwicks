@@ -18,7 +18,7 @@ export default {
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        serif: ['"Cormorant Garamond"', 'serif'],
+        serif: ['"Cormorant Garamond"', '"Cormorant Fallback"', 'serif'],
         body: ['"Inter"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
