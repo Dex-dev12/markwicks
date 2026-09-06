@@ -3,6 +3,7 @@ import { Building2, Sprout, Tractor, Leaf, Shovel, Home as HomeIcon } from 'luci
 export const SERVICES = [
   {
     slug: 'residential-services',
+    cardText: "Lawn mowing, garden maintenance and property upkeep for homes and weekenders.",
     icon: HomeIcon,
     title: 'Residential Services',
     text: 'Lawn mowing, garden maintenance and property upkeep for homes and weekenders across the Bathurst region.',
@@ -44,6 +45,7 @@ export const SERVICES = [
   },
   {
     slug: 'commercial-grounds-maintenance',
+    cardText: "Scheduled grounds maintenance for schools, TAFE NSW, aged care, strata and industrial sites.",
     icon: Building2,
     title: 'Commercial Grounds Maintenance',
     text: 'Scheduled grounds maintenance for schools, TAFE NSW, aged care, strata and industrial sites across the Bathurst region.',
@@ -85,6 +87,7 @@ export const SERVICES = [
   },
   {
     slug: 'landscaping',
+    cardText: "Landscape renovations, garden beds, retaining walls and property makeovers.",
     icon: Sprout,
     title: 'Landscaping',
     text: 'Landscape renovations, garden beds and property makeovers for residential and commercial sites.',
@@ -126,6 +129,7 @@ export const SERVICES = [
   },
   {
     slug: 'rural-acreage-services',
+    cardText: "Acreage mowing, slashing and property maintenance for rural landholders.",
     icon: Tractor,
     title: 'Rural & Acreage Services',
     text: 'Acreage mowing, slashing and property maintenance for rural landholders across the Central West.',
@@ -167,6 +171,7 @@ export const SERVICES = [
   },
   {
     slug: 'weed-management',
+    cardText: "Weed control and herbicide application, including noxious weed management.",
     icon: Leaf,
     title: 'Weed Management',
     text: 'Weed control and herbicide application for rural, commercial and noxious weed management needs.',
@@ -202,6 +207,7 @@ export const SERVICES = [
   },
   {
     slug: 'earthworks-excavation',
+    cardText: "Bobcat work, trenching and site preparation for small and large earthworks projects.",
     icon: Shovel,
     title: 'Earthworks & Excavation',
     text: 'Bobcat work, trenching and site preparation for small and large earthworks projects.',

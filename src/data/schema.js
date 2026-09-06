@@ -8,6 +8,7 @@
 // absent: there is one genuine testimonial and no star ratings.
 
 import { SERVICES, SERVICES_PAGE } from './services.js'
+import { AREAS } from './areas.js'
 
 const SITE = 'https://markwicksservices.com.au'
 const BUSINESS_ID = `${SITE}/#business`
@@ -113,6 +114,42 @@ export function schemaFor(pathname) {
           { name: service.title, path: key },
         ])
       )
+    }
+    return blocks
+  }
+
+  const areaMatch = key.match(/^\/areas\/(.+)$/)
+  if (areaMatch) {
+    const area = AREAS.find((a) => a.slug === areaMatch[1])
+    if (area) {
+      blocks.push({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        '@id': `${SITE}/areas/${area.slug}#service`,
+        name: `Landscaping and grounds maintenance in ${area.name}`,
+        description: area.lead,
+        provider: { '@id': BUSINESS_ID },
+        areaServed: { '@type': 'City', name: area.name, address: { '@type': 'PostalAddress', addressLocality: area.name, addressRegion: 'NSW', postalCode: area.postcode, addressCountry: 'AU' } },
+      })
+      blocks.push(
+        breadcrumb([
+          { name: 'Home', path: '/' },
+          { name: 'Areas', path: '/areas' },
+          { name: area.name, path: key },
+        ])
+      )
+      if (area.faqs?.length) {
+        blocks.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          '@id': `${SITE}/areas/${area.slug}#faq`,
+          mainEntity: area.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        })
+      }
     }
     return blocks
   }

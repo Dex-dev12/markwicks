@@ -21,6 +21,11 @@ export const SEO = {
     description:
       'Commercial grounds maintenance, residential lawn care, landscaping, rural and acreage services, weed management and earthworks across the Bathurst region.',
   },
+  '/areas/orange': {
+    title: 'Landscaping & Lawn Mowing Orange NSW | Markwicks',
+    description:
+      'Landscaping, lawn mowing, grounds maintenance, acreage slashing and earthworks across Orange NSW and the surrounding villages. Local crews from Bathurst.',
+  },
   '/services/residential-services': {
     title: 'Residential Lawn & Garden Care Bathurst | Markwicks',
     description:
