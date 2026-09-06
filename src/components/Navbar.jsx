@@ -126,28 +126,41 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {open && (
-        <div className="fixed inset-0 z-[60] glass-dark backdrop-blur-2xl flex flex-col overflow-y-auto">
-          <div className="flex items-center justify-between px-6 py-5">
-            <span className="font-display font-bold font-heavy text-lg text-white">Markwicks Services</span>
-            <button className="text-white" onClick={() => setOpen(false)} aria-label="Close menu">
-              <X className="h-6 w-6" />
+      <div
+        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-500 ${
+          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        inert={!open}
+      >
+        <div className="absolute inset-0 bg-deep/90 backdrop-blur-2xl" onClick={() => setOpen(false)} />
+        <div
+          className={`absolute top-0 left-0 right-0 bg-background rounded-b-5xl px-6 pt-8 pb-12 overflow-y-auto scrollbar-hide max-h-[90vh] transition-transform duration-500 ${
+            open ? 'translate-y-0' : '-translate-y-full'
+          }`}
+        >
+          <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="" className="h-8 w-auto" />
+              <span className="font-display font-bold font-heavy tracking-tight text-lg text-ink">Markwicks Services</span>
+            </div>
+            <button onClick={() => setOpen(false)} className="p-2 rounded-full bg-divider/40 text-ink" aria-label="Close menu">
+              <X className="h-5 w-5" />
             </button>
           </div>
-          <div className="flex flex-col items-center justify-center flex-1 gap-6 py-8">
+          <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) =>
               link.dropdown ? (
-                <div key={link.href} className="flex flex-col items-center gap-4">
+                <div key={link.href} className="border-b border-divider py-3">
                   <button
                     onClick={() => setMobileServicesOpen((v) => !v)}
-                    className="flex items-center gap-1.5 font-display text-3xl font-semibold text-white"
+                    className="flex items-center gap-1.5 font-display text-3xl font-semibold text-ink"
                   >
                     {link.label} <ChevronDown className={`h-6 w-6 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {mobileServicesOpen && (
-                    <div className="flex flex-col items-center gap-3">
+                    <div className="flex flex-col gap-3 mt-4">
                       {SERVICES.map((s) => (
-                        <Link key={s.slug} to={`/services/${s.slug}`} className="font-body text-base text-white/70">
+                        <Link key={s.slug} to={`/services/${s.slug}`} className="text-base text-muted">
                           {s.title}
                         </Link>
                       ))}
@@ -155,20 +168,25 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <Link key={link.href} to={link.href} className="font-display text-3xl font-semibold text-white">
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="font-display text-3xl font-semibold text-ink py-3 border-b border-divider"
+                >
                   {link.label}
                 </Link>
               )
             )}
-            <Link
-              to="/contact"
-              className="magnetic-btn inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold mt-4"
-            >
-              Get in Touch <ArrowUpRight className="h-4 w-4" />
-            </Link>
           </div>
+          <Link
+            to="/contact"
+            className="mt-8 magnetic-btn flex items-center justify-center gap-2 bg-primary text-white px-6 py-4 rounded-lg font-semibold shadow-lg shadow-primary/30 w-full"
+          >
+            Get in Touch <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </div>
-      )}
+      </div>
+
     </>
   )
 }
