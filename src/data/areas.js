@@ -36,7 +36,7 @@ export const AREAS = [
       {
         heading: 'Commercial grounds maintenance in Orange',
         body:
-          "Our commercial work runs on standing schedules across schools, TAFE campuses, aged care, strata complexes and industrial sites, and it works the same way in Orange as it does in Bathurst: an agreed scope and frequency, the same crew on the cycle, and the noisy work planned around teaching hours and quiet periods rather than pushed straight through them. The one genuine difference is growth rate. Contracts written to a Bathurst frequency tend to need tightening for Orange sites through the peak of the season.",
+          "Our commercial work runs on standing schedules across schools, education campuses, aged care, strata complexes and industrial sites, and it works the same way in Orange as it does in Bathurst: an agreed scope and frequency, the same crew on the cycle, and the noisy work planned around teaching hours and quiet periods rather than pushed straight through them. The one genuine difference is growth rate. Contracts written to a Bathurst frequency tend to need tightening for Orange sites through the peak of the season.",
       },
       {
         heading: 'Weed control and who regulates it here',

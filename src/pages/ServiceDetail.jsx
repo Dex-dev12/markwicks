@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
 import { SERVICES, getServiceBySlug } from '../data/services.js'
+import { AREAS, ALSO_SERVICED } from '../data/areas.js'
 import Img from '../components/Img.jsx'
 
 export default function ServiceDetail() {
@@ -122,6 +123,38 @@ export default function ServiceDetail() {
           </div>
         </section>
       )}
+
+      {/* Every service page states its coverage and links out to the area pages,
+          so the cluster links both ways instead of areas -> services only, and
+          the page does not read as Bathurst-only. */}
+      <section className="pb-20 sm:pb-28">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl rounded-3xl border border-divider bg-surface p-7 sm:p-9">
+            <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tighter mb-3">
+              Where we do {service.title.toLowerCase()}
+            </h2>
+            <p className="text-muted leading-relaxed mb-6">
+              Bathurst and Kelso are the core of it, and we cover the wider Central West from there.
+              Conditions change quickly across the region, so the schedule and method follow the district
+              rather than a single regional calendar.
+            </p>
+            <div className="flex flex-wrap gap-2.5 mb-5">
+              {AREAS.map((a) => (
+                <Link
+                  key={a.slug}
+                  to={`/areas/${a.slug}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-divider bg-background px-3.5 py-2 text-sm font-medium text-ink lift-on-hover"
+                >
+                  {service.title} in {a.name} <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                </Link>
+              ))}
+            </div>
+            <p className="text-sm text-muted">
+              Also serving {ALSO_SERVICED.join(', ')} and the surrounding Central West NSW districts.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section ref={othersRef} className="bg-deep text-white py-24 sm:py-32">
         <div className="svc-others-heading max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14">

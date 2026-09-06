@@ -45,12 +45,12 @@ export const SERVICES = [
   },
   {
     slug: 'commercial-grounds-maintenance',
-    cardText: "Scheduled grounds maintenance for schools, TAFE NSW, aged care, strata and industrial sites.",
+    cardText: "Scheduled grounds maintenance for schools, education campuses, aged care, strata and industrial sites.",
     icon: Building2,
     title: 'Commercial Grounds Maintenance',
-    text: 'Scheduled grounds maintenance for schools, TAFE NSW, aged care, strata and industrial sites across the Bathurst region.',
-    body: "We run standing grounds-maintenance contracts across schools, TAFE NSW campuses, aged care facilities, strata complexes, industrial sites and commercial properties, on a fixed recurring schedule, so the site always looks the way it's supposed to without anyone having to chase us.",
-    bullets: ['Schools', 'TAFE NSW', 'Aged Care', 'Strata', 'Industrial Sites', 'Commercial Properties', 'Scheduled Maintenance Programs'],
+    text: 'Scheduled grounds maintenance for schools, education campuses, aged care, strata and industrial sites across the Bathurst region.',
+    body: "We run standing grounds-maintenance contracts across schools, education campuses, aged care facilities, strata complexes, industrial sites and commercial properties, on a fixed recurring schedule, so the site always looks the way it's supposed to without anyone having to chase us.",
+    bullets: ['Schools', 'Education Campuses', 'Aged Care', 'Strata', 'Industrial Sites', 'Commercial Properties', 'Scheduled Maintenance Programs'],
     intro: "Grounds maintenance on a commercial or institutional site is a scheduling problem as much as a landscaping one. The lawns, garden beds and hard surfaces need to look consistently presentable without anyone on site having to think about it, and the work has to happen around the people using the place: students between classes, residents in aged care, staff and deliveries on an industrial site. It is one of several things we do, and the machinery and crews that cover our landscaping and earthworks work cover it too.",
     sections: [
       {
@@ -59,7 +59,7 @@ export const SERVICES = [
       },
       {
         heading: 'Working around occupied sites',
-        body: "Schools, TAFE campuses, aged care facilities and hospitals all have periods where noisy equipment is a problem and areas that need to stay clear. We plan visits around those constraints rather than turning up and working through them. On education sites that usually means the bulk of the noisy work happens outside teaching hours or during breaks; on aged care and health sites it means keeping access paths clear and being conscious of residents and visitors moving through.",
+        body: "Schools, education campuses, aged care facilities and hospitals all have periods where noisy equipment is a problem and areas that need to stay clear. We plan visits around those constraints rather than turning up and working through them. On education sites that usually means the bulk of the noisy work happens outside teaching hours or during breaks; on aged care and health sites it means keeping access paths clear and being conscious of residents and visitors moving through.",
       },
       {
         heading: 'What a site typically includes',
@@ -67,7 +67,7 @@ export const SERVICES = [
       },
       {
         heading: 'Who we work with around Bathurst',
-        body: "Our commercial work sits across schools, TAFE NSW campuses, aged care facilities, strata complexes, industrial sites and commercial properties through Bathurst, Kelso and the surrounding Central West. It runs alongside our residential rounds, landscaping and earthworks rather than instead of them, which is why a site can move between a standing maintenance schedule and a one-off project without bringing in another contractor.",
+        body: "Our commercial work sits across schools, education campuses, aged care facilities, strata complexes, industrial sites and commercial properties through Bathurst, Kelso and the surrounding Central West. It runs alongside our residential rounds, landscaping and earthworks rather than instead of them, which is why a site can move between a standing maintenance schedule and a one-off project without bringing in another contractor.",
       },
     ],
     faqs: [
@@ -263,7 +263,7 @@ export const SERVICES_PAGE = {
     {
       heading: 'Recurring work and one-off projects',
       body:
-        "Most of what we do falls into one of two shapes. Recurring work runs to a schedule agreed at the start: residential mowing rounds, commercial grounds contracts for schools, TAFE campuses, aged care and strata sites, and seasonal rural work such as slashing and fire hazard reduction. One-off projects are quoted against a defined scope instead: landscaping, retaining walls, turf, excavation, trenching and site preparation. Plenty of clients have both running at once, and where that happens the project work is scheduled around the maintenance visits rather than treated as a separate engagement.",
+        "Most of what we do falls into one of two shapes. Recurring work runs to a schedule agreed at the start: residential mowing rounds, commercial grounds contracts for schools, education campuses, aged care and strata sites, and seasonal rural work such as slashing and fire hazard reduction. One-off projects are quoted against a defined scope instead: landscaping, retaining walls, turf, excavation, trenching and site preparation. Plenty of clients have both running at once, and where that happens the project work is scheduled around the maintenance visits rather than treated as a separate engagement.",
     },
     {
       heading: 'Where the services overlap',

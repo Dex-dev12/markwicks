@@ -1,13 +1,13 @@
 export const CASE_STUDIES = [
   {
     slug: 'tafe-nsw-multi-site',
-    client: 'TAFE NSW',
+    client: 'Education Campuses, Bathurst Region',
     title: 'Multi-Site Grounds Maintenance',
     category: 'Commercial Grounds Maintenance',
-    summary: 'Scheduled mowing and grounds upkeep across multiple TAFE NSW campuses in the Bathurst region, on a fixed recurring cycle.',
+    summary: 'Scheduled mowing and grounds upkeep across multiple education campuses in the Bathurst region, on a fixed recurring cycle.',
     detail: "Institutional campuses are judged on how they look every day of term, not how they look the week after a tidy up, and that makes them a scheduling problem as much as a grounds one. This work runs as a standing contract across multiple sites on a fixed recurring cycle, with the frequency tightening through spring and summer growth and easing back over winter. The practical constraint on a campus is people: noisy equipment has to be planned around teaching hours and access paths have to stay clear while students and staff move through. Mowing and edging to a set standard, garden bed maintenance, and keeping car parks and entries clear of clippings make up the bulk of each visit.",
     img: '/images/campus-grounds-department-education.jpg',
-    alt: 'Department of Education signage and grounds at a TAFE NSW campus car park',
+    alt: 'Grounds and car park at an education campus in the Bathurst region',
     placeholder: false,
   },
   {

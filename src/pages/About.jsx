@@ -98,7 +98,7 @@ function WhyChooseUsSection() {
         </div>
 
         <p className="text-center text-sm text-muted max-w-2xl mx-auto">
-          Trusted by schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders across the Central West.
+          Trusted by schools, education campuses, aged care facilities, strata complexes, industrial sites, commercial properties and rural landholders across the Central West.
         </p>
       </div>
     </section>
@@ -178,8 +178,17 @@ function OurStory() {
           <p className="text-muted leading-relaxed mb-4">
             What started as a small family operation has continued to grow into a professional team providing grounds maintenance, landscaping, weed control, acreage and rural property maintenance, along with access to earthworks and machinery services through the wider Markwick family.
           </p>
+          <p className="text-muted leading-relaxed mb-4">
+            On 25 June 2020 the business was renamed. It had traded as Markwick&rsquo;s Mowing, and by then that name described about a third of what we actually did. Mowing rounds still run every week, but so do standing grounds contracts, landscaping projects, acreage slashing, weed control and excavation. Markwicks Services was simply the honest description of the work, and the rename settled a question clients had started asking anyway: whether we could take on the rest of a job rather than just the lawn.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            Fifteen years in, most of what we run is our own. Bobcat S770 and S650 skid steers in tracked and wheeled configurations, E50 and E20 excavators, commercial ride-ons, a compact tractor, a utility buggy with commercial spraying equipment, and the tipper and tray trucks that take material off site. Owning the plant rather than hiring it is what lets a maintenance contract absorb a levelling job mid-year, or a garden renovation include the earthworks underneath it, without a second contractor and a second schedule.
+          </p>
+          <p className="text-muted leading-relaxed mb-4">
+            The work covers a wide stretch of country, and it does not behave uniformly. Bathurst sits around 670 metres and takes roughly 705mm of rain a year; Orange runs higher and wetter; Oberon is the coldest town in New South Wales and carries frosts across three seasons. A mowing frequency or a turf timetable that suits one town is often wrong for the next one over, so schedules are set to the district rather than to a single regional calendar.
+          </p>
           <p className="text-muted leading-relaxed">
-            While the business continues to grow, our focus remains the same: quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business.
+            While the business continues to grow, our focus remains the same: quality workmanship, reliability, strong client relationships and the personal service you expect from a local family business. We are fully insured, and every quote follows a site visit rather than a phone estimate, because access, slope and ground conditions change a job far more than its square metreage does.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4">

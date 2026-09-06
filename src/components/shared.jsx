@@ -3,7 +3,6 @@ import { gsap } from 'gsap'
 import { Tractor, CheckCircle2 } from 'lucide-react'
 
 export const TRUSTED_BY = [
-  { name: 'TAFE NSW', logo: '/logos/tafe-nsw.png', scale: 0.78 },
   { name: 'Catholic Healthcare', logo: '/logos/catholic-healthcare.png' },
   { name: 'Dawsons Bathurst', logo: '/logos/dawsons-bathurst.png', scale: 1.3 },
   { name: 'Kelso Electrical', logo: '/logos/kelso-electrical.png' },

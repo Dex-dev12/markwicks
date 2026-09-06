@@ -9,7 +9,7 @@ export const SEO = {
   '/': {
     title: 'Grounds Maintenance & Landscaping Bathurst | Markwicks',
     description:
-      'Scheduled grounds maintenance, landscaping, acreage mowing and excavation across Bathurst and the Central West. Trusted by schools, TAFE NSW and aged care.',
+      'Scheduled grounds maintenance, landscaping, acreage mowing and excavation across Bathurst and the Central West. Trusted by schools, education campuses and aged care.',
   },
   '/about': {
     title: 'About Us | Markwicks Services Bathurst',
@@ -54,7 +54,7 @@ export const SEO = {
   '/services/commercial-grounds-maintenance': {
     title: 'Commercial Grounds Maintenance Bathurst | Markwicks',
     description:
-      'Scheduled grounds maintenance contracts for schools, TAFE NSW campuses, aged care, strata and industrial sites across the Bathurst region.',
+      'Scheduled grounds maintenance contracts for schools, education campuses, aged care, strata and industrial sites across the Bathurst region.',
   },
   '/services/landscaping': {
     title: 'Landscaping Bathurst | Garden Beds & Turf | Markwicks',
@@ -79,7 +79,7 @@ export const SEO = {
   '/portfolio': {
     title: 'Our Work | Grounds Maintenance Projects Bathurst',
     description:
-      'Completed grounds maintenance, landscaping and excavation projects across schools, TAFE NSW campuses, aged care and commercial sites in the Bathurst region.',
+      'Completed grounds maintenance, landscaping and excavation projects across schools, education campuses, aged care and commercial sites in the Bathurst region.',
   },
   '/equipment': {
     title: 'Our Equipment | Markwicks Services Bathurst',

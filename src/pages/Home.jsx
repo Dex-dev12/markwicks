@@ -193,7 +193,7 @@ function Intro() {
           <p className="font-mono text-sm uppercase tracking-[0.18em] text-primary mb-4">Who We Are</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tighter mb-7">Make a difference with us!</h2>
           <p className="text-muted leading-relaxed text-lg sm:text-xl mb-10">
-            We handle the full spectrum of landscaping and grounds work from commercial maintenance and property makeovers to rural and acreage services, weed management, and earthworks and excavation. We service schools, TAFE NSW, aged care facilities, strata complexes, industrial sites, and rural landholders across the Central West.
+            We handle the full spectrum of landscaping and grounds work from commercial maintenance and property makeovers to rural and acreage services, weed management, and earthworks and excavation. We service schools, education campuses, aged care facilities, strata complexes, industrial sites, and rural landholders across the Central West.
           </p>
           <div className="space-y-7">
             {points.map((p) => (
