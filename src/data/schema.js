@@ -75,6 +75,23 @@ function serviceSchema(service) {
   }
 }
 
+// Only emitted for services that actually carry FAQ copy on the page. Google
+// requires the answer text to be visible to the visitor, which it is: the
+// <details> elements render their answers in the HTML, collapsed rather than
+// removed.
+function faqSchema(service) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${SITE}/services/${service.slug}#faq`,
+    mainEntity: service.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
+}
+
 // Returns the JSON-LD blocks belonging on a given route.
 export function schemaFor(pathname) {
   const key = pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
@@ -88,6 +105,7 @@ export function schemaFor(pathname) {
     const service = SERVICES.find((s) => s.slug === serviceMatch[1])
     if (service) {
       blocks.push(serviceSchema(service))
+      if (service.faqs?.length) blocks.push(faqSchema(service))
       blocks.push(
         breadcrumb([
           { name: 'Home', path: '/' },

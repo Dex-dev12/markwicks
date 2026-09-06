@@ -50,6 +50,9 @@ export default function ServiceDetail() {
       <section ref={bodyRef} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-12 gap-12">
           <div className="svc-detail-text lg:col-span-7">
+            {service.intro && (
+              <p className="text-ink leading-relaxed text-lg sm:text-xl mb-6">{service.intro}</p>
+            )}
             <p className="text-muted leading-relaxed text-base sm:text-lg mb-8">{service.body}</p>
             <ul className="space-y-3">
               {service.bullets.map((b) => (
@@ -82,6 +85,43 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+
+      {service.sections?.length > 0 && (
+        <section className="pb-24 sm:pb-32">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <div className="max-w-3xl space-y-12">
+              {service.sections.map((sec) => (
+                <div key={sec.heading}>
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-4">{sec.heading}</h2>
+                  <p className="text-muted leading-relaxed text-base sm:text-lg">{sec.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {service.faqs?.length > 0 && (
+        <section className="bg-surface border-t border-divider py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">Common Questions</p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter mb-12 max-w-3xl">
+              {service.title}, answered.
+            </h2>
+            <div className="max-w-3xl divide-y divide-divider border-t border-divider">
+              {service.faqs.map((f) => (
+                <details key={f.q} className="group py-6">
+                  <summary className="flex items-start justify-between gap-6 cursor-pointer list-none font-display text-lg sm:text-xl font-semibold tracking-tight text-ink">
+                    {f.q}
+                    <ArrowRight className="h-5 w-5 text-primary shrink-0 mt-1 transition-transform group-open:rotate-90" />
+                  </summary>
+                  <p className="text-muted leading-relaxed text-base sm:text-lg mt-4">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section ref={othersRef} className="bg-deep text-white py-24 sm:py-32">
         <div className="svc-others-heading max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-14">
