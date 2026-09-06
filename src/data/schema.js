@@ -7,7 +7,7 @@
 // structured data breaches Google's guidelines. AggregateRating is likewise
 // absent: there is one genuine testimonial and no star ratings.
 
-import { SERVICES } from './services.js'
+import { SERVICES, SERVICES_PAGE } from './services.js'
 
 const SITE = 'https://markwicksservices.com.au'
 const BUSINESS_ID = `${SITE}/#business`
@@ -126,6 +126,18 @@ export function schemaFor(pathname) {
   }
   if (NAMES[key]) {
     blocks.push(breadcrumb([{ name: 'Home', path: '/' }, { name: NAMES[key], path: key }]))
+  }
+  if (key === '/services' && SERVICES_PAGE.faqs?.length) {
+    blocks.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      '@id': `${SITE}/services#faq`,
+      mainEntity: SERVICES_PAGE.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })
   }
   return blocks
 }

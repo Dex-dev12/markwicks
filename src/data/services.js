@@ -246,3 +246,40 @@ export const SERVICES = [
 export function getServiceBySlug(slug) {
   return SERVICES.find((s) => s.slug === slug)
 }
+
+// Hub-level copy for /services. Deliberately does not repeat the individual
+// service pages: this covers how the services fit together, how work is
+// engaged, and where we cover, which none of the child pages address.
+export const SERVICES_PAGE = {
+  intro:
+    "Markwicks Services covers the full range of outdoor work on a property, from a weekly mowing round through to the excavation and groundwork that happens before anything gets built or planted. Most contractors sit at one end of that range or the other. Running both ends means a job that starts as a garden tidy-up and turns into a retaining wall, or a grounds contract that needs an area levelled halfway through the year, is handled by the same business rather than tendered out and rescheduled around somebody else's availability.",
+  sections: [
+    {
+      heading: 'Recurring work and one-off projects',
+      body:
+        "Most of what we do falls into one of two shapes. Recurring work runs to a schedule agreed at the start: residential mowing rounds, commercial grounds contracts for schools, TAFE campuses, aged care and strata sites, and seasonal rural work such as slashing and fire hazard reduction. One-off projects are quoted against a defined scope instead: landscaping, retaining walls, turf, excavation, trenching and site preparation. Plenty of clients have both running at once, and where that happens the project work is scheduled around the maintenance visits rather than treated as a separate engagement.",
+    },
+    {
+      heading: 'Where the services overlap',
+      body:
+        "The divisions on this page are how the work is described, not how it is actually carried out. Weed control sits inside most maintenance contracts rather than being sold on its own. Rural jobs commonly pair slashing with spraying in a single visit. Landscaping is mostly earthworks until the final week, which is why we run the skid steers and excavators ourselves rather than hiring them in. When you are not sure which service you need, that generally does not matter: the site visit sorts it out.",
+    },
+    {
+      heading: 'Where we work',
+      body:
+        "Bathurst and Kelso are the core of it, and most of our recurring work sits inside that area. Beyond it we cover the Central West more broadly, including Orange, Lithgow, Oberon, Blayney, Portland and Wallerawang, with how far we travel depending on the size of the job. A day of acreage slashing justifies a longer drive than a weekly suburban mowing round does, so it is worth asking rather than assuming, particularly for the larger rural work.",
+    },
+    {
+      heading: 'How a quote works',
+      body:
+        "Nearly everything is quoted after a site visit. Access, slope, ground conditions and how much material has to come in or go out change the price far more than the area does, and none of it is visible in a photo. For recurring work we look at the site, agree a standard and a frequency, and price against that. For projects we scope the work first, since the difference between a straightforward job and an awkward one is almost always something found on site rather than something described over the phone.",
+    },
+  ],
+  faqs: [
+    { q: 'Do you work with homes as well as commercial sites?', a: 'Both. The same crews and machinery cover residential mowing rounds, commercial grounds contracts, rural acreage work, landscaping and earthworks.' },
+    { q: 'Can you do more than one service at the same property?', a: 'Yes, and it is common. A grounds maintenance contract that needs an area levelled, or a mowing round that turns into a landscaping project, is handled in-house rather than by bringing in another contractor.' },
+    { q: 'What areas do you cover?', a: 'Bathurst and Kelso primarily, and the wider Central West including Orange, Lithgow, Oberon, Blayney, Portland and Wallerawang. How far we travel depends on the size of the job, so it is worth asking.' },
+    { q: 'Do you take on one-off jobs, or only ongoing contracts?', a: 'Both. Recurring contracts run to an agreed schedule; one-off projects such as landscaping, retaining walls and excavation are quoted against a defined scope.' },
+    { q: 'How do I get a quote?', a: 'Get in touch and we will arrange a site visit. Access, slope and ground conditions change a price far more than the square metreage does, so almost everything is quoted after seeing the site.' },
+  ],
+}
