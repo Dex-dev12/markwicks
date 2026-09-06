@@ -182,7 +182,8 @@ export default function Equipment() {
         title="The equipment behind every job we take on"
         subtitle="From skid steers and excavators to commercial mowers and spray rigs, our own fleet, maintained and ready, so we're never waiting on hired machinery."
         img="/images/bobcat-action.jpg"
-      />
+      imgAlt="Markwicks Services machinery and truck fleet on a rural property"
+        />
 
       <section className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">

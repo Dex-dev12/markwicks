@@ -16,7 +16,8 @@ export default function Areas() {
         title="Areas We Serve"
         subtitle="Grounds maintenance, landscaping, acreage work and earthworks across Bathurst, Kelso and the wider Central West of NSW."
         img="/images/services-header.jpg"
-      />
+      imgAlt="Grounds maintenance work across the Bathurst and Central West region"
+        />
 
       <section className="pt-20 sm:pt-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">

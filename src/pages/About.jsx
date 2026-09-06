@@ -268,7 +268,8 @@ export default function About() {
         title="A dedicated hardworking crew"
         subtitle="A family owned and operated business built across two generations of the Markwick family, treating every site, from a single lawn to a multi site commercial contract, with the same standard."
         img="/images/about-header.jpg"
-      />
+      imgAlt="Markwicks Services crew and equipment on a Central West property"
+        />
 
       <OurStory />
 

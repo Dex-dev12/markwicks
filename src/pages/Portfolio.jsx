@@ -49,7 +49,8 @@ export default function Portfolio() {
         title="Work across the Bathurst region."
         subtitle="Commercial grounds contracts, excavation and residential grounds care. Take a look at what we have done across the Bathurst region."
         img="/images/portfolio-header.jpg"
-      />
+      imgAlt="Completed grounds maintenance and landscaping work in the Bathurst region"
+        />
 
       <section className="pt-20 sm:pt-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">

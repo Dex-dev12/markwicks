@@ -91,6 +91,10 @@ export const SEO = {
     description:
       'Get a quote for grounds maintenance, landscaping or excavation in Bathurst and the Central West. Call 0432 165 468 or send an enquiry.',
   },
+  '/portal': {
+    title: 'Client Portal | Markwicks Services',
+    description: 'Client portal login for Markwicks Services grounds maintenance and landscaping clients across Bathurst and the Central West.',
+  },
   '/privacy': {
     title: 'Privacy Policy | Markwicks Services',
     description: 'How Markwicks Services collects, uses and protects your personal information.',

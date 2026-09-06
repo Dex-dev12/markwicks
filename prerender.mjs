@@ -33,6 +33,9 @@ const ROUTES = [
   '/areas/lithgow',
   '/areas/oberon',
   '/areas/blayney',
+  '/portal',
+  '/privacy',
+  '/terms',
 ]
 
 const esc = (s) =>

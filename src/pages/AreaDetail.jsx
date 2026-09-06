@@ -22,6 +22,7 @@ export default function AreaDetail() {
         title={`${area.name}`}
         subtitle={area.lead}
         img={area.img}
+        imgAlt={area.alt}
       />
 
       <section className="pt-20 sm:pt-28">

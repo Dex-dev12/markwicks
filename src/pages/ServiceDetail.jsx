@@ -46,7 +46,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <PageBanner eyebrow="Services" title={service.title} subtitle={service.text} img={service.img} />
+      <PageBanner eyebrow="Services" title={service.title} subtitle={service.text} img={service.img} imgAlt={service.alt} />
 
       <section ref={bodyRef} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 grid lg:grid-cols-12 gap-12">

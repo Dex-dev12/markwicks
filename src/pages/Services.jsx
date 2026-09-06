@@ -26,7 +26,8 @@ export default function Services() {
         title="Our Services"
         subtitle="We provide a full spectrum of landscaping and grounds keeping services. Ranging from residential services, to commercial grounds maintenance, rural & acreage services, weed management, and earthworks & excavation across Bathurst and the Central West."
         img="/images/services-header.jpg"
-      />
+      imgAlt="Grounds maintenance and landscaping work across the Bathurst region"
+        />
       <section className="pt-20 sm:pt-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <p className="max-w-3xl text-ink leading-relaxed text-lg sm:text-xl">{SERVICES_PAGE.intro}</p>

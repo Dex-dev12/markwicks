@@ -36,7 +36,8 @@ export default function Contact() {
         title="Tell us about the sites you need looked after."
         subtitle="Whether it's a one off job or a standing multi site contract, the first step is the same. An email or the form below."
         img="/images/contact-header.jpg"
-      />
+      imgAlt="Established front garden and lawn on a Bathurst property"
+        />
 
       <section ref={ref} className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
