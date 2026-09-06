@@ -40,6 +40,8 @@ export const BUSINESS = {
     latitude: -33.4060453,
     longitude: 149.6099360,
   },
+  // Ties the website and the social profiles together as one entity for Google.
+  sameAs: ['https://www.facebook.com/MarkwicksServices/'],
   areaServed: [
     { '@type': 'City', name: 'Bathurst' },
     { '@type': 'AdministrativeArea', name: 'Central West NSW' },
