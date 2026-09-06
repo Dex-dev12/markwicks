@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { PageBanner } from '../components/shared.jsx'
-import { CASE_STUDIES } from '../data/caseStudies.js'
+import { CASE_STUDIES, PORTFOLIO_PAGE } from '../data/caseStudies.js'
 import Img from '../components/Img.jsx'
 
 function PortfolioClosingCta() {
@@ -51,30 +51,59 @@ export default function Portfolio() {
         img="/images/portfolio-header.jpg"
       />
 
-      <section ref={ref} className="py-24 sm:py-32">
+      <section className="pt-20 sm:pt-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CASE_STUDIES.map((c) => (
-              <div key={c.slug} className="case-tile rounded-3xl overflow-hidden border border-divider bg-surface flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden bg-background">
-                  {c.img && <Img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />}
-                  {c.placeholder && (
-                    <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
-                      Example
-                    </span>
-                  )}
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary mb-1.5">{c.category}</p>
-                  <h3 className="font-display text-lg font-semibold mb-1">{c.title}</h3>
-                  <p className="text-xs text-muted mb-3">{c.client}</p>
-                  <p className="text-sm text-muted leading-relaxed">{c.summary}</p>
-                </div>
-              </div>
-            ))}
+          <p className="max-w-3xl text-ink leading-relaxed text-lg sm:text-xl">{PORTFOLIO_PAGE.intro}</p>
+        </div>
+      </section>
+
+      <section ref={ref} className="py-20 sm:py-28">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          {/* Alternating rows rather than a tile grid: each job carries a
+              paragraph of detail now, which a three-column card cannot hold. */}
+          <div className="flex flex-col gap-16 sm:gap-20">
+            {CASE_STUDIES.map((c, i) => {
+              const imageFirst = i % 2 === 0
+              return (
+                <article key={c.slug} className="case-tile grid lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                  <div className={`lg:col-span-6 ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-divider bg-background">
+                      {c.img && <Img src={c.img} alt={c.alt} loading="lazy" decoding="async" className="h-full w-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />}
+                      {c.placeholder && (
+                        <span className="absolute top-3 right-3 bg-deep/80 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full">
+                          Example
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className={`lg:col-span-6 ${imageFirst ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3">{c.category}</p>
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-2">{c.title}</h2>
+                    <p className="text-sm text-muted mb-5">{c.client}</p>
+                    <p className="text-ink leading-relaxed mb-4">{c.summary}</p>
+                    {c.detail && <p className="text-muted leading-relaxed">{c.detail}</p>}
+                  </div>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
+
+      {PORTFOLIO_PAGE.sections?.length > 0 && (
+        <section className="pb-20 sm:pb-28">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+            <div className="max-w-3xl space-y-12">
+              {PORTFOLIO_PAGE.sections.map((sec) => (
+                <div key={sec.heading}>
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tighter mb-4">{sec.heading}</h2>
+                  <p className="text-muted leading-relaxed text-base sm:text-lg">{sec.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <PortfolioClosingCta />
     </>
