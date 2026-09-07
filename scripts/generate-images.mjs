@@ -21,8 +21,14 @@ const OUT = path.join(SRC, 'r')
 // Quality drops at larger sizes: the hero sits under a brightness(0.5) overlay,
 // so the difference is not visible and 1600px WebP at q78 came out larger than
 // the source JPEG.
-const WIDTHS = [640, 1024, 1440]
-const QUALITY = { 640: 78, 1024: 74, 1440: 68 }
+// 1200 exists for high-DPR phones: a 390px viewport at DPR 3 needs ~1170px, so
+// without it the browser jumps straight to 1440 and pulls 192KB for a hero it
+// renders at 50% brightness under text. Quality tapers with width because
+// artefacts are less visible per-pixel on the larger variants. 1200 sits at q44
+// so its file lands at or below what the 1024 candidate cost - otherwise adding
+// the tier makes below-the-fold images heavier, not lighter.
+const WIDTHS = [640, 1024, 1200, 1440]
+const QUALITY = { 640: 78, 1024: 74, 1200: 44, 1440: 62 }
 
 async function main() {
   await mkdir(OUT, { recursive: true })

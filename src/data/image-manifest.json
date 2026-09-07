@@ -1,7 +1,8 @@
 {
   "about-header": [
     640,
-    1024
+    1024,
+    1200
   ],
   "bobcat-action": [
     640
@@ -39,6 +40,7 @@
   "excavator-truck": [
     640,
     1024,
+    1200,
     1440
   ],
   "farmyard": [
@@ -46,29 +48,34 @@
   ],
   "gravel-pathway": [
     640,
-    1024
+    1024,
+    1200
   ],
   "landscaping-mulch-edging": [
     640,
-    1024
+    1024,
+    1200
   ],
   "landscaping-retaining-wall-build": [
     640
   ],
   "mower-mowing": [
     640,
-    1024
+    1024,
+    1200
   ],
   "mower": [
     640,
-    1024
+    1024,
+    1200
   ],
   "mulch-bed-mountain": [
     640
   ],
   "mulch-bed-paddock": [
     640,
-    1024
+    1024,
+    1200
   ],
   "native-garden-bed-lights": [
     640
@@ -78,7 +85,8 @@
   ],
   "portfolio-header": [
     640,
-    1024
+    1024,
+    1200
   ],
   "residential-garden-bed-edging": [
     640
@@ -94,14 +102,16 @@
   ],
   "rural-paddock-slashing": [
     640,
-    1024
+    1024,
+    1200
   ],
   "rural-shed-site-prep": [
     640
   ],
   "rural-site-drainage": [
     640,
-    1024
+    1024,
+    1200
   ],
   "rural-truck-paddock": [
     640
@@ -114,23 +124,27 @@
   ],
   "story-fleet": [
     640,
-    1024
+    1024,
+    1200
   ],
   "story-pergola-crew": [
     640
   ],
   "story-truck-steps": [
     640,
-    1024
+    1024,
+    1200
   ],
   "tree-planting": [
     640,
     1024,
+    1200,
     1440
   ],
   "truck-trailer": [
     640,
     1024,
+    1200,
     1440
   ],
   "water-tank-installation": [
