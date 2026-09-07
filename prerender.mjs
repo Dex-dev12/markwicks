@@ -14,7 +14,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST = path.join(__dirname, 'dist')
 const SSR_ENTRY = path.join(__dirname, 'dist-ssr', 'entry-server.js')
 
-// Keep in sync with public/sitemap.xml and src/routes.jsx.
+// Keep in sync with src/routes.jsx. The sitemap is generated from this list
+// at build time, so lastmod can never drift from what was actually deployed.
 const ROUTES = [
   '/',
   '/about',
@@ -107,6 +108,23 @@ async function main() {
     console.error(`\nPrerender finished with ${failures} failed route(s).`)
     process.exit(1)
   }
+  // A hand-maintained sitemap goes stale silently: 12 URLs were still claiming
+  // a lastmod that predated the rewrite that tripled their word count, which
+  // tells Google there is nothing worth re-crawling.
+  const SITEMAP_EXCLUDE = new Set(['/portal', '/privacy', '/terms'])
+  const SITEMAP_ROUTES = ROUTES.filter((r) => !SITEMAP_EXCLUDE.has(r))
+  const PRIORITY = {"/": "1.0", "/about": "0.8", "/services": "0.9", "/services/residential-services": "0.7", "/services/commercial-grounds-maintenance": "0.7", "/services/landscaping": "0.7", "/services/rural-acreage-services": "0.7", "/services/weed-management": "0.7", "/services/earthworks-excavation": "0.7", "/portfolio": "0.8", "/contact": "0.9", "/equipment": "0.6", "/areas": "0.8", "/areas/orange": "0.8", "/areas/lithgow": "0.8", "/areas/oberon": "0.8", "/areas/blayney": "0.8"}
+  const today = new Date().toISOString().slice(0, 10)
+  const sitemap =
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    SITEMAP_ROUTES.map((r) => {
+      const loc = `https://markwicksservices.com.au${r === '/' ? '/' : r}`
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${PRIORITY[r] || '0.7'}</priority>\n  </url>`
+    }).join('\n') +
+    '\n</urlset>\n'
+  await writeFile(path.join(DIST, 'sitemap.xml'), sitemap)
+  console.log(`Sitemap written: ${SITEMAP_ROUTES.length} URLs, lastmod ${today}.`)
+
   console.log(`\nPrerendered ${ROUTES.length} routes.`)
 }
 
