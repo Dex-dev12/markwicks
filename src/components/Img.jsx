@@ -11,22 +11,32 @@
 
 import MANIFEST from '../data/image-manifest.json'
 
-function srcSetFor(src) {
+function entryFor(src) {
   const m = /^\/images\/([^/]+)\.(jpe?g|png)$/i.exec(src || '')
-  if (!m) return null
-  const widths = MANIFEST[m[1]]
-  if (!widths?.length) return null
-  return widths.map((w) => `/images/r/${m[1]}-${w}.webp ${w}w`).join(', ')
+  return m ? MANIFEST[m[1]] && { base: m[1], ...MANIFEST[m[1]] } : null
 }
 
 export default function Img({ src, alt, sizes = '100vw', className, ...rest }) {
-  const srcSet = srcSetFor(src)
-  if (!srcSet) return <img src={src} alt={alt} className={className} {...rest} />
+  const entry = entryFor(src)
+
+  // Intrinsic dimensions give the browser an aspect ratio before the bytes
+  // arrive, so the box is reserved without depending on the stylesheet having
+  // loaded. Callers that already pass width/height keep theirs.
+  const dims =
+    entry?.w && entry?.h && rest.width === undefined && rest.height === undefined
+      ? { width: entry.w, height: entry.h }
+      : {}
+
+  if (!entry?.widths?.length) {
+    return <img src={src} alt={alt} className={className} {...dims} {...rest} />
+  }
+
+  const srcSet = entry.widths.map((w) => `/images/r/${entry.base}-${w}.webp ${w}w`).join(', ')
 
   return (
     <picture>
       <source type="image/webp" srcSet={srcSet} sizes={sizes} />
-      <img src={src} alt={alt} className={className} {...rest} />
+      <img src={src} alt={alt} className={className} {...dims} {...rest} />
     </picture>
   )
 }

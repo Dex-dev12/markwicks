@@ -44,6 +44,9 @@ async function main() {
     before += (await stat(srcPath)).size
 
     const meta = await sharp(srcPath).metadata()
+    // Intrinsic dimensions travel with the widths so <img> can carry
+    // width/height and reserve the right box before the file lands.
+    manifest[base] = { widths: [], w: meta.width || 0, h: meta.height || 0 }
 
     for (const w of WIDTHS) {
       // Never upscale: a 1200px source has no business being written at 1600.
@@ -52,7 +55,7 @@ async function main() {
       const outPath = path.join(OUT, `${base}-${w}.webp`)
       await sharp(srcPath).resize(target).webp({ quality: QUALITY[w] ?? 74 }).toFile(outPath)
       after += (await stat(outPath)).size
-      ;(manifest[base] ??= []).push(w)
+      ;((manifest[base] ??= { widths: [], w: 0, h: 0 }).widths).push(w)
     }
   }
 

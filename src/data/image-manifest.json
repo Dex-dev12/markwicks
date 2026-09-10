@@ -1,159 +1,327 @@
 {
-  "about-header": [
-    640,
-    1024,
-    1200
-  ],
-  "bobcat-action": [
-    640
-  ],
-  "campus-grounds-department-education": [
-    640
-  ],
-  "campus-parking-mulch": [
-    640
-  ],
-  "commercial-carpark-garden-bed": [
-    640
-  ],
-  "commercial-mower-carpark": [
-    640
-  ],
-  "contact-header": [
-    640
-  ],
-  "digger-farm": [
-    640
-  ],
-  "earthworks-bobcat-auger-residential": [
-    640
-  ],
-  "earthworks-rural-excavation-pit": [
-    640
-  ],
-  "estate-garden-bed": [
-    640
-  ],
-  "estate-street-crew": [
-    640
-  ],
-  "excavator-truck": [
-    640,
-    1024,
-    1200,
-    1440
-  ],
-  "farmyard": [
-    640
-  ],
-  "gravel-pathway": [
-    640,
-    1024,
-    1200
-  ],
-  "landscaping-mulch-edging": [
-    640,
-    1024,
-    1200
-  ],
-  "landscaping-retaining-wall-build": [
-    640
-  ],
-  "mower-mowing": [
-    640,
-    1024,
-    1200
-  ],
-  "mower": [
-    640,
-    1024,
-    1200
-  ],
-  "mulch-bed-mountain": [
-    640
-  ],
-  "mulch-bed-paddock": [
-    640,
-    1024,
-    1200
-  ],
-  "native-garden-bed-lights": [
-    640
-  ],
-  "parking-lot-mulch": [
-    640
-  ],
-  "portfolio-header": [
-    640,
-    1024,
-    1200
-  ],
-  "residential-garden-bed-edging": [
-    640
-  ],
-  "residential-lawn-care": [
-    640
-  ],
-  "residential-lawn": [
-    640
-  ],
-  "retaining-wall-crew": [
-    640
-  ],
-  "rural-paddock-slashing": [
-    640,
-    1024,
-    1200
-  ],
-  "rural-shed-site-prep": [
-    640
-  ],
-  "rural-site-drainage": [
-    640,
-    1024,
-    1200
-  ],
-  "rural-truck-paddock": [
-    640
-  ],
-  "services-header": [
-    640
-  ],
-  "story-bobcat-auger": [
-    640
-  ],
-  "story-fleet": [
-    640,
-    1024,
-    1200
-  ],
-  "story-pergola-crew": [
-    640
-  ],
-  "story-truck-steps": [
-    640,
-    1024,
-    1200
-  ],
-  "tree-planting": [
-    640,
-    1024,
-    1200,
-    1440
-  ],
-  "truck-trailer": [
-    640,
-    1024,
-    1200,
-    1440
-  ],
-  "water-tank-installation": [
-    640
-  ],
-  "weed-management": [
-    640
-  ],
-  "winter-wheat": [
-    640
-  ]
+  "about-header": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "bobcat-action": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 720
+  },
+  "campus-grounds-department-education": {
+    "widths": [
+      640
+    ],
+    "w": 924,
+    "h": 693
+  },
+  "campus-parking-mulch": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "commercial-carpark-garden-bed": {
+    "widths": [
+      640
+    ],
+    "w": 716,
+    "h": 960
+  },
+  "commercial-mower-carpark": {
+    "widths": [
+      640
+    ],
+    "w": 716,
+    "h": 960
+  },
+  "contact-header": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "digger-farm": {
+    "widths": [
+      640
+    ],
+    "w": 427,
+    "h": 640
+  },
+  "earthworks-bobcat-auger-residential": {
+    "widths": [
+      640
+    ],
+    "w": 533,
+    "h": 960
+  },
+  "earthworks-rural-excavation-pit": {
+    "widths": [
+      640
+    ],
+    "w": 540,
+    "h": 960
+  },
+  "estate-garden-bed": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "estate-street-crew": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "excavator-truck": {
+    "widths": [
+      640,
+      1024,
+      1200,
+      1440
+    ],
+    "w": 1600,
+    "h": 863
+  },
+  "farmyard": {
+    "widths": [
+      640
+    ],
+    "w": 640,
+    "h": 427
+  },
+  "gravel-pathway": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "landscaping-mulch-edging": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "landscaping-retaining-wall-build": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "mower-mowing": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "mower": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1200,
+    "h": 1600
+  },
+  "mulch-bed-mountain": {
+    "widths": [
+      640
+    ],
+    "w": 999,
+    "h": 450
+  },
+  "mulch-bed-paddock": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "native-garden-bed-lights": {
+    "widths": [
+      640
+    ],
+    "w": 537,
+    "h": 960
+  },
+  "parking-lot-mulch": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "portfolio-header": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "residential-garden-bed-edging": {
+    "widths": [
+      640
+    ],
+    "w": 537,
+    "h": 960
+  },
+  "residential-lawn-care": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "residential-lawn": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "retaining-wall-crew": {
+    "widths": [
+      640
+    ],
+    "w": 540,
+    "h": 960
+  },
+  "rural-paddock-slashing": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "rural-shed-site-prep": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 540
+  },
+  "rural-site-drainage": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "rural-truck-paddock": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 720
+  },
+  "services-header": {
+    "widths": [
+      640
+    ],
+    "w": 960,
+    "h": 720
+  },
+  "story-bobcat-auger": {
+    "widths": [
+      640
+    ],
+    "w": 533,
+    "h": 960
+  },
+  "story-fleet": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "story-pergola-crew": {
+    "widths": [
+      640
+    ],
+    "w": 720,
+    "h": 960
+  },
+  "story-truck-steps": {
+    "widths": [
+      640,
+      1024,
+      1200
+    ],
+    "w": 1420,
+    "h": 640
+  },
+  "tree-planting": {
+    "widths": [
+      640,
+      1024,
+      1200,
+      1440
+    ],
+    "w": 1600,
+    "h": 1066
+  },
+  "truck-trailer": {
+    "widths": [
+      640,
+      1024,
+      1200,
+      1440
+    ],
+    "w": 1600,
+    "h": 900
+  },
+  "water-tank-installation": {
+    "widths": [
+      640
+    ],
+    "w": 540,
+    "h": 960
+  },
+  "weed-management": {
+    "widths": [
+      640
+    ],
+    "w": 537,
+    "h": 960
+  },
+  "winter-wheat": {
+    "widths": [
+      640
+    ],
+    "w": 1000,
+    "h": 899
+  }
 }
