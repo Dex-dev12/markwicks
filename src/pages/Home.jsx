@@ -214,24 +214,42 @@ function Intro() {
   )
 }
 
-const TESTIMONIALS = [
-  {
-    quote: "We have used Markwicks for a number of years as our go-to team for all our landscaping and garden maintenance needs. Their work has ranged from designing and installing garden features and retaining walls to the regular upkeep of our large country garden. We also rely on them to maintain our commercial premises. The boys are consistently reliable, trustworthy and hardworking. Their pricing is fair, and the work is always completed to a high standard. We are very happy to highly recommend Markwicks.",
-    name: 'Mary-Rose Townsend',
-  },
-]
+// Google reviews, served by the GoHighLevel reputation widget. The reviews
+// live in a cross-origin iframe, so Google cannot attribute them to this page
+// as content - this section is social proof for people, not an SEO asset.
+//
+// Two things the raw embed gets wrong and this does not:
+//   - The iframe ships with no height. Browsers default to 150px and the
+//     widget script then animates it to its real height over 0.5s, shifting
+//     everything below it. RESERVED_HEIGHT holds the box so CLS stays at 0.
+//   - The iframe and its ~300KB of scripts load eagerly. loading="lazy" defers
+//     all of it until the section is near the viewport.
+const REVIEW_WIDGET_SRC =
+  'https://reputationhub.site/reputation/widgets/review_widget/uQ4BZsVOUfUOPUv3BKeh'
+const REVIEW_WIDGET_SCRIPT = 'https://reputationhub.site/reputation/assets/review-widget.js'
+// Measured against the rendered widget. Revisit if the review count changes
+// enough to move it - too small reintroduces the shift, too large leaves a gap.
+const RESERVED_HEIGHT = 420
 
 function Testimonials() {
   const ref = useRef(null)
+
+  useEffect(() => {
+    // The widget script is a postMessage listener that resizes the iframe. It
+    // only needs to exist once, and only on the page carrying the widget.
+    if (!document.querySelector(`script[src="${REVIEW_WIDGET_SCRIPT}"]`)) {
+      const el = document.createElement('script')
+      el.src = REVIEW_WIDGET_SCRIPT
+      el.async = true
+      document.body.appendChild(el)
+    }
+  }, [])
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.testi-heading', {
         scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
         y: 24, opacity: 0, duration: 1, ease: 'power2.out',
-      })
-      gsap.from('.testimonial-card', {
-        scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true },
-        y: 40, opacity: 0, scale: 0.97, duration: 0.8, delay: 0.15, stagger: 0.15, ease: 'power3.out',
       })
       gsap.to('.testi-heading', {
         yPercent: -20,
@@ -249,22 +267,17 @@ function Testimonials() {
           <p className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.18em] text-primary mb-3 text-center">What Clients Say</p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tighter text-center mb-14">Trusted to turn up and get it done.</h2>
         </div>
-        <div
-          className={
-            TESTIMONIALS.length === 1
-              ? 'max-w-3xl mx-auto'
-              : TESTIMONIALS.length === 2
-                ? 'grid grid-cols-1 lg:grid-cols-2 gap-6'
-                : 'grid grid-cols-1 lg:grid-cols-3 gap-6'
-          }
-        >
-          {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="testimonial-card rounded-3xl bg-surface border border-divider p-6 sm:p-8">
-              {t.name && <p className="text-sm font-semibold text-ink mb-1">{t.name}</p>}
-              {t.role && <p className="text-xs text-muted mb-4">{t.role}</p>}
-              <p className="font-serif italic text-lg text-ink leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
-            </div>
-          ))}
+        <div className="max-w-5xl mx-auto" style={{ minHeight: RESERVED_HEIGHT }}>
+          <iframe
+            className="lc_reviews_widget w-full"
+            src={REVIEW_WIDGET_SRC}
+            title="Google reviews for Markwicks Services"
+            height={RESERVED_HEIGHT}
+            loading="lazy"
+            frameBorder="0"
+            scrolling="no"
+            style={{ minWidth: '100%', width: '100%', border: 0 }}
+          />
         </div>
       </div>
     </section>
