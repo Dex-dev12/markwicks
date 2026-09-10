@@ -9,7 +9,7 @@ export const SEO = {
   '/': {
     title: 'Grounds Maintenance & Landscaping Bathurst | Markwicks',
     description:
-      'Scheduled grounds maintenance, landscaping, acreage mowing and excavation across Bathurst and the Central West. Trusted by schools, education campuses and aged care.',
+      'Scheduled grounds maintenance, landscaping, acreage mowing and excavation across Bathurst and the Central West. Trusted by schools, aged care and industry.',
   },
   '/about': {
     title: 'About Us | Markwicks Services Bathurst',
