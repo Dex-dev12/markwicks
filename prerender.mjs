@@ -9,6 +9,7 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execFileSync } from 'node:child_process'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const DIST = path.join(__dirname, 'dist')
@@ -115,15 +116,69 @@ async function main() {
   const SITEMAP_ROUTES = ROUTES.filter((r) => !SITEMAP_EXCLUDE.has(r))
   const PRIORITY = {"/": "1.0", "/about": "0.8", "/services": "0.9", "/services/residential-services": "0.7", "/services/commercial-grounds-maintenance": "0.7", "/services/landscaping": "0.7", "/services/rural-acreage-services": "0.7", "/services/weed-management": "0.7", "/services/earthworks-excavation": "0.7", "/portfolio": "0.8", "/contact": "0.9", "/equipment": "0.6", "/areas": "0.8", "/areas/orange": "0.8", "/areas/lithgow": "0.8", "/areas/oberon": "0.8", "/areas/blayney": "0.8"}
   const today = new Date().toISOString().slice(0, 10)
+
+  // Every route used to claim the build date, so a one-word edit to a single
+  // page moved all 17 lastmods in lockstep. Google only leans on lastmod where
+  // it proves accurate; a date that is always identical and always current
+  // carries no information, and the signal gets discounted. Derive each date
+  // from the last commit that touched the files the page is actually built
+  // from instead.
+  const SOURCES = {
+    '/': ['src/pages/Home.jsx'],
+    '/about': ['src/pages/About.jsx'],
+    '/services': ['src/pages/Services.jsx', 'src/data/services.js'],
+    '/equipment': ['src/pages/Equipment.jsx'],
+    '/portfolio': ['src/pages/Portfolio.jsx', 'src/data/caseStudies.js'],
+    '/contact': ['src/pages/Contact.jsx'],
+    '/areas': ['src/pages/Areas.jsx', 'src/data/areas.js'],
+  }
+  const sourcesFor = (r) =>
+    SOURCES[r] ||
+    (r.startsWith('/services/')
+      ? ['src/pages/ServiceDetail.jsx', 'src/data/services.js']
+      : ['src/pages/AreaDetail.jsx', 'src/data/areas.js'])
+
+  // Deliberately not including src/data/seo.js or src/data/schema.js here.
+  // Both feed every page's head, so folding them in would re-date all 17 URLs
+  // on any shared-metadata tweak - the same lockstep this replaced. A title
+  // change going unsignalled is a smaller cost than a lastmod Google learns to
+  // ignore.
+
+  // Vercel clones shallowly, so git log can legitimately return nothing here.
+  // Falling back to the build date keeps the sitemap valid rather than
+  // emitting an empty lastmod.
+  const gitDate = (files) => {
+    try {
+      const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', ...files], {
+        cwd: __dirname,
+        encoding: 'utf-8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+      }).trim()
+      return out ? out.slice(0, 10) : null
+    } catch {
+      return null
+    }
+  }
+
+  let fellBack = 0
+  const lastmodFor = (r) => {
+    const d = gitDate(sourcesFor(r))
+    if (!d) fellBack++
+    return d || today
+  }
+
   const sitemap =
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     SITEMAP_ROUTES.map((r) => {
       const loc = `https://markwicksservices.com.au${r === '/' ? '/' : r}`
-      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <priority>${PRIORITY[r] || '0.7'}</priority>\n  </url>`
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmodFor(r)}</lastmod>\n    <priority>${PRIORITY[r] || '0.7'}</priority>\n  </url>`
     }).join('\n') +
     '\n</urlset>\n'
   await writeFile(path.join(DIST, 'sitemap.xml'), sitemap)
-  console.log(`Sitemap written: ${SITEMAP_ROUTES.length} URLs, lastmod ${today}.`)
+  console.log(
+    `Sitemap written: ${SITEMAP_ROUTES.length} URLs` +
+      (fellBack ? `, ${fellBack} fell back to the build date (no git history).` : ', lastmod per page from git.')
+  )
 
   console.log(`\nPrerendered ${ROUTES.length} routes.`)
 }
