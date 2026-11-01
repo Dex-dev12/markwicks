@@ -22,7 +22,7 @@ export const BUSINESS = {
   image: `${SITE}/logo.png`,
   logo: `${SITE}/logo.png`,
   telephone: '+61432165468',
-  email: 'contact@markwicksservices.com.au',
+  email: 'markwicksservices@gmail.com',
   description:
     'Scheduled commercial grounds maintenance, contract mowing, landscaping, excavation and weed management across Bathurst and the Central West NSW.',
   address: {
@@ -140,7 +140,7 @@ export function schemaFor(pathname) {
         url: `${SITE}/areas/${area.slug}`,
         image: `${SITE}/logo.png`,
         telephone: '+61432165468',
-        email: 'contact@markwicksservices.com.au',
+        email: 'markwicksservices@gmail.com',
         // The crew and the plant are dispatched from Kelso; this page is a
         // service area, not a second premises, so the address stays the real
         // one and areaServed carries the town.

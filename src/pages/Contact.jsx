@@ -48,7 +48,7 @@ export default function Contact() {
                   <span className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><Mail className="h-4 w-4 text-primary" /></span>
                   <div>
                     <p className="text-xs text-muted">Email</p>
-                    <a href="mailto:contact@markwicksservices.com.au" className="font-medium lift-on-hover">contact@markwicksservices.com.au</a>
+                    <a href="mailto:markwicksservices@gmail.com" className="font-medium lift-on-hover">markwicksservices@gmail.com</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

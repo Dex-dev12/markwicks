@@ -43,7 +43,7 @@ export default function Footer() {
             <h5 className="font-display font-semibold mb-4 text-sm uppercase tracking-wide text-white/50">Contact</h5>
             <ul className="space-y-2.5 text-sm text-white/70">
               <li>0432 165 468</li>
-              <li><a href="mailto:contact@markwicksservices.com.au" className="lift-on-hover whitespace-nowrap">contact@markwicksservices.com.au</a></li>
+              <li><a href="mailto:markwicksservices@gmail.com" className="lift-on-hover whitespace-nowrap">markwicksservices@gmail.com</a></li>
               <li>4 Jarrah Court, Kelso NSW 2795</li>
             </ul>
           </div>
